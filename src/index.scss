@@ -1,0 +1,17 @@
+@import 'base.scss';
+
+:global {
+  @import '~sanitize.css/sanitize';
+
+  // Remove ugly chrome yellow autofill background
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+  }
+
+  html {
+    overflow-y: scroll;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
