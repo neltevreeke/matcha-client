@@ -1,7 +1,11 @@
+import { render } from 'react-dom'
+import pages from './pages'
+
 import './index.scss'
 
-function main () {
-  alert('lol works.')
-}
+const rootElement = document.getElementById('root')
 
-main()
+render(
+  pages,
+  rootElement
+)
