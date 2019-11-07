@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Header.scss'
 import { Link } from 'react-router-dom'
 import * as Routes from 'constants/Routes'
+import Button from 'components/Button/Button'
 
 const Header = () => {
   return (
@@ -13,7 +14,17 @@ const Header = () => {
         matcha
       </Link>
       <div className={styles.controls}>
-        Empty.
+        <Button
+          variant={Button.VARIANT_TRANSPARENT}
+          className={styles.btnLogin}
+        >
+          log in
+        </Button>
+        <Button
+          variant={Button.VARIANT_TRANSPARENT_BORDERED}
+        >
+          sign up
+        </Button>
       </div>
     </div>
   )
