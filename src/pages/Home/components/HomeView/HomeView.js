@@ -1,11 +1,12 @@
 import React from 'react'
-import styles from './HomeView.scss'
+// import styles from './HomeView.scss'
+import Page from 'components/Page/Page'
 
 const HomeView = () => {
   return (
-    <div className={styles.component}>
-      Empty.
-    </div>
+    <Page>
+      Empty
+    </Page>
   )
 }
 
