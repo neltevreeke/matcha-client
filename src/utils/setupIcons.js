@@ -4,12 +4,14 @@ import {
   faSearch,
   faCrosshairs,
   faComments,
-  faBell
+  faBell,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faSearch,
   faCrosshairs,
   faComments,
-  faBell
+  faBell,
+  faTimes
 )

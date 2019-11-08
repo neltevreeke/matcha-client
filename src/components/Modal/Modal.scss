@@ -1,0 +1,125 @@
+@import 'base.scss';
+
+:global {
+  .ReactModal {
+    &__Overlay {
+      opacity: 0;
+      transition: opacity 140ms linear;
+      will-change: opacity;
+
+      :local(.content) {
+        will-change: transform;
+        transform: scale(0.95);
+      }
+
+      &--after-open {
+        opacity: 1;
+
+        :local(.content) {
+          transform: scale(1);
+        }
+      }
+
+      &--before-close {
+        opacity: 0;
+
+        :local(.content) {
+          transform: scale(0.95);
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 9000;
+}
+
+.component {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  outline: none;
+  display: flex;
+}
+
+.content {
+  transition: transform .3s ease-out;
+  transform: translateZ(0);
+  margin: auto;
+  width: 800px;
+}
+
+.inner {
+  margin: 10px;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  display: flex;
+  color: white;
+  background-color: $color-primary;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top-right-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+  text-align: center;
+  position: relative;
+
+  .headerText {
+    border-top-left-radius: $border-radius;
+    flex: auto;
+    padding: 1em;
+    line-height: 1;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+}
+
+.btnClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-primary;
+  flex: none;
+  padding: 1.5rem;
+  border: none;
+  line-height: 1.5;
+  outline: 0;
+  cursor: pointer;
+  border-top-right-radius: $border-radius;
+  display: flex;
+}
+
+.btnCloseIcon {
+  font-size: 1.5rem;
+  color: white;
+  display: block;
+}
+
+.body {
+  padding: 1rem;
+  background-color: white;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.footer {
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px solid $color-border;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
