@@ -1,0 +1,21 @@
+@import 'base.scss';
+
+.container {
+  position: relative;
+}
+
+.hasError {
+  .input {
+    box-shadow: inset 0 0 0 2px $red !important;
+  }
+}
+
+.input {
+  @include input-style();
+}
+
+.small {
+  .input {
+    padding: .7em;
+  }
+}

@@ -1,0 +1,16 @@
+@import 'base.scss';
+
+.container {
+  position: relative;
+}
+
+.hasError {
+  .textarea {
+    border-color: $red !important;
+  }
+}
+
+.textarea {
+  @include input-style();
+  resize: none;
+}

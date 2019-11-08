@@ -1,0 +1,24 @@
+@import 'base.scss';
+
+.component {
+  position: relative;
+
+  &.isNarrow {
+    max-width: 450px;
+  }
+}
+
+.error {
+  color: $red;
+  margin-top: .4em;
+}
+
+.labelContainer {
+  display: flex;
+}
+
+.isOptional {
+  margin-left: auto;
+  font-size: 10px;
+  color: $gray-500;
+}

@@ -1,0 +1,65 @@
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+@mixin input-style () {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  color: $color-primary;
+  background-color: white;
+  background-clip: padding-box;
+  font-family: inherit;
+  border: solid 2px $gray-500;
+  transition: border-color 200ms, background-color 200ms, color 200ms;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 5px;
+
+  &:active,
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+
+    @include placeholder () {
+      color: lighten($color-primary, 20%);
+    }
+  }
+
+  @include placeholder () {
+    opacity: 1;
+    color: $gray-700;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+}
+
+@mixin cursor-move () {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}

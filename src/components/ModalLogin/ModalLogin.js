@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'components/Modal/Modal'
+import FormLogin from './components/FormLogin/FormLogin'
 
 const ModalLogin = ({
   ...props
@@ -13,9 +14,7 @@ const ModalLogin = ({
         </span>
       )}
       body={(
-        <div>
-          Form goes here...
-        </div>
+        <FormLogin />
       )}
     />
   )

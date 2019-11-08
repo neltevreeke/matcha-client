@@ -1,0 +1,77 @@
+@import 'base.scss';
+
+.hasError {
+  :global {
+    .react-select {
+      &__control {
+        border-color: $red !important;
+      }
+    }
+  }
+}
+
+.component {
+  position: relative;
+
+  :global {
+    .react-select {
+      &__control {
+        border: 2px solid $gray-500;
+        background-color: white;
+        min-width: 240px;
+        border-radius: 5px;
+        transition: border-color 200ms, background-color 200ms, color 200ms;
+
+        &--is-focused,
+        &:hover {
+          background-color: $color-primary;
+          box-shadow: none;
+          border: 2px solid $color-primary !important;
+        }
+      }
+
+      &__single-value {
+        color: $color-primary !important;
+      }
+
+      &__menu {
+        border-radius: 5px;
+        box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.08);
+        border: 1px solid $gray-500;
+        z-index: 3;
+      }
+
+      &__value-container {
+        padding: .8rem;
+      }
+
+      &__placeholder {
+        color: $gray-700;
+      }
+
+      &__option {
+        cursor: pointer;
+        outline: 0;
+        padding: .8rem;
+
+        &--is-selected {
+          background-color: $color-primary !important;
+          color: white !important;
+        }
+
+        &:hover,
+        &--is-focused {
+          background-color: $color-primary;
+        }
+      }
+
+      &__indicator-separator {
+        background-color: $gray-500;
+      }
+    }
+  }
+}
+
+.indicatorsContainer {
+  padding: .8rem;
+}
