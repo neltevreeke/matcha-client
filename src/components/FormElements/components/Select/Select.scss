@@ -24,14 +24,13 @@
 
         &--is-focused,
         &:hover {
-          background-color: $color-primary;
           box-shadow: none;
           border: 2px solid $color-primary !important;
         }
       }
 
       &__single-value {
-        color: $color-primary !important;
+        color: $gray-700;
       }
 
       &__menu {
@@ -61,7 +60,7 @@
 
         &:hover,
         &--is-focused {
-          background-color: $color-primary;
+          background-color: $gray-200;
         }
       }
 

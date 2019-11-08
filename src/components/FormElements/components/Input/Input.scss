@@ -6,7 +6,7 @@
 
 .hasError {
   .input {
-    box-shadow: inset 0 0 0 2px $red !important;
+    border: 2px solid red;
   }
 }
 

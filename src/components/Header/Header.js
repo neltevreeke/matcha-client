@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import * as Routes from 'constants/Routes'
 import Button from 'components/Button/Button'
 import ModalLogin from 'components/ModalLogin/ModalLogin'
+import ModalSignUp from 'components/ModalSignUp/ModalSignUp'
 import { useModal } from 'react-modal-hook'
 
 const Header = () => {
@@ -20,8 +21,25 @@ const Header = () => {
     )
   })
 
+  const [showModalSignUp, hideModalSignUp] = useModal(({
+    in: isOpen,
+    onExited
+  }) => {
+    return (
+      <ModalSignUp
+        isOpen={isOpen}
+        onExited={onExited}
+        hideModal={hideModalSignUp}
+      />
+    )
+  })
+
   const handleBtnLoginClick = () => {
     showModalLogin()
+  }
+
+  const handleBtnSignUpClick = () => {
+    showModalSignUp()
   }
 
   return (
@@ -42,6 +60,7 @@ const Header = () => {
         </Button>
         <Button
           variant={Button.VARIANT_TRANSPARENT_BORDERED}
+          onClick={handleBtnSignUpClick}
         >
           sign up
         </Button>
