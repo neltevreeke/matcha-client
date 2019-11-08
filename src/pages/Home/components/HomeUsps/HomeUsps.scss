@@ -1,0 +1,34 @@
+@import 'base.scss';
+
+.component {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 100px;
+  padding: 5rem 0;
+}
+
+.usp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uspIcon {
+  display: flex;
+  justify-content: center;
+  font-size: 5rem;
+  color: $color-primary;
+}
+
+.uspTitle {
+  text-align: center;
+  font-size: 1.7rem;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.uspText {
+  max-width: 200px;
+  margin: 0;
+}

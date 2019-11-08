@@ -1,0 +1,7 @@
+@import 'base.scss';
+
+.component {
+  max-width: $max-content-width;
+  margin: 0 auto;
+  padding: 0 $mobile-side-padding;
+}
