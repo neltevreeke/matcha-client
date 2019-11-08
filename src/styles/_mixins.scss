@@ -25,8 +25,8 @@
 @mixin input-style () {
   display: block;
   width: 100%;
-  padding: 1rem;
-  color: $color-primary;
+  padding: 0.7rem 1rem;
+  color: $gray-800;
   background-color: white;
   background-clip: padding-box;
   font-family: inherit;
@@ -40,10 +40,6 @@
   &:focus {
     outline: none;
     border-color: $color-primary;
-
-    @include placeholder () {
-      color: lighten($color-primary, 20%);
-    }
   }
 
   @include placeholder () {

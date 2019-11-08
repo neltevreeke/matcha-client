@@ -16,8 +16,22 @@ const initialValues = {
   password: ''
 }
 
+const handleOnSubmit = (values) => {
+  fetch('http://localhost:4000/login', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(values)
+  })
+    .then(res => {
+      // eslint-disable-next-line no-console
+      console.log(res)
+    })
+}
+
 const FormLogin = ({
-  onSubmit
+  onSubmit = handleOnSubmit
 }) => {
   return (
     <Formik
@@ -27,6 +41,7 @@ const FormLogin = ({
         return (
           <Form>
             <Field
+              label='Email'
               id='email'
               name='email'
               type='email'
@@ -34,6 +49,7 @@ const FormLogin = ({
               placeholder='Email address'
             />
             <Field
+              label='Password'
               id='password'
               name='password'
               type='password'
@@ -43,7 +59,7 @@ const FormLogin = ({
             <Button
               onClick={handleSubmit}
               type='submit'
-              variant={Button.VARIANT_TRANSPARENT}
+              variant={Button.VARIANT_DEFAULT}
               isLoading={isSubmitting}
             >
               log in

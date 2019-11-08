@@ -4,6 +4,7 @@ import cx from 'classnames'
 
 const VARIANT_TRANSPARENT = 'transparent'
 const VARIANT_TRANSPARENT_BORDERED = 'transparent-bordered'
+const VARIANT_DEFAULT = 'default'
 
 const Button = ({
   children,
@@ -26,5 +27,6 @@ const Button = ({
 
 Button.VARIANT_TRANSPARENT = VARIANT_TRANSPARENT
 Button.VARIANT_TRANSPARENT_BORDERED = VARIANT_TRANSPARENT_BORDERED
+Button.VARIANT_DEFAULT = VARIANT_DEFAULT
 
 export default Button
