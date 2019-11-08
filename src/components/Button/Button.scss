@@ -18,6 +18,11 @@ $transition-speed: 130ms;
     background-color: white;
     color: $color-primary;
   }
+
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
 }
 
 .variant--transparent-bordered {

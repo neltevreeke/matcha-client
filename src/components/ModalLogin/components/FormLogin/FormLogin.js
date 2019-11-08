@@ -10,34 +10,20 @@ import {
   Input
 } from 'components/FormElements'
 import Button from '../../../Button/Button'
-
 const initialValues = {
-  email: '',
-  password: ''
-}
-
-const handleOnSubmit = (values) => {
-  fetch('http://localhost:4000/login', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify(values)
-  })
-    .then(res => {
-      // eslint-disable-next-line no-console
-      console.log(res)
-    })
+  email: process.env.NODE_ENV === 'development' ? 'nelte.p.vreeke@gmail.com' : '',
+  password: process.env.NODE_ENV === 'development' ? 'lollol1' : ''
 }
 
 const FormLogin = ({
-  onSubmit = handleOnSubmit
+  onSubmit,
+  isSubmitting
 }) => {
   return (
     <Formik
       onSubmit={onSubmit}
       initialValues={initialValues}
-      render={({ handleSubmit, isSubmitting }) => {
+      render={({ handleSubmit }) => {
         return (
           <Form>
             <Field

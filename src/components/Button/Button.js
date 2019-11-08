@@ -10,17 +10,21 @@ const Button = ({
   children,
   variant = VARIANT_TRANSPARENT,
   className,
+  isLoading,
   ...props
 }) => {
   return (
     <button
+      disabled={isLoading}
       className={cx(styles.component, {
         [styles[`variant--${variant}`]]: variant,
         [className]: className
       })}
       {...props}
     >
-      {children}
+      {isLoading ? (
+        <span>Loading...</span>
+      ) : children}
     </button>
   )
 }
