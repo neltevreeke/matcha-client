@@ -15,10 +15,12 @@ import Button from '../../../Button/Button'
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string()
+    .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
     .min(2, 'Too short!')
     .max(30, 'Too long!')
     .required('Required'),
   lastName: Yup.string()
+    .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
     .min(2, 'Too short!')
     .max(30, 'Too long')
     .required('Required'),
@@ -28,6 +30,7 @@ const validationSchema = Yup.object().shape({
   age: Yup.number()
     .min(18, 'Too young')
     .max(99, 'Too old')
+    .integer('Age must be an integer')
     .required('Required'),
   gender: Yup.string()
     .required('Required'),

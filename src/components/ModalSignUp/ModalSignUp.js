@@ -8,14 +8,18 @@ const ModalSignUp = ({
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleFormSubmit = async ({ email, password }) => {
+  const handleFormSubmit = async ({ firstName, lastName, email, password, age, gender }) => {
     setIsSubmitting(true)
 
     try {
       await request('signup', {
         method: 'POST',
         body: {
+          firstName,
+          lastName,
           email,
+          age,
+          gender,
           password
         }
       })
