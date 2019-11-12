@@ -7,12 +7,17 @@ const ModalSignUp = ({
   ...props
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+
+  const handleOnRequestClose = () => {
+    props.hideModal()
+  }
 
   const handleFormSubmit = async ({ firstName, lastName, email, password, age, gender }) => {
     setIsSubmitting(true)
 
     try {
-      await request('signup', {
+      const res = await request('signup', {
         method: 'POST',
         body: {
           firstName,
@@ -24,7 +29,17 @@ const ModalSignUp = ({
         }
       })
 
-      // TODO: finish me.
+      if (res.status === 200) {
+        handleOnRequestClose()
+      }
+
+      if (res.status === 409) {
+        setSubmitError('Email already exists')
+      }
+
+      if (res.status === 500) {
+        setSubmitError('Internal server error')
+      }
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
@@ -45,6 +60,7 @@ const ModalSignUp = ({
         <FormSignUp
           onSubmit={handleFormSubmit}
           isSubmitting={isSubmitting}
+          error={submitError}
         />
       )}
     />

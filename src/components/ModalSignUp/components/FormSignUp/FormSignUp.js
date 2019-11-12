@@ -1,5 +1,6 @@
 import React from 'react'
 import * as Yup from 'yup'
+import styles from './FormSignUp.scss'
 
 import {
   Formik,
@@ -63,7 +64,8 @@ const genderOptions = [{
 
 const FormSignUp = ({
   onSubmit,
-  isSubmitting
+  isSubmitting,
+  error
 }) => {
   return (
     <Formik
@@ -135,13 +137,20 @@ const FormSignUp = ({
               type='password'
             />
 
+            {error &&
+              <div
+                className={styles.submitError}
+              >
+                {error}
+              </div>}
+
             <Button
               type='submit'
               onClick={handleSubmit}
               variant={Button.VARIANT_DEFAULT}
               isLoading={isSubmitting}
             >
-                            sign up
+              sign up
             </Button>
           </Form>
         )
