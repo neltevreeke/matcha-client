@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Yup from 'yup'
 import styles from './FormSignUp.scss'
+import * as Gender from 'constants/Gender'
 
 import {
   Formik,
@@ -56,10 +57,10 @@ const initialValues = {
 
 const genderOptions = [{
   label: 'Male',
-  value: 'male'
+  value: Gender.MALE
 }, {
   label: 'Female',
-  value: 'female'
+  value: Gender.FEMALE
 }]
 
 const FormSignUp = ({

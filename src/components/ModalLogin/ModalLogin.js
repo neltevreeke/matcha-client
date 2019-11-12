@@ -3,6 +3,8 @@ import Modal from 'components/Modal/Modal'
 import FormLogin from './components/FormLogin/FormLogin'
 import request from 'utils/request'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../../actions/users'
 
 const getErrorMessage = error => {
   const { message } = error.body
@@ -20,12 +22,13 @@ const ModalLogin = ({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const handleFormSubmit = async ({ email, password }) => {
     setIsSubmitting(true)
 
     try {
-      const res = await request('login', {
+      const { user, token } = await request('login', {
         method: 'POST',
         body: {
           email,
@@ -33,7 +36,13 @@ const ModalLogin = ({
         }
       })
 
-      localStorage.setItem('token', res.token)
+      localStorage.setItem('token', token)
+
+      dispatch(setUser({
+        user,
+        token
+      }))
+
       props.hideModal()
       history.push('/dashboard')
     } catch (e) {

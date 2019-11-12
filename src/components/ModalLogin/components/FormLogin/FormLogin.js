@@ -13,7 +13,7 @@ import {
 import Button from '../../../Button/Button'
 const initialValues = {
   email: process.env.NODE_ENV === 'development' ? 'nelte.p.vreeke@gmail.com' : '',
-  password: process.env.NODE_ENV === 'development' ? 'lollol1' : ''
+  password: process.env.NODE_ENV === 'development' ? 'test1234' : ''
 }
 
 const FormLogin = ({
