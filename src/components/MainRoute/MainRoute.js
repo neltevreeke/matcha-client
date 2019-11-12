@@ -13,8 +13,7 @@ const MainRoute = ({
 }) => {
   const {
     data: user,
-    isLoading,
-    error
+    isLoading
   } = useMe()
 
   const dispatch = useDispatch()
@@ -31,7 +30,7 @@ const MainRoute = ({
     user
   ])
 
-  if (isLoading || error) {
+  if (isLoading) {
     return null
   }
 
