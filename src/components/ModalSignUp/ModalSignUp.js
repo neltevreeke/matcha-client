@@ -3,6 +3,16 @@ import Modal from 'components/Modal/Modal'
 import FormSignUp from './components/FormSignUp/FormSignUp'
 import request from 'utils/request'
 
+const getErrorMessage = error => {
+  const { message } = error.body
+
+  if (message === 'conflict') {
+    return 'That email already exists'
+  }
+
+  return 'Something went wrong, please try again later'
+}
+
 const ModalSignUp = ({
   ...props
 }) => {
@@ -29,20 +39,11 @@ const ModalSignUp = ({
         }
       })
 
-      if (res.status === 200) {
+      if (res) {
         handleOnRequestClose()
       }
-
-      if (res.status === 409) {
-        setSubmitError('Email already exists')
-      }
-
-      if (res.status === 500) {
-        setSubmitError('Internal server error')
-      }
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(e)
+      setSubmitError(getErrorMessage(e))
     } finally {
       setIsSubmitting(false)
     }

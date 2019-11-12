@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './FormLogin.scss'
 
 import {
   Formik,
@@ -17,7 +18,8 @@ const initialValues = {
 
 const FormLogin = ({
   onSubmit,
-  isSubmitting
+  isSubmitting,
+  error
 }) => {
   return (
     <Formik
@@ -34,6 +36,7 @@ const FormLogin = ({
               component={Input}
               placeholder='Email address'
             />
+
             <Field
               label='Password'
               id='password'
@@ -42,6 +45,9 @@ const FormLogin = ({
               component={Input}
               placeholder='Password'
             />
+
+            {error && <div className={styles.submitError}>{error}</div>}
+
             <Button
               onClick={handleSubmit}
               type='submit'

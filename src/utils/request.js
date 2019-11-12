@@ -13,7 +13,7 @@ export const clearTokenHeader = () => {
   delete defaultHeaders['x-token']
 }
 
-const request = (urlSegment, options) => {
+const request = async (urlSegment, options) => {
   const url = config.API_URL + '/' + urlSegment
 
   if (options.body) {
@@ -25,7 +25,17 @@ const request = (urlSegment, options) => {
     ...options.headers || {}
   }
 
-  return fetch(url, options)
+  const res = await fetch(url, options)
+  const jsonResponse = await res?.json() || null
+
+  if (res.status !== 200) {
+    const error = new Error()
+    error.body = jsonResponse
+    error.statusCode = res.status
+    throw error
+  }
+
+  return jsonResponse
 }
 
 export default request
