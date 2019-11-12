@@ -19,15 +19,11 @@ const ModalSignUp = ({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
 
-  const handleOnRequestClose = () => {
-    props.hideModal()
-  }
-
   const handleFormSubmit = async ({ firstName, lastName, email, password, age, gender }) => {
     setIsSubmitting(true)
 
     try {
-      const res = await request('signup', {
+      await request('signup', {
         method: 'POST',
         body: {
           firstName,
@@ -39,9 +35,7 @@ const ModalSignUp = ({
         }
       })
 
-      if (res) {
-        handleOnRequestClose()
-      }
+      props.hideModal()
     } catch (e) {
       setSubmitError(getErrorMessage(e))
     } finally {

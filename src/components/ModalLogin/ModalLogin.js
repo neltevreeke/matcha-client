@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'components/Modal/Modal'
 import FormLogin from './components/FormLogin/FormLogin'
 import request from 'utils/request'
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const getErrorMessage = error => {
   const { message } = error.body
@@ -19,7 +19,7 @@ const ModalLogin = ({
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
-  // const history = useHistory()
+  const history = useHistory()
 
   const handleFormSubmit = async ({ email, password }) => {
     setIsSubmitting(true)
@@ -34,7 +34,8 @@ const ModalLogin = ({
       })
 
       localStorage.setItem('token', res.token)
-      // history.push('/dashboard')
+      props.hideModal()
+      history.push('/dashboard')
     } catch (e) {
       setSubmitError(getErrorMessage(e))
     } finally {
