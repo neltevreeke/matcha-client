@@ -1,13 +1,21 @@
 import React from 'react'
 import styles from './Header.scss'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import * as Routes from 'constants/Routes'
 import Button from 'components/Button/Button'
 import ModalLogin from 'components/ModalLogin/ModalLogin'
 import ModalSignUp from 'components/ModalSignUp/ModalSignUp'
 import { useModal } from 'react-modal-hook'
+import { useSelector, useDispatch } from 'react-redux'
+import { getUser } from 'selectors/user'
+import { unsetUser } from 'actions/users'
 
 const Header = () => {
+  const user = useSelector(getUser)
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const isLoggedIn = !!user
+
   const [showModalLogin, hideModalLogin] = useModal(({
     in: isOpen,
     onExited
@@ -42,6 +50,11 @@ const Header = () => {
     showModalSignUp()
   }
 
+  const handleBtnLogoutClick = () => {
+    dispatch(unsetUser())
+    history.push(Routes.HOME)
+  }
+
   return (
     <div className={styles.component}>
       <Link
@@ -51,19 +64,35 @@ const Header = () => {
         matcha
       </Link>
       <div className={styles.controls}>
-        <Button
-          variant={Button.VARIANT_TRANSPARENT}
-          className={styles.btnLogin}
-          onClick={handleBtnLoginClick}
-        >
-          log in
-        </Button>
-        <Button
-          variant={Button.VARIANT_TRANSPARENT_BORDERED}
-          onClick={handleBtnSignUpClick}
-        >
-          sign up
-        </Button>
+        {isLoggedIn ? (
+          <>
+            <div className={styles.userFirstName}>
+              {user.firstName}
+            </div>
+            <Button
+              variant={Button.VARIANT_TRANSPARENT_BORDERED}
+              onClick={handleBtnLogoutClick}
+            >
+              logout
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              variant={Button.VARIANT_TRANSPARENT}
+              className={styles.btnLogin}
+              onClick={handleBtnLoginClick}
+            >
+              log in
+            </Button>
+            <Button
+              variant={Button.VARIANT_TRANSPARENT_BORDERED}
+              onClick={handleBtnSignUpClick}
+            >
+              sign up
+            </Button>
+          </>
+        )}
       </div>
     </div>
   )
