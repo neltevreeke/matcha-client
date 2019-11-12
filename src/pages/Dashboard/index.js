@@ -1,12 +1,13 @@
 import React, { lazy } from 'react'
-import { Route } from 'react-router-dom'
 import * as Routes from 'constants/Routes'
+import MainRoute from 'components/MainRoute/MainRoute'
 
 const DashboardView = lazy(() => import('./components/DashboardView/DashboardView'))
 
 export default (
-  <Route
+  <MainRoute
     exact
+    isProtected
     path={Routes.DASHBOARD}
     component={DashboardView}
   />

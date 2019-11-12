@@ -4,7 +4,6 @@ const defaultHeaders = {
   'Content-Type': 'application/json'
 }
 
-// TODO: use when ready ;)
 export const setTokenHeader = token => {
   defaultHeaders['x-token'] = token
 }

@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setUser } from 'actions/users'
 import * as Routes from 'constants/Routes'
+import { setToken } from 'utils/token'
 
 const getErrorMessage = error => {
   const { message } = error.body
@@ -37,7 +38,7 @@ const ModalLogin = ({
         }
       })
 
-      localStorage.setItem('token', token)
+      setToken(token)
 
       dispatch(setUser({
         user,

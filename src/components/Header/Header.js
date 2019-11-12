@@ -9,6 +9,7 @@ import { useModal } from 'react-modal-hook'
 import { useSelector, useDispatch } from 'react-redux'
 import { getUser } from 'selectors/user'
 import { unsetUser } from 'actions/users'
+import { clearToken } from '../../utils/token'
 
 const Header = () => {
   const user = useSelector(getUser)
@@ -52,6 +53,7 @@ const Header = () => {
 
   const handleBtnLogoutClick = () => {
     dispatch(unsetUser())
+    clearToken()
     history.push(Routes.HOME)
   }
 
