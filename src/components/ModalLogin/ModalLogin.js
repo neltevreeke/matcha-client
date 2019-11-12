@@ -4,7 +4,8 @@ import FormLogin from './components/FormLogin/FormLogin'
 import request from 'utils/request'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setUser } from '../../actions/users'
+import { setUser } from 'actions/users'
+import * as Routes from 'constants/Routes'
 
 const getErrorMessage = error => {
   const { message } = error.body
@@ -44,7 +45,7 @@ const ModalLogin = ({
       }))
 
       props.hideModal()
-      history.push('/dashboard')
+      history.push(Routes.DASHBOARD)
     } catch (e) {
       setSubmitError(getErrorMessage(e))
     } finally {

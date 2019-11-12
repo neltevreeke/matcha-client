@@ -16,5 +16,8 @@ export default createReducer(initialState, {
       user,
       token
     }
+  },
+  [ActionTypes.USER_UNSET_USER]: () => {
+    return initialState
   }
 })

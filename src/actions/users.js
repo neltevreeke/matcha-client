@@ -12,3 +12,9 @@ export const setUser = ({
     }
   }
 }
+
+export const unsetUser = () => {
+  return {
+    type: ActionTypes.USER_UNSET_USER
+  }
+}
