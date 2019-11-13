@@ -17,7 +17,14 @@
 }
 
 .controls {
+  display: flex;
   margin-left: auto;
+  align-items: center;
+}
+
+.userFirstName {
+  font-weight: 700;
+  margin-right: 1rem;
 }
 
 .btnLogin {

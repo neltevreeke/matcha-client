@@ -4,6 +4,7 @@ import { ModalProvider } from 'react-modal-hook'
 import { TransitionGroup } from 'react-transition-group'
 
 import Home from './Home'
+import Dashboard from './Dashboard'
 
 export default (
   <Router>
@@ -17,6 +18,7 @@ export default (
       >
         <Switch>
           {Home}
+          {Dashboard}
         </Switch>
       </Suspense>
     </ModalProvider>
