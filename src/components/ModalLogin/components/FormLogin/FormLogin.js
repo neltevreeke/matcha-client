@@ -11,9 +11,20 @@ import {
   Input
 } from 'components/FormElements'
 import Button from '../../../Button/Button'
+
 const initialValues = {
   email: process.env.NODE_ENV === 'development' ? 'nelte.p.vreeke@gmail.com' : '',
   password: process.env.NODE_ENV === 'development' ? 'test1234' : ''
+}
+
+const getErrorMessage = error => {
+  const { message } = error.body
+
+  if (message === 'not-found') {
+    return 'Invalid email or password'
+  }
+
+  return 'Something went wrong, please try again later'
 }
 
 const FormLogin = ({
@@ -46,7 +57,11 @@ const FormLogin = ({
               placeholder='Password'
             />
 
-            {error && <div className={styles.submitError}>{error}</div>}
+            {error && (
+              <div className={styles.submitError}>
+                {getErrorMessage(error)}
+              </div>
+            )}
 
             <Button
               onClick={handleSubmit}

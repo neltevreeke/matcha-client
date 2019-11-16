@@ -8,7 +8,6 @@ export const setToken = (token) => {
 }
 
 export const getToken = () => {
-  clearTokenHeader()
   return localStorage.getItem(TOKEN_NAMESPACE)
 }
 

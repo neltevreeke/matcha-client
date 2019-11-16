@@ -1,38 +1,32 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import wrapRoute from 'utils/wrapRoute'
-import useMe from 'hooks/useMe'
+import { me } from 'actions/users'
+import {
+  getIsLoggedIn,
+  getMeIsLoaded
+} from '../../selectors/user'
 import { Redirect } from 'react-router-dom'
 import * as Routes from 'constants/Routes'
-import { setUser } from '../../actions/users'
 
 const MainRoute = ({
   matchProps,
   component: Component,
   isProtected
 }) => {
-  const {
-    data: user,
-    isLoading
-  } = useMe()
-
   const dispatch = useDispatch()
+  const isLoggedIn = useSelector(getIsLoggedIn)
+  const meIsLoaded = useSelector(getMeIsLoaded)
 
   useEffect(() => {
-    if (!user) {
-      return
-    }
+    dispatch(me())
+  }, [])
 
-    dispatch(setUser(user))
-  }, [
-    user
-  ])
-
-  if (isLoading) {
+  if (!meIsLoaded) {
     return null
   }
 
-  if (isProtected && !user) {
+  if (isProtected && !isLoggedIn) {
     return (
       <Redirect
         to={Routes.HOME}
