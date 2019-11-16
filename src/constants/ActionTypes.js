@@ -7,3 +7,5 @@ export const ME_SUCCESS = '@user/ME_SUCCESS'
 export const ME_ERROR = '@user/ME_ERROR'
 
 export const LOGOUT = '@user/LOGOUT'
+
+export const MENU_TOGGLE = '@menu/TOGGLE'
