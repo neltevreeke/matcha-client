@@ -3,10 +3,11 @@ import { Switch } from 'react-router-dom'
 import { ModalProvider } from 'react-modal-hook'
 import { TransitionGroup } from 'react-transition-group'
 import { ConnectedRouter } from 'connected-react-router'
+import { history } from '../utils/configureStore'
 
 import Home from './Home'
 import Dashboard from './Dashboard'
-import { history } from '../utils/configureStore'
+import Settings from './Settings'
 
 export default (
   <ConnectedRouter history={history}>
@@ -21,6 +22,7 @@ export default (
         <Switch>
           {Home}
           {Dashboard}
+          {Settings}
         </Switch>
       </Suspense>
     </ModalProvider>

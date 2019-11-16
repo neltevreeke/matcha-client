@@ -1,7 +1,7 @@
 @import 'base.scss';
 
 .component {
-  height: 5rem;
+  height: $header-height;
   background-color: $color-primary;
   color: white;
   display: flex;
