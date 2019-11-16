@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react'
 import request from 'utils/request'
 
 const useRequest = (url, options, deps = []) => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [data, setData] = useState(null)
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true)
       setError(null)
       setData(null)
 
