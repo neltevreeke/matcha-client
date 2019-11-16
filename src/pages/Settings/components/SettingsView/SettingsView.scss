@@ -1,0 +1,18 @@
+@import 'base.scss';
+
+$padding: 2rem;
+
+.component {
+  margin: $padding 0;
+  display: flex;
+  min-height: unquote("calc(100vh - #{$header-height + ($padding * 2)})");
+}
+
+.menu {
+  width: 240px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 1rem;
+}

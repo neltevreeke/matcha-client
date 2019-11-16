@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Header.scss'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as Routes from 'constants/Routes'
 import Button from 'components/Button/Button'
 import ModalLogin from 'components/ModalLogin/ModalLogin'
@@ -8,13 +8,11 @@ import ModalSignUp from 'components/ModalSignUp/ModalSignUp'
 import { useModal } from 'react-modal-hook'
 import { useSelector, useDispatch } from 'react-redux'
 import { getUser } from 'selectors/user'
-import { unsetUser } from 'actions/users'
-import { clearToken } from '../../utils/token'
+import { logout } from 'actions/users'
 
 const Header = () => {
   const user = useSelector(getUser)
   const dispatch = useDispatch()
-  const history = useHistory()
   const isLoggedIn = !!user
 
   const [showModalLogin, hideModalLogin] = useModal(({
@@ -52,9 +50,7 @@ const Header = () => {
   }
 
   const handleBtnLogoutClick = () => {
-    dispatch(unsetUser())
-    clearToken()
-    history.push(Routes.HOME)
+    dispatch(logout())
   }
 
   return (

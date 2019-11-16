@@ -5,3 +5,16 @@ export const me = () => {
     method: 'GET'
   })
 }
+
+export const login = ({
+  email,
+  password
+}) => {
+  return request('login', {
+    method: 'POST',
+    body: {
+      email,
+      password
+    }
+  })
+}

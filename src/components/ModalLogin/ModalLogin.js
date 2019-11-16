@@ -1,53 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Modal from 'components/Modal/Modal'
 import FormLogin from './components/FormLogin/FormLogin'
-import request from 'utils/request'
-import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { setUser } from 'actions/users'
-import * as Routes from 'constants/Routes'
-import { setToken } from 'utils/token'
-
-const getErrorMessage = error => {
-  const { message } = error.body
-
-  if (message === 'not-found') {
-    return 'Invalid email or password'
-  }
-
-  return 'Something went wrong, please try again later'
-}
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from 'actions/users'
+import {
+  getLoginError,
+  getLoginIsLoading
+} from '../../selectors/user'
 
 const ModalLogin = ({
   ...props
 }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitError, setSubmitError] = useState('')
-  const history = useHistory()
+  const error = useSelector(getLoginError)
+  const isLoading = useSelector(getLoginIsLoading)
   const dispatch = useDispatch()
 
-  const handleFormSubmit = async ({ email, password }) => {
-    setIsSubmitting(true)
-
-    try {
-      const { user, token } = await request('login', {
-        method: 'POST',
-        body: {
-          email,
-          password
-        }
-      })
-
-      setToken(token)
-      dispatch(setUser(user))
-
-      props.hideModal()
-      history.push(Routes.DASHBOARD)
-    } catch (e) {
-      setSubmitError(getErrorMessage(e))
-    } finally {
-      setIsSubmitting(false)
-    }
+  const handleFormSubmit = ({ email, password }) => {
+    dispatch(login({
+      email,
+      password
+    }))
   }
 
   return (
@@ -62,8 +34,8 @@ const ModalLogin = ({
         <>
           <FormLogin
             onSubmit={handleFormSubmit}
-            isSubmitting={isSubmitting}
-            error={submitError}
+            isSubmitting={isLoading}
+            error={error}
           />
         </>
       )}
