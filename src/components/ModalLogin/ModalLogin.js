@@ -39,11 +39,7 @@ const ModalLogin = ({
       })
 
       setToken(token)
-
-      dispatch(setUser({
-        user,
-        token
-      }))
+      dispatch(setUser(user))
 
       props.hideModal()
       history.push(Routes.DASHBOARD)

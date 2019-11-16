@@ -1,15 +1,9 @@
 import * as ActionTypes from 'constants/ActionTypes'
 
-export const setUser = ({
-  user,
-  token
-}) => {
+export const setUser = (user) => {
   return {
     type: ActionTypes.USER_SET_USER,
-    payload: {
-      user,
-      token
-    }
+    payload: user
   }
 }
 

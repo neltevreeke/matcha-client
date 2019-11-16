@@ -5,7 +5,6 @@ import useMe from 'hooks/useMe'
 import { Redirect } from 'react-router-dom'
 import * as Routes from 'constants/Routes'
 import { setUser } from '../../actions/users'
-import { getToken } from '../../utils/token'
 
 const MainRoute = ({
   matchProps,
@@ -24,12 +23,7 @@ const MainRoute = ({
       return
     }
 
-    const token = getToken()
-
-    dispatch(setUser({
-      user,
-      token
-    }))
+    dispatch(setUser(user))
   }, [
     user
   ])
