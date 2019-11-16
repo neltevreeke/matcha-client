@@ -16,13 +16,14 @@ const MainRoute = ({
 }) => {
   const dispatch = useDispatch()
   const isLoggedIn = useSelector(getIsLoggedIn)
-  const meIsLoaded = useSelector(getMeIsLoaded)
+  const isMeLoaded = useSelector(getMeIsLoaded)
 
   useEffect(() => {
     dispatch(me())
   }, [])
 
-  if (!meIsLoaded) {
+  if (!isMeLoaded) {
+    // TODO: show a page spinner...
     return null
   }
 
