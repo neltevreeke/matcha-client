@@ -5,7 +5,12 @@ import {
   faCrosshairs,
   faComments,
   faBell,
-  faTimes
+  faTimes,
+  faUser,
+  faImage,
+  faHashtag,
+  faFilter,
+  faMapMarkedAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -13,5 +18,10 @@ library.add(
   faCrosshairs,
   faComments,
   faBell,
-  faTimes
+  faTimes,
+  faUser,
+  faImage,
+  faHashtag,
+  faFilter,
+  faMapMarkedAlt
 )

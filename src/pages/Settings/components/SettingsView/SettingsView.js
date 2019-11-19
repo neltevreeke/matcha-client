@@ -7,6 +7,10 @@ import * as Routes from 'constants/Routes'
 
 import SettingsProfile from '../SettingsProfile/SettingsProfile'
 import SettingsPictures from '../SettingsPictures/SettingsPictures'
+import SettingsInterestTags from '../SettingsInterestTags/SettingsInterestTags'
+import SettingsSearchFilters from '../SettingsSearchFilters/SettingsSearchFilters'
+import SettingsLocation from '../SettingsLocation/SettingsLocation'
+import SettingsEmailNotifications from '../SettingsEmailNotifications/SettingsEmailNotifications'
 
 const SettingsView = () => {
   return (
@@ -29,6 +33,22 @@ const SettingsView = () => {
             <Route
               path={Routes.SETTINGS_PICTURES}
               component={SettingsPictures}
+            />
+            <Route
+              path={Routes.SETTINGS_INTEREST_TAGS}
+              component={SettingsInterestTags}
+            />
+            <Route
+              path={Routes.SETTINGS_SEARCH_FILTERS}
+              component={SettingsSearchFilters}
+            />
+            <Route
+              path={Routes.SETTINGS_LOCATION}
+              component={SettingsLocation}
+            />
+            <Route
+              path={Routes.SETTINGS_NOTIFICATIONS}
+              component={SettingsEmailNotifications}
             />
           </Switch>
         </div>
