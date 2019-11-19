@@ -1,5 +1,9 @@
 @import 'base.scss';
 
 .component {
-  // Empty
+  min-width: 40%;
+}
+
+.submitError {
+  color: red
 }

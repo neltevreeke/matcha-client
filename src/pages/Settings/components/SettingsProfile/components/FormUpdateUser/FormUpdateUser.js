@@ -134,7 +134,7 @@ const FormUpdateUser = ({
                 variant={Button.VARIANT_DEFAULT}
                 isLoading={isSubmitting}
               >
-                  update
+                update
               </Button>
             </Form>
           )

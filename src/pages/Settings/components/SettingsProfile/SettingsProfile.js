@@ -21,7 +21,7 @@ const SettingsProfile = () => {
     setIsSubmitting(true)
 
     try {
-      await request('signup', {
+      await request('update', {
         method: 'POST',
         body: {
           firstName,
