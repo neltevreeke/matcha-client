@@ -26,7 +26,6 @@ const setInitialValues = (user) => {
     email: user.email,
     age: user.age,
     gender: user.gender,
-    password: '',
     biography: ''
   }
 }
@@ -96,22 +95,6 @@ const FormUpdateUser = ({
                 name='gender'
                 component={Select}
                 options={genderOptions}
-              />
-
-              <Field
-                label='Password'
-                id='password'
-                name='password'
-                component={Input}
-                type='password'
-              />
-
-              <Field
-                label='Repeat password'
-                id='repeatPassword'
-                name='passwordRepeat'
-                component={Input}
-                type='password'
               />
 
               <Field
