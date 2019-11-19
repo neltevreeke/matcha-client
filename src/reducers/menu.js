@@ -6,9 +6,16 @@ const initialState = {
 }
 
 export default createReducer(initialState, {
-  [ActionTypes.MENU_TOGGLE]: (state, { payload: isOpen }) => {
+  [ActionTypes.MENU_OPEN]: (state, { payload: isOpen }) => {
     return {
-      isOpen
+      ...state,
+      isOpen: true
+    }
+  },
+  [ActionTypes.MENU_CLOSE]: (state, { payload: isOpen }) => {
+    return {
+      ...state,
+      isOpen: initialState.isOpen
     }
   }
 })

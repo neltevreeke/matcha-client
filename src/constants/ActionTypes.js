@@ -8,4 +8,5 @@ export const ME_ERROR = '@user/ME_ERROR'
 
 export const LOGOUT = '@user/LOGOUT'
 
-export const MENU_TOGGLE = '@menu/TOGGLE'
+export const MENU_OPEN = '@menu/OPEN'
+export const MENU_CLOSE = '@menu/CLOSE'
