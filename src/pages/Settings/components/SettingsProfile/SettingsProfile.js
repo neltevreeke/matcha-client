@@ -29,7 +29,6 @@ const SettingsProfile = () => {
           email,
           age,
           gender,
-          password,
           biography
         }
       })
