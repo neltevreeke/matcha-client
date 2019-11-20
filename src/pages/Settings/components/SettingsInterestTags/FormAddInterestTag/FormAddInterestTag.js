@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './FormAddInterestTag.scss'
+import * as Yup from 'yup'
 import {
   Formik,
   Form
@@ -15,6 +16,13 @@ const initialValues = {
   tag: ''
 }
 
+const validationSchema = Yup.object().shape({
+  tag: Yup.string()
+    .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
+    .min(3, 'Too short!')
+    .max(15, 'Too long!')
+})
+
 const FormAddInterestTag = ({
   onSubmit,
   isSubmitting,
@@ -24,6 +32,7 @@ const FormAddInterestTag = ({
     <div className={styles.component}>
       <Formik
         initialValues={initialValues}
+        validationSchema={validationSchema}
         onSubmit={onSubmit}
         render={({ handleSubmit }) => {
           return (
@@ -35,6 +44,13 @@ const FormAddInterestTag = ({
                 type='text'
                 component={Input}
               />
+
+              {error &&
+                <div
+                  className={styles.submitError}
+                >
+                  {error}
+                </div>}
 
               <Button
                 type='submit'
