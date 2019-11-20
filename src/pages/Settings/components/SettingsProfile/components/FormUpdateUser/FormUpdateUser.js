@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './FormUpdateUser.scss'
 import { useSelector } from 'react-redux'
-// import * as Yup from 'yup'
+import * as Yup from 'yup'
 import * as Gender from 'constants/Gender'
 
 import {
@@ -18,6 +18,31 @@ import {
 
 import { getUser } from 'selectors/user'
 import Button from '../../../../../../components/Button/Button'
+
+const validationSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
+    .min(2, 'Too short!')
+    .max(30, 'Too long!')
+    .required('Required'),
+  lastName: Yup.string()
+    .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
+    .min(2, 'Too short!')
+    .max(30, 'Too long')
+    .required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Required'),
+  age: Yup.number()
+    .min(18, 'Too young')
+    .max(99, 'Too old')
+    .integer('Age must be an integer')
+    .required('Required'),
+  gender: Yup.string()
+    .required('Required'),
+  biography: Yup.string()
+    .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
+})
 
 const setInitialValues = (user) => {
   return {
@@ -49,7 +74,7 @@ const FormUpdateUser = ({
   return (
     <div className={styles.component}>
       <Formik
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={onSubmit}
         render={({ handleSubmit }) => {
