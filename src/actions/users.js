@@ -99,3 +99,53 @@ export const me = () => async dispatch => {
     dispatch(meError(error))
   }
 }
+
+//
+//  update
+//
+
+const updateError = (error) => {
+  return {
+    type: ActionTypes.USER_UPDATE_ERROR,
+    payload: error
+  }
+}
+
+const updateStart = () => {
+  return {
+    type: ActionTypes.USER_UPDATE_START
+  }
+}
+
+const updateSuccess = (user) => {
+  return {
+    type: ActionTypes.USER_UPDATE_SUCCESS,
+    payload: user
+  }
+}
+
+export const update = ({
+  firstName,
+  lastName,
+  email,
+  age,
+  gender,
+  biography
+}) => async dispatch => {
+  dispatch(updateStart())
+
+  try {
+    const { user } = await usersApi.update({
+      firstName,
+      lastName,
+      email,
+      age,
+      gender,
+      biography
+    })
+
+    dispatch(updateSuccess(user))
+  } catch (error) {
+    dispatch(updateError(error))
+  }
+}

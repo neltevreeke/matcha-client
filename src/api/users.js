@@ -18,3 +18,24 @@ export const login = ({
     }
   })
 }
+
+export const update = ({
+  firstName,
+  lastName,
+  email,
+  age,
+  gender,
+  biography
+}) => {
+  return request('update', {
+    method: 'POST',
+    body: {
+      firstName,
+      lastName,
+      email,
+      age,
+      gender,
+      biography
+    }
+  })
+}

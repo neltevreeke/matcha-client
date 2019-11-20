@@ -1,50 +1,36 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './SettingsProfile.scss'
-import request from 'utils/request'
 import FormUpdateUser from './components/FormUpdateUser/FormUpdateUser'
-
-const getErrorMessage = error => {
-  const { message } = error.body
-
-  if (message === 'conflict') {
-    return 'That email already exists'
-  }
-
-  return 'Something went wrong, please try again later'
-}
+import { update } from 'actions/users'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  getUpdateError,
+  getUpdateIsLoading
+} from '../../../../selectors/user'
 
 const SettingsProfile = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitError, setSubmitError] = useState('')
+  const error = useSelector(getUpdateError)
+  const isLoading = useSelector(getUpdateIsLoading)
+  const dispatch = useDispatch()
 
   const handleFormSubmit = async ({ firstName, lastName, email, password, age, gender, biography }) => {
-    setIsSubmitting(true)
-
-    try {
-      await request('update', {
-        method: 'POST',
-        body: {
-          firstName,
-          lastName,
-          email,
-          age,
-          gender,
-          biography
-        }
-      })
-    } catch (e) {
-      setSubmitError(getErrorMessage(e))
-    } finally {
-      setIsSubmitting(false)
-    }
+    dispatch(update({
+      firstName,
+      lastName,
+      email,
+      password,
+      age,
+      gender,
+      biography
+    }))
   }
 
   return (
     <div className={styles.component}>
       <FormUpdateUser
         onSubmit={handleFormSubmit}
-        isSubmitting={isSubmitting}
-        error={submitError}
+        isSubmitting={isLoading}
+        error={error}
       />
     </div>
   )

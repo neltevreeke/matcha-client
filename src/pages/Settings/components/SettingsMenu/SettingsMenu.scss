@@ -20,12 +20,12 @@
   &:hover {
     background-color: $gray-300;
   }
-
-  &:active {
-    background-color: $gray-300;
-  }
 }
 
 .menuIcon {
   margin-right: 1.5rem;
+}
+
+.settingsMenuLinkActive {
+  background-color: $gray-300;
 }

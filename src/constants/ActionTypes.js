@@ -10,3 +10,7 @@ export const LOGOUT = '@user/LOGOUT'
 
 export const MENU_OPEN = '@menu/OPEN'
 export const MENU_CLOSE = '@menu/CLOSE'
+
+export const USER_UPDATE_START = '@user/USER_UPDATE_START'
+export const USER_UPDATE_SUCCESS = '@user/USER_UPDATE_SUCCESS'
+export const USER_UPDATE_ERROR = '@user/USER_UPDATE_ERROR'
