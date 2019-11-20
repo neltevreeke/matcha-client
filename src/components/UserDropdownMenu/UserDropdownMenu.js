@@ -20,8 +20,15 @@ const UserDropdownMenu = () => {
     dispatch(menuClose())
   }
 
+  const handleOnMouseLeave = () => {
+    dispatch(menuClose())
+  }
+
   return (
-    <div className={styles.component}>
+    <div
+      className={styles.component}
+      onMouseLeave={handleOnMouseLeave}
+    >
       <NavLink
         className={styles.dropdownMenuLink}
         to={Routes.SETTINGS}
@@ -32,7 +39,7 @@ const UserDropdownMenu = () => {
       <NavLink
         className={styles.dropdownMenuLink}
         onClick={handleBtnLogoutClick}
-        to={Routes.SETTINGS}
+        to={Routes.HOME}
       >
         log out
       </NavLink>
