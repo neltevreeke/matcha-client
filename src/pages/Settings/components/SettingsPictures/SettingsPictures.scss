@@ -3,3 +3,14 @@
 .component {
   // Empty
 }
+
+.photos {
+  display: flex;
+}
+
+.photo {
+  width: 10rem;
+  height: 10rem;
+  background-size: cover;
+  margin: 0 1rem 1rem 0;
+}

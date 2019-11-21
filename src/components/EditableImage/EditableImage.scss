@@ -1,0 +1,62 @@
+@import 'base.scss';
+
+.component {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 300ms;
+  z-index: 1;
+}
+
+.overlayContent {
+  font-size: 32px;
+
+  .icon {
+    font-size: 32px;
+    color: white;
+  }
+}
+
+.isUploading {
+  .overlay {
+    background-color: $gray-500;
+  }
+}
+
+.atBottom {
+  .overlay {
+    top: auto;
+    background-color: rgba(0, 0, 0, .2);
+  }
+
+  .overlayContent {
+    padding: 1rem;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon {
+    font-size: 14px;
+  }
+
+  .atBottomLabel {
+    color: white;
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 1rem;
+  }
+}
