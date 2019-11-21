@@ -28,7 +28,7 @@ const SettingsInterestTags = () => {
   return (
     <div className={styles.component}>
       <div className={styles.tagContainer}>
-        {/* {interestTags.map((tag, index) => {
+        {interestTags.map((tag, index) => {
           return (
             <div
               key={index}
@@ -37,7 +37,7 @@ const SettingsInterestTags = () => {
               {tag.label}
             </div>
           )
-        })} */}
+        })}
       </div>
       <div className={styles.inputComponent}>
         <FormAddInterestTag
