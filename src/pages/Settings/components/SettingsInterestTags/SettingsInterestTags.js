@@ -16,9 +16,6 @@ const SettingsInterestTags = () => {
   const interestTags = useSelector(getInterestTags)
   const dispatch = useDispatch()
 
-  // eslint-disable-next-line no-console
-  console.log(interestTags)
-
   const handleFormSubmit = ({ tag }) => {
     dispatch(addInterestTag({
       tag
