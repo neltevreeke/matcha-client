@@ -15,7 +15,7 @@ const SettingsPictures = () => {
   const updateIsLoading = useSelector(getUpdateIsLoading)
   const dispatch = useDispatch()
 
-  const handleImageChange = async event => {
+  const handleAddImageChange = async event => {
     const [image] = event.target.files
 
     setIsUploading(true)
@@ -65,7 +65,7 @@ const SettingsPictures = () => {
         })}
         <EditableImage
           isUploading={isUploading || updateIsLoading}
-          onChange={handleImageChange}
+          onChange={handleAddImageChange}
         />
       </div>
     </div>
