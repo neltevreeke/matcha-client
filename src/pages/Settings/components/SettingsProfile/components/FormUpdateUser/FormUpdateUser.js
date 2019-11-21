@@ -51,7 +51,7 @@ const setInitialValues = (user) => {
     email: user.email,
     age: user.age,
     gender: user.gender,
-    biography: ''
+    biography: user.biography
   }
 }
 
@@ -127,6 +127,7 @@ const FormUpdateUser = ({
                 id='biography'
                 name='biography'
                 component={Textarea}
+                rows={4}
               />
 
               {error &&

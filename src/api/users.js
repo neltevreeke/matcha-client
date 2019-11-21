@@ -19,34 +19,9 @@ export const login = ({
   })
 }
 
-export const update = ({
-  firstName,
-  lastName,
-  email,
-  age,
-  gender,
-  biography
-}) => {
+export const update = (body) => {
   return request('update', {
     method: 'POST',
-    body: {
-      firstName,
-      lastName,
-      email,
-      age,
-      gender,
-      biography
-    }
-  })
-}
-
-export const addInterestTag = ({
-  tag
-}) => {
-  return request('addinterest', {
-    method: 'POST',
-    body: {
-      tag
-    }
+    body
   })
 }

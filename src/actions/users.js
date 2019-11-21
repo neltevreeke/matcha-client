@@ -124,67 +124,13 @@ const updateSuccess = (user) => {
   }
 }
 
-export const update = ({
-  firstName,
-  lastName,
-  email,
-  age,
-  gender,
-  biography
-}) => async dispatch => {
+export const update = (body) => async dispatch => {
   dispatch(updateStart())
 
   try {
-    const { user } = await usersApi.update({
-      firstName,
-      lastName,
-      email,
-      age,
-      gender,
-      biography
-    })
-
+    const { user } = await usersApi.update(body)
     dispatch(updateSuccess(user))
   } catch (error) {
     dispatch(updateError(error))
-  }
-}
-
-//
-//  Adding interest tag
-//
-
-const addInterestTagStart = () => {
-  return {
-    type: ActionTypes.USER_ADD_INTEREST_TAG_START
-  }
-}
-
-const addInterestTagSuccess = (user) => {
-  return {
-    type: ActionTypes.USER_ADD_INTEREST_TAG_SUCCESS,
-    payload: user
-  }
-}
-
-const addInterestTagError = (error) => {
-  return {
-    type: ActionTypes.USER_ADD_INTEREST_TAG_ERROR,
-    payload: error
-  }
-}
-
-export const addInterestTag = ({
-  tag
-}) => async dispatch => {
-  dispatch(addInterestTagStart())
-  try {
-    const { user } = await usersApi.addInterestTag({
-      tag
-    })
-
-    dispatch(addInterestTagSuccess(user))
-  } catch (error) {
-    dispatch(addInterestTagError(error))
   }
 }
