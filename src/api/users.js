@@ -39,3 +39,14 @@ export const update = ({
     }
   })
 }
+
+export const addInterestTag = ({
+  tag
+}) => {
+  return request('addinterest', {
+    method: 'POST',
+    body: {
+      tag
+    }
+  })
+}

@@ -15,6 +15,10 @@ const initialState = {
   update: {
     isLoading: false,
     error: null
+  },
+  tags: {
+    isLoading: false,
+    error: null
   }
 }
 
@@ -107,6 +111,34 @@ export default createReducer(initialState, {
       user: payload,
       update: {
         isLoading: false,
+        error: null
+      }
+    }
+  },
+  [ActionTypes.USER_ADD_INTEREST_TAG_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      user: payload,
+      tags: {
+        isLoading: false,
+        error: null
+      }
+    }
+  },
+  [ActionTypes.USER_ADD_INTEREST_TAG_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      tags: {
+        isLoading: false,
+        error
+      }
+    }
+  },
+  [ActionTypes.USER_ADD_INTEREST_TAG_START]: (state) => {
+    return {
+      ...state,
+      tags: {
+        isLoading: true,
         error: null
       }
     }
