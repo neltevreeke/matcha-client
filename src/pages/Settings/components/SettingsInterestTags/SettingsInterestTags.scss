@@ -12,6 +12,7 @@
 }
 
 .tag {
+  position: relative;
   padding: 1rem 1.5rem;
   margin-bottom: 1.5rem;
   margin-right: 1.5rem;
@@ -22,11 +23,26 @@
   text-transform: capitalize;
   text-align: center;
   cursor: pointer;
-  transition: background-color $transition-speed, color $transition-speed;
+  transition: background-color $transition-speed, border-color $transition-speed;
+
+  &::after {
+    position: absolute;
+    content: 'Remove';
+    color: $red;
+    left: 0;
+    right: 0;
+    bottom: -1.7rem;
+    opacity: 0;
+    text-align: center;
+  } 
 
   &:hover {
-    background-color: white;
-    color: $color-primary;
+    background-color: $red;
+    border-color: $red;
+
+    &::after {
+      opacity: 1;
+    }
   }
 }
 

@@ -15,6 +15,8 @@ const SettingsInterestTags = () => {
   const dispatch = useDispatch()
 
   const handleFormSubmit = ({ tag }, { resetForm }) => {
+    // check for uniqueness
+
     const interests = [
       ...user.interests,
       {
