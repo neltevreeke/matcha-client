@@ -8,6 +8,10 @@ import ModalLogin from 'components/ModalLogin/ModalLogin'
 import ModalSignUp from 'components/ModalSignUp/ModalSignUp'
 import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu'
 
+import {
+  getCloudinaryUrlFromPublicId
+} from 'utils/cloudinary'
+
 import { useModal } from 'react-modal-hook'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -77,10 +81,28 @@ const Header = () => {
       <div className={styles.controls}>
         {isLoggedIn ? (
           <div
-            className={styles.userFirstName}
             onClick={handleAvatarClick}
           >
-            {user.firstName}
+            {user.photos.slice(0, 1, user.photos).map((photo, index) => {
+              const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
+                'w_40',
+                'h_40',
+                'c_thumb',
+                'g_face',
+                'f_auto',
+                'q_100'
+              ])
+
+              return (
+                <div
+                  key={index}
+                  className={styles.avatar}
+                  style={{
+                    backgroundImage: `url(${url})`
+                  }}
+                />
+              )
+            })}
           </div>
         ) : (
           <>

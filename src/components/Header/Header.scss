@@ -22,11 +22,19 @@
   align-items: center;
 }
 
-.userFirstName {
-  font-weight: 700;
-  margin-right: 1rem;
-}
+// .userFirstName {
+//   font-weight: 700;
+//   margin-right: 1rem;
+// }
 
 .btnLogin {
   margin-right: .5rem;
+}
+
+.avatar {
+  margin-right: 1rem;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  border: 2px solid white;
 }
