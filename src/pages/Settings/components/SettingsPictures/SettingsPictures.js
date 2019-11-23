@@ -15,6 +15,14 @@ const SettingsPictures = () => {
   const updateIsLoading = useSelector(getUpdateIsLoading)
   const dispatch = useDispatch()
 
+  const handleOnClickPhoto = index => () => {
+    const photos = user.photos.filter(photo => user.photos[index] !== photo)
+
+    dispatch(update({
+      photos
+    }))
+  }
+
   const handleAddImageChange = async event => {
     const [image] = event.target.files
 
@@ -46,25 +54,23 @@ const SettingsPictures = () => {
         <p>
           Avatar
         </p>
-        {// change the slice to 0, 1 to get the first photo.
-          user.photos.slice(1, 2, user.photos).map((photo, index) => {
-            const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
-              'w_300',
-              'f_auto',
-              'q_auto'
-            ])
+        {user.photos.slice(0, 1, user.photos).map((photo, index) => {
+          const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
+            'w_300',
+            'f_auto',
+            'q_auto'
+          ])
 
-            return (
-              <div
-                key={index}
-                className={styles.photo}
-                style={{
-                  backgroundImage: `url(${url})`
-                }}
-              />
-            )
-          })
-        }
+          return (
+            <div
+              key={index}
+              className={styles.avatar}
+              style={{
+                backgroundImage: `url(${url})`
+              }}
+            />
+          )
+        })}
       </div>
       <div className={styles.uploadedPhotosSection}>
         <p>
@@ -82,10 +88,13 @@ const SettingsPictures = () => {
               <div
                 key={index}
                 className={styles.photo}
+                onClick={handleOnClickPhoto(index)}
                 style={{
                   backgroundImage: `url(${url})`
                 }}
-              />
+              >
+                <div className={styles.photoOverlay} />
+              </div>
             )
           })}
           {user.photos.length < 5 && <EditableImage
