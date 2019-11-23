@@ -42,31 +42,57 @@ const SettingsPictures = () => {
 
   return (
     <div className={styles.component}>
-      <h1>
-        Pictures
-      </h1>
-      <div className={styles.photos}>
-        {user.photos.map((photo, index) => {
-          const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
-            'w_300',
-            'f_auto',
-            'q_auto'
-          ])
+      <div className={styles.avatarSection}>
+        <p>
+          Avatar
+        </p>
+        {// change the slice to 0, 1 to get the first photo.
+          user.photos.slice(1, 2, user.photos).map((photo, index) => {
+            const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
+              'w_300',
+              'f_auto',
+              'q_auto'
+            ])
 
-          return (
-            <div
-              key={index}
-              className={styles.photo}
-              style={{
-                backgroundImage: `url(${url})`
-              }}
-            />
-          )
-        })}
-        <EditableImage
-          isUploading={isUploading || updateIsLoading}
-          onChange={handleAddImageChange}
-        />
+            return (
+              <div
+                key={index}
+                className={styles.photo}
+                style={{
+                  backgroundImage: `url(${url})`
+                }}
+              />
+            )
+          })
+        }
+      </div>
+      <div className={styles.uploadedPhotosSection}>
+        <p>
+          Uploaded photos
+        </p>
+        <div className={styles.photos}>
+          {user.photos.map((photo, index) => {
+            const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
+              'w_300',
+              'f_auto',
+              'q_auto'
+            ])
+
+            return (
+              <div
+                key={index}
+                className={styles.photo}
+                style={{
+                  backgroundImage: `url(${url})`
+                }}
+              />
+            )
+          })}
+          {user.photos.length < 5 && <EditableImage
+            isUploading={isUploading || updateIsLoading}
+            onChange={handleAddImageChange}
+          />}
+        </div>
       </div>
     </div>
   )
