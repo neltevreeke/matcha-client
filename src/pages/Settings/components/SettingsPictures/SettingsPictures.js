@@ -16,10 +16,16 @@ const SettingsPictures = () => {
   const dispatch = useDispatch()
 
   const handleOnClickPhoto = index => () => {
-    const photos = user.photos.filter(photo => user.photos[index] !== photo)
+    let deletedPhoto = null
+
+    const photos = user.photos.filter(photo => {
+      deletedPhoto = photo
+      return user.photos[index] !== photo
+    })
 
     dispatch(update({
-      photos
+      photos,
+      deletedPhoto
     }))
   }
 
