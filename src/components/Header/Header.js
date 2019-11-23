@@ -7,6 +7,7 @@ import Button from 'components/Button/Button'
 import ModalLogin from 'components/ModalLogin/ModalLogin'
 import ModalSignUp from 'components/ModalSignUp/ModalSignUp'
 import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {
   getCloudinaryUrlFromPublicId
@@ -83,7 +84,7 @@ const Header = () => {
           <div
             onClick={handleAvatarClick}
           >
-            {user.photos.slice(0, 1, user.photos).map((photo, index) => {
+            {user.photos.length >= 1 && user.photos.slice(0, 1, user.photos).map((photo, index) => {
               const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
                 'w_40',
                 'h_40',
@@ -103,6 +104,11 @@ const Header = () => {
                 />
               )
             })}
+            {user.photos.length === 0 &&
+              <FontAwesomeIcon
+                icon='user'
+                className={styles.icon}
+              />}
           </div>
         ) : (
           <>
