@@ -32,7 +32,11 @@ const SettingsInterestTags = () => {
   }
 
   const handleOnClickTag = index => () => {
+    const interests = user.interests.filter(interest => user.interests[index].label !== interest.label)
 
+    dispatch(update({
+      interests
+    }))
   }
 
   return (
