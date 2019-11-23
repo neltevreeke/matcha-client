@@ -19,8 +19,9 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   tag: Yup.string()
     .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
-    .min(3, 'Too short!')
+    .min(5, 'Too short!')
     .max(20, 'Too long!')
+    .ensure()
 })
 
 const FormAddInterestTag = ({
