@@ -7,6 +7,7 @@ import {
 } from 'utils/token'
 import * as Routes from 'constants/Routes'
 import { history } from '../utils/configureStore'
+import { initSockets } from '../utils/sockets'
 
 export const logout = () => dispatch => {
   clearToken()
@@ -53,6 +54,7 @@ export const login = ({
     setToken(token)
 
     dispatch(loginSuccess(user))
+    initSockets()
     history.push(Routes.DASHBOARD)
   } catch (error) {
     dispatch(loginError(error))
@@ -94,6 +96,8 @@ export const me = () => async dispatch => {
 
   try {
     const user = await usersApi.me()
+    initSockets()
+
     dispatch(meSuccess(user))
   } catch (error) {
     dispatch(meError(error))
