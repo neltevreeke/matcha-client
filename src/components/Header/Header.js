@@ -81,7 +81,7 @@ const Header = () => {
             onClick={handleAvatarClick}
             user={user}
             size={Avatar.SIZE_S}
-            className={styles.avatar}
+            backgroundClassName={styles.avatar}
           />
         ) : (
           <>

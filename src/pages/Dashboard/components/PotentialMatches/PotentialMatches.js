@@ -6,19 +6,18 @@ import { potentialMatches } from 'actions/users'
 
 import {
   getPotentialMatches,
-  // getPotentialMatchesIsLoading,
-  // getPotentialMatchesError,
   getPotentialMatchesIsLoaded
-} from '../../../../selectors/user'
+} from 'selectors/user'
+
 import PotentialMatch from '../PotentialMatch/PotentialMatch'
-import PageSpinner from '../../../../components/PageSpinner/PageSpinner'
+import PageSpinner from 'components/PageSpinner/PageSpinner'
+import { getOnlineUsers } from 'selectors/onlineUsers'
 
 const PotentialMatches = () => {
   const dispatch = useDispatch()
-  // const isLoading = useSelector(getPotentialMatchesIsLoading)
-  // const error = useSelector(getPotentialMatchesError)
   const potentialMatchesList = useSelector(getPotentialMatches)
   const isLoaded = useSelector(getPotentialMatchesIsLoaded)
+  const onlineUsers = useSelector(getOnlineUsers)
 
   useEffect(() => {
     dispatch(potentialMatches())
@@ -35,6 +34,7 @@ const PotentialMatches = () => {
       {potentialMatchesList.map((potentialMatch, index) => {
         return (
           <PotentialMatch
+            onlineUsers={onlineUsers}
             key={index}
             potentialMatch={potentialMatch}
           />

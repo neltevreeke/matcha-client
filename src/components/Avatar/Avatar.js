@@ -28,6 +28,7 @@ const Avatar = ({
   size = SIZE_S,
   className,
   isRounded = true,
+  backgroundClassName,
   isOnline,
   ...props
 }) => {
@@ -78,7 +79,9 @@ const Avatar = ({
       {...props}
     >
       <div
-        className={styles.background}
+        className={cx(styles.background, {
+          [backgroundClassName]: backgroundClassName
+        })}
         style={{
           backgroundImage: `url(${cloudinaryUrl})`,
           width,

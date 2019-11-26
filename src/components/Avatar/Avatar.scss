@@ -15,6 +15,10 @@
 
   &.isRounded {
     border-radius: 50%;
+
+    .background {
+      border-radius: 50%;
+    }
   }
 
   &.size-m {
@@ -65,8 +69,9 @@
   right: ($size / 2);
   background-color: $red;
   border-radius: 50%;
+  transition: background-color 200ms ease;
 
   &.isOnline {
-    background-size: $color-primary;
+    background-color: $color-primary;
   }
 }
