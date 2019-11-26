@@ -7,11 +7,6 @@ import Button from 'components/Button/Button'
 import ModalLogin from 'components/ModalLogin/ModalLogin'
 import ModalSignUp from 'components/ModalSignUp/ModalSignUp'
 import UserDropdownMenu from 'components/UserDropdownMenu/UserDropdownMenu'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-import {
-  getCloudinaryUrlFromPublicId
-} from 'utils/cloudinary'
 
 import { useModal } from 'react-modal-hook'
 import { useSelector, useDispatch } from 'react-redux'
@@ -20,6 +15,7 @@ import { getUser } from 'selectors/user'
 import { getIsMenuOpen } from 'selectors/menu'
 
 import { menuOpen, menuClose } from 'actions/menu'
+import Avatar from '../Avatar/Avatar'
 
 const Header = () => {
   const user = useSelector(getUser)
@@ -81,36 +77,12 @@ const Header = () => {
       </Link>
       <div className={styles.controls}>
         {isLoggedIn ? (
-          <div
+          <Avatar
             onClick={handleAvatarClick}
-          >
-            {user.photos.length > 0 &&
-              user.photos.slice(0, 1, user.photos).map((photo, index) => {
-                const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
-                  'w_40',
-                  'h_40',
-                  'c_thumb',
-                  'g_face',
-                  'f_auto',
-                  'q_100'
-                ])
-
-                return (
-                  <div
-                    key={index}
-                    className={styles.avatar}
-                    style={{
-                      backgroundImage: `url(${url})`
-                    }}
-                  />
-                )
-              })}
-            {user.photos.length === 0 &&
-              <FontAwesomeIcon
-                icon='user'
-                className={styles.icon}
-              />}
-          </div>
+            user={user}
+            size={Avatar.SIZE_S}
+            className={styles.avatar}
+          />
         ) : (
           <>
             <Button

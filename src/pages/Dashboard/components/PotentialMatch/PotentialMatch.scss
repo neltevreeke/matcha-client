@@ -6,20 +6,3 @@
   border-radius: $border-radius;
   cursor: pointer;
 }
-
-.noPhotoProfile {
-  width: $matches-card-size;
-  height: $matches-card-size;
-  background-color: white;
-  border: 2px solid $gray-500;
-  border-radius: $border-radius;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.icon {
-  font-size: 32px;
-  color: $gray-500;
-}

@@ -1,0 +1,39 @@
+@import 'base.scss';
+
+.component {
+  border-radius: $border-radius;
+
+  &.empty {
+    background-color: white;
+    border: 2px solid $gray-500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &.isRounded {
+    border-radius: 50%;
+  }
+
+  &.size-m {
+    $size: 140px;
+    width: $size;
+    height: $size;
+  }
+
+  &.size-s {
+    $size: 45px;
+    width: $size;
+    height: $size;
+
+    .emptyIcon {
+      font-size: 1rem;
+    }
+  }
+}
+
+.emptyIcon {
+  font-size: 2rem;
+  color: $gray-500;
+}
