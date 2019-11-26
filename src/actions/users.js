@@ -134,3 +134,38 @@ export const update = (body) => async dispatch => {
     dispatch(updateError(error))
   }
 }
+
+//
+//  potentialMatches
+//
+
+const potentialMatchesStart = () => {
+  return {
+    type: ActionTypes.POTENTIAL_MATCHES_START
+  }
+}
+
+const potentialMatchesSuccess = (potentialMatches) => {
+  return {
+    type: ActionTypes.POTENTIAL_MATCHES_SUCCESS,
+    payload: potentialMatches
+  }
+}
+
+const potentialMatchesError = (error) => {
+  return {
+    type: ActionTypes.POTENTIAL_MATCHES_ERROR,
+    payload: error
+  }
+}
+
+export const potentialMatches = () => async dispatch => {
+  dispatch(potentialMatchesStart())
+
+  try {
+    const { potentialMatches } = await usersApi.potentialMatches()
+    dispatch(potentialMatchesSuccess(potentialMatches))
+  } catch (error) {
+    dispatch(potentialMatchesError())
+  }
+}

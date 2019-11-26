@@ -25,3 +25,9 @@ export const update = (body) => {
     body
   })
 }
+
+export const potentialMatches = () => {
+  return request('potential-matches', {
+    method: 'GET'
+  })
+}

@@ -9,6 +9,11 @@ export const getMeIsLoaded = state => state.user.me.isLoaded
 export const getUpdateIsLoading = state => state.user.update.isLoading
 export const getUpdateError = state => state.user.update.error
 
+export const getPotentialMatches = state => state.user.potentialMatches.potentialMatches
+export const getPotentialMatchesError = state => state.user.potentialMatches.error
+export const getPotentialMatchesIsLoading = state => state.user.potentialMatches.isLoading
+export const getPotentialMatchesIsLoaded = state => state.user.potentialMatches.isLoaded
+
 export const getIsLoggedIn = state => {
   const isMeLoaded = getMeIsLoaded(state)
   return isMeLoaded && !!state.user.user

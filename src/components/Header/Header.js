@@ -84,26 +84,27 @@ const Header = () => {
           <div
             onClick={handleAvatarClick}
           >
-            {user.photos.length >= 1 && user.photos.slice(0, 1, user.photos).map((photo, index) => {
-              const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
-                'w_40',
-                'h_40',
-                'c_thumb',
-                'g_face',
-                'f_auto',
-                'q_100'
-              ])
+            {user.photos.length > 0 &&
+              user.photos.slice(0, 1, user.photos).map((photo, index) => {
+                const url = getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
+                  'w_40',
+                  'h_40',
+                  'c_thumb',
+                  'g_face',
+                  'f_auto',
+                  'q_100'
+                ])
 
-              return (
-                <div
-                  key={index}
-                  className={styles.avatar}
-                  style={{
-                    backgroundImage: `url(${url})`
-                  }}
-                />
-              )
-            })}
+                return (
+                  <div
+                    key={index}
+                    className={styles.avatar}
+                    style={{
+                      backgroundImage: `url(${url})`
+                    }}
+                  />
+                )
+              })}
             {user.photos.length === 0 &&
               <FontAwesomeIcon
                 icon='user'

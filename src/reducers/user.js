@@ -15,6 +15,12 @@ const initialState = {
   update: {
     isLoading: false,
     error: null
+  },
+  potentialMatches: {
+    isLoading: false,
+    error: null,
+    potentialMatches: null,
+    isLoaded: false
   }
 }
 
@@ -108,6 +114,39 @@ export default createReducer(initialState, {
       update: {
         isLoading: false,
         error: null
+      }
+    }
+  },
+  [ActionTypes.POTENTIAL_MATCHES_START]: (state) => {
+    return {
+      ...state,
+      potentialMatches: {
+        isLoading: true,
+        error: null,
+        isLoaded: false,
+        potentialMatches: null
+      }
+    }
+  },
+  [ActionTypes.POTENTIAL_MATCHES_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      potentialMatches: {
+        isLoading: false,
+        error: null,
+        isLoaded: true,
+        potentialMatches: payload
+      }
+    }
+  },
+  [ActionTypes.POTENTIAL_MATCHES_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      potentialMatches: {
+        isLoading: false,
+        error,
+        isLoaded: true,
+        potentialMatches: null
       }
     }
   }
