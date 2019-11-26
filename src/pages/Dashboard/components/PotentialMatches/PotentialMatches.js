@@ -32,14 +32,18 @@ const PotentialMatches = () => {
   return (
     <>
       {potentialMatchesList.map((potentialMatch, index) => {
-        const url = getCloudinaryUrlFromPublicId(potentialMatch.photos[0].cloudinaryPublicId, [
-          'w_140',
-          'h_140',
-          'c_thumb',
-          'g_face',
-          'f_auto',
-          'q_100'
-        ])
+        let url;
+
+        if (potentialMatch.photos.length > 0) {
+          url = getCloudinaryUrlFromPublicId(potentialMatch.photos[0].cloudinaryPublicId, [
+            'w_140',
+            'h_140',
+            'c_thumb',
+            'g_face',
+            'f_auto',
+            'q_100'
+          ])
+        }
 
         {return url ? (
           <div
@@ -62,7 +66,7 @@ const PotentialMatches = () => {
               icon='user'
             />
           </div>
-        ) }
+        )}
       })}
     </>
   )
