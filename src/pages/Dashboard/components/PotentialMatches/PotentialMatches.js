@@ -40,6 +40,8 @@ const PotentialMatches = () => {
           'q_100'
         ])
 
+        // return this if url = true
+        // else return a standard user icon
         return (
           <div
             key={index}
