@@ -19,31 +19,13 @@ export const logout = () => dispatch => {
   history.push(Routes.HOME)
 }
 
-const loginStart = () => {
-  return {
-    type: ActionTypes.LOGIN_START
-  }
-}
-
-const loginSuccess = (user) => {
-  return {
-    type: ActionTypes.LOGIN_SUCCESS,
-    payload: user
-  }
-}
-
-const loginError = (error) => {
-  return {
-    type: ActionTypes.LOGIN_ERROR,
-    payload: error
-  }
-}
-
 export const login = ({
   email,
   password
 }) => async dispatch => {
-  dispatch(loginStart())
+  dispatch({
+    type: ActionTypes.LOGIN_START
+  })
 
   try {
     const { user, token } = await usersApi.login({
@@ -53,35 +35,18 @@ export const login = ({
 
     setToken(token)
 
-    dispatch(loginSuccess(user))
+    dispatch({
+      type: ActionTypes.LOGIN_SUCCESS,
+      payload: user
+    })
+
     initSockets()
     history.push(Routes.DASHBOARD)
   } catch (error) {
-    dispatch(loginError(error))
-  }
-}
-
-//
-// Me
-//
-
-const meStart = () => {
-  return {
-    type: ActionTypes.ME_START
-  }
-}
-
-const meSuccess = (user) => {
-  return {
-    type: ActionTypes.ME_SUCCESS,
-    payload: user
-  }
-}
-
-const meError = (error) => {
-  return {
-    type: ActionTypes.ME_ERROR,
-    payload: error
+    dispatch({
+      type: ActionTypes.LOGIN_ERROR,
+      payload: error
+    })
   }
 }
 
@@ -92,84 +57,60 @@ export const me = () => async dispatch => {
     setToken(tokenFromHeader)
   }
 
-  dispatch(meStart())
+  dispatch({
+    type: ActionTypes.ME_START
+  })
 
   try {
     const user = await usersApi.me()
     initSockets()
 
-    dispatch(meSuccess(user))
+    dispatch({
+      type: ActionTypes.ME_SUCCESS,
+      payload: user
+    })
   } catch (error) {
-    dispatch(meError(error))
-  }
-}
-
-//
-//  update
-//
-
-const updateError = (error) => {
-  return {
-    type: ActionTypes.USER_UPDATE_ERROR,
-    payload: error
-  }
-}
-
-const updateStart = () => {
-  return {
-    type: ActionTypes.USER_UPDATE_START
-  }
-}
-
-const updateSuccess = (user) => {
-  return {
-    type: ActionTypes.USER_UPDATE_SUCCESS,
-    payload: user
+    dispatch({
+      type: ActionTypes.ME_ERROR,
+      payload: error
+    })
   }
 }
 
 export const update = (body) => async dispatch => {
-  dispatch(updateStart())
+  dispatch({
+    type: ActionTypes.USER_UPDATE_START
+  })
 
   try {
     const { user } = await usersApi.update(body)
-    dispatch(updateSuccess(user))
+    dispatch({
+      type: ActionTypes.USER_UPDATE_SUCCESS,
+      payload: user
+    })
   } catch (error) {
-    dispatch(updateError(error))
-  }
-}
-
-//
-//  potentialMatches
-//
-
-const potentialMatchesStart = () => {
-  return {
-    type: ActionTypes.POTENTIAL_MATCHES_START
-  }
-}
-
-const potentialMatchesSuccess = (potentialMatches) => {
-  return {
-    type: ActionTypes.POTENTIAL_MATCHES_SUCCESS,
-    payload: potentialMatches
-  }
-}
-
-const potentialMatchesError = (error) => {
-  return {
-    type: ActionTypes.POTENTIAL_MATCHES_ERROR,
-    payload: error
+    dispatch({
+      type: ActionTypes.USER_UPDATE_ERROR,
+      payload: error
+    })
   }
 }
 
 export const potentialMatches = () => async dispatch => {
-  dispatch(potentialMatchesStart())
+  dispatch({
+    type: ActionTypes.POTENTIAL_MATCHES_START
+  })
 
   try {
     const { potentialMatches } = await usersApi.potentialMatches()
-    dispatch(potentialMatchesSuccess(potentialMatches))
+    dispatch({
+      type: ActionTypes.POTENTIAL_MATCHES_SUCCESS,
+      payload: potentialMatches
+    })
   } catch (error) {
-    dispatch(potentialMatchesError())
+    dispatch({
+      type: ActionTypes.POTENTIAL_MATCHES_ERROR,
+      payload: error
+    })
   }
 }

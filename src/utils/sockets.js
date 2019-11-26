@@ -1,18 +1,29 @@
 import openSocket from 'socket.io-client'
 import * as config from 'config'
+import { getToken } from './token'
+import { store } from '../index'
+import { setOnlineUsers } from '../actions/onlineUsers'
 
 let isInitialized = false
 
-export const initSockets = () => {
+export const initSockets = (dispatch) => {
   if (isInitialized) {
     return
   }
 
-  const socket = openSocket(config.API_URL)
+  const token = getToken()
+
+  const socket = openSocket(config.API_URL, {
+    query: {
+      token
+    }
+  })
+
   isInitialized = true
 
-  socket.on('server message', (onlineUsers) => {
-    // eslint-disable-next-line no-console
-    console.log(onlineUsers)
+  socket.on('server message', (response) => {
+    const onlineUsers = JSON.parse(response)
+
+    store.dispatch(setOnlineUsers(onlineUsers))
   })
 }

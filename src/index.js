@@ -11,7 +11,7 @@ import 'utils/setupIcons'
 
 const rootElement = document.getElementById('root')
 
-const store = configureStore()
+export const store = configureStore()
 
 render((
   <Provider store={store}>
