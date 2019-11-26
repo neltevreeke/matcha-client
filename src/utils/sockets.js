@@ -6,7 +6,7 @@ import { setOnlineUsers } from '../actions/onlineUsers'
 
 let isInitialized = false
 
-export const initSockets = (dispatch) => {
+export const initSockets = () => {
   if (isInitialized) {
     return
   }
