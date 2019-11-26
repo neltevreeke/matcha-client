@@ -1,22 +1,9 @@
 @import 'base.scss';
 
 .component {
-  // Empty
-}
-
-.noPhotoProfile {
-  width: 140px;
-  height: 140px;
-  background-color: white;
-  border: 2px solid $gray-500;
-  border-radius: $border-radius;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.icon {
-  font-size: 32px;
-  color: $gray-500;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(6, $matches-card-size);
+  grid-template-rows: auto;
+  grid-column-gap: 2rem;
 }

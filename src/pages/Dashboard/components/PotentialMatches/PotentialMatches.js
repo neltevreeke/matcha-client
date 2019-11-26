@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import styles from './PotentialMatches.scss'
-import { getCloudinaryUrlFromPublicId } from 'utils/cloudinary'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { potentialMatches } from 'actions/users'
@@ -12,6 +10,8 @@ import {
   // getPotentialMatchesError,
   getPotentialMatchesIsLoaded
 } from '../../../../selectors/user'
+import PotentialMatch from '../PotentialMatch/PotentialMatch'
+import PageSpinner from '../../../../components/PageSpinner/PageSpinner'
 
 const PotentialMatches = () => {
   const dispatch = useDispatch()
@@ -25,50 +25,22 @@ const PotentialMatches = () => {
   }, [])
 
   if (!isLoaded) {
-    // TODO: show a page spinner...
-    return null
+    return (
+      <PageSpinner />
+    )
   }
 
   return (
-    <>
+    <div className={styles.component}>
       {potentialMatchesList.map((potentialMatch, index) => {
-        let url;
-
-        if (potentialMatch.photos.length > 0) {
-          url = getCloudinaryUrlFromPublicId(potentialMatch.photos[0].cloudinaryPublicId, [
-            'w_140',
-            'h_140',
-            'c_thumb',
-            'g_face',
-            'f_auto',
-            'q_100'
-          ])
-        }
-
-        {return url ? (
-          <div
+        return (
+          <PotentialMatch
             key={index}
-            style={{
-              backgroundImage: `url(${url})`,
-              height: '140px',
-              width: '140px',
-              borderRadius: '3px',
-              cursor: 'pointer'
-            }}
+            potentialMatch={potentialMatch}
           />
-        ) : (
-          <div
-            key={index}
-            className={styles.noPhotoProfile}
-          >
-            <FontAwesomeIcon
-              className={styles.icon}
-              icon='user'
-            />
-          </div>
-        )}
+        )
       })}
-    </>
+    </div>
   )
 }
 
