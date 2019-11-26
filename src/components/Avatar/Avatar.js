@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './Avatar.scss'
 import { getCloudinaryUrlFromPublicId } from 'utils/cloudinary'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 
 const SIZE_S = 'size-s'
@@ -15,6 +14,13 @@ const getDimensionsFromSize = size => {
   }
 
   throw new Error('Invalid size specified: ' + size)
+}
+
+const getInitials = (user) => {
+  const firstName = user.firstName || 'A'
+  const lastName = user.lastName || ' '
+
+  return `${firstName[0]}${lastName[0]}`
 }
 
 const Avatar = ({
@@ -36,10 +42,9 @@ const Avatar = ({
         })}
         {...props}
       >
-        <FontAwesomeIcon
-          className={styles.emptyIcon}
-          icon='user'
-        />
+        <div className={styles.initials}>
+          {getInitials(user)}
+        </div>
       </div>
     )
   }

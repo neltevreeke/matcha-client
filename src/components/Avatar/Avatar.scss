@@ -27,13 +27,17 @@
     width: $size;
     height: $size;
 
-    .emptyIcon {
-      font-size: 1rem;
+    &.empty {
+      font-size: .8rem;
     }
   }
 }
 
-.emptyIcon {
+.initials {
+  line-height: 1.5;
+}
+
+.empty {
   font-size: 2rem;
   color: $gray-500;
 }
