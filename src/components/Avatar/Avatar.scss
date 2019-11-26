@@ -2,6 +2,7 @@
 
 .component {
   border-radius: $border-radius;
+  position: relative;
 
   &.empty {
     background-color: white;
@@ -30,6 +31,11 @@
     &.empty {
       font-size: .8rem;
     }
+
+    .onlineBullet {
+      bottom: 0;
+      right: 0;
+    }
   }
 }
 
@@ -38,7 +44,29 @@
   line-height: 1.5;
 }
 
+.background {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
 .empty {
   font-size: 2rem;
   color: $gray-500;
+}
+
+.onlineBullet {
+  $size: 12px;
+
+  position: absolute;
+  width: $size;
+  height: $size;
+  bottom: ($size / 2);
+  right: ($size / 2);
+  background-color: $red;
+  border-radius: 50%;
+
+  &.isOnline {
+    background-size: $color-primary;
+  }
 }

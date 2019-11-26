@@ -9,6 +9,7 @@ const PotentialMatch = ({
     <div className={styles.component}>
       <div className={styles.avatar}>
         <Avatar
+          isOnline
           user={potentialMatch}
           size={Avatar.SIZE_M}
           isRounded={false}

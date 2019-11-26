@@ -28,6 +28,7 @@ const Avatar = ({
   size = SIZE_S,
   className,
   isRounded = true,
+  isOnline,
   ...props
 }) => {
   const firstPhotoCloudinaryPublicId = user?.photos?.[0]?.cloudinaryPublicId
@@ -45,6 +46,13 @@ const Avatar = ({
         <div className={styles.initials}>
           {getInitials(user)}
         </div>
+        {isOnline !== undefined && (
+          <div
+            className={cx(styles.onlineBullet, {
+              [styles.isOnline]: isOnline
+            })}
+          />
+        )}
       </div>
     )
   }
@@ -67,13 +75,24 @@ const Avatar = ({
         [styles.isRounded]: isRounded,
         [styles[size]]: size
       })}
-      style={{
-        backgroundImage: `url(${cloudinaryUrl})`,
-        width,
-        height
-      }}
       {...props}
-    />
+    >
+      <div
+        className={styles.background}
+        style={{
+          backgroundImage: `url(${cloudinaryUrl})`,
+          width,
+          height
+        }}
+      />
+      {isOnline !== undefined && (
+        <div
+          className={cx(styles.onlineBullet, {
+            [styles.isOnline]: isOnline
+          })}
+        />
+      )}
+    </div>
   )
 }
 
