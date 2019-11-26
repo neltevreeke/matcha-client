@@ -1,0 +1,14 @@
+@import 'base.scss';
+
+.component {
+  display: flex;
+  align-items: center;
+  height: unquote("calc(100vh - #{$header-height})");
+  justify-content: center;
+}
+
+.spinner {
+  $size: 4rem;
+  width: $size;
+  height: $size;
+}
