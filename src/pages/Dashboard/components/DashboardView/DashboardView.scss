@@ -1,5 +1,15 @@
 @import 'base.scss';
 
 .component {
-  // empty.
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+}
+
+.potentialMatchesList {
+  // empty
+}
+
+.selectedMatchProfile {
+  //empty
 }

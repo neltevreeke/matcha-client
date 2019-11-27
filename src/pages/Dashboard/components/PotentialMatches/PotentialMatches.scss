@@ -1,7 +1,6 @@
 @import 'base.scss';
 
 .component {
-  padding: 1.5rem;
   display: grid;
   grid-template-columns: repeat(6, $matches-card-size);
   grid-template-rows: auto;

@@ -13,7 +13,11 @@ import PotentialMatch from '../PotentialMatch/PotentialMatch'
 import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { getOnlineUsers } from 'selectors/onlineUsers'
 
-const PotentialMatches = () => {
+const PotentialMatches = ({
+  setSelectedMatch,
+  selectedMatch,
+  ...props
+}) => {
   const dispatch = useDispatch()
   const potentialMatchesList = useSelector(getPotentialMatches)
   const isLoaded = useSelector(getPotentialMatchesIsLoaded)
@@ -37,6 +41,8 @@ const PotentialMatches = () => {
             onlineUsers={onlineUsers}
             key={index}
             potentialMatch={potentialMatch}
+            setSelectedMatch={setSelectedMatch}
+            selectedMatch={selectedMatch}
           />
         )
       })}
