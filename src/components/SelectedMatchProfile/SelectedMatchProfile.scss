@@ -5,6 +5,8 @@ $padding: 2rem;
 .component {
   padding: 0 1rem;
   width: 380px;
+  overflow-y: scroll;
+  height: 380px;
   right: 0;
   position: fixed;
   border-left: 2px solid $color-primary;

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './SelectedMatchProfile.scss'
+import PhotoSlider from '../PhotoSlider/PhotoSlider'
 
 const SelectedMatchProfile = ({
   selectedMatch
@@ -11,7 +12,9 @@ const SelectedMatchProfile = ({
   return (
     <div className={styles.component}>
       <div className={styles.slider}>
-        {/* slider */}
+        <PhotoSlider
+          photos={selectedMatch.photos}
+        />
       </div>
       <div className={styles.matchInfo}>
         <h3 className={styles.SectionTitle}>personal details</h3>
