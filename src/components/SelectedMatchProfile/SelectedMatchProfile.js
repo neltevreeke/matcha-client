@@ -10,12 +10,13 @@ const SelectedMatchProfile = ({
     return null
   }
 
-  const biography = selectedMatch?.biography
+  const biography = selectedMatch.biography
+  const photos = selectedMatch?.photos?.length
 
   return (
     <div className={styles.component}>
       <div className={styles.slider}>
-        {selectedMatch.photos?.length > 0 ? (
+        {photos ? (
           <PhotoCarousel
             photos={selectedMatch.photos}
           />
