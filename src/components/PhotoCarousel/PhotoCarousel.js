@@ -8,6 +8,7 @@ const PhotoCarousel = ({
   photos
 }) => {
   return (
+
     <CarouselProvider
       naturalSlideWidth={340}
       naturalSlideHeight={340}

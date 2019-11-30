@@ -15,7 +15,7 @@ const SelectedMatchProfile = ({
   return (
     <div className={styles.component}>
       <div className={styles.slider}>
-        {selectedMatch.photos.length > 0 ? (
+        {selectedMatch.photos?.length > 0 ? (
           <PhotoCarousel
             photos={selectedMatch.photos}
           />
@@ -33,12 +33,14 @@ const SelectedMatchProfile = ({
         <p>Age: {selectedMatch.age} years old</p>
 
         <h3 className={styles.SectionTitle}>biography</h3>
-        <p>
-          {biography || (
-            <p className={styles.placeholder}>
+
+        {biography
+          ? (<p>
+            {biography}
+          </p>) : (
+               <p className={styles.placeholder}>
               This user does not have a biography yet.
             </p>)}
-        </p>
 
         <h3 className={styles.SectionTitle}>profile information</h3>
         {/* how far away the person is
