@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from './PhotoSlider.scss'
+import styles from './PhotoCarousel.scss'
 import { getCloudinaryUrlFromPublicId } from 'utils/cloudinary'
 import { CarouselProvider, Slider, Slide } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
-const PhotoSlider = ({
+const PhotoCarousel = ({
   photos
 }) => {
   return (
@@ -13,6 +13,7 @@ const PhotoSlider = ({
       naturalSlideHeight={340}
       totalSlides={photos.length}
       className={styles.carousel}
+      isPlaying
     >
       <Slider className={styles.slider}>
         {photos.map((photo, index) => {
@@ -41,4 +42,4 @@ const PhotoSlider = ({
   )
 }
 
-export default PhotoSlider
+export default PhotoCarousel

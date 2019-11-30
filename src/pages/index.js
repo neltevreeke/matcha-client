@@ -8,15 +8,14 @@ import { history } from '../utils/configureStore'
 import Home from './Home'
 import Dashboard from './Dashboard'
 import Settings from './Settings'
+import PageSpinner from '../components/PageSpinner/PageSpinner'
 
 export default (
   <ConnectedRouter history={history}>
     <ModalProvider container={TransitionGroup}>
       <Suspense
         fallback={(
-          <span>
-            Loading...
-          </span>
+          <PageSpinner />
         )}
       >
         <Switch>

@@ -13,6 +13,10 @@ $padding: 2rem;
   min-height: unquote("calc(100vh - #{$header-height + ($padding * 2)})");
 }
 
+.placeholder {
+  color: $gray-500;
+}
+
 .SectionTitle{
   margin-top: 1.5rem;
   margin-bottom: 1rem;
