@@ -49,7 +49,7 @@ const SettingsInterestTags = () => {
               className={styles.tag}
               onClick={handleOnClickTag(index)}
             >
-              {tag.label}
+              #{tag.label}
             </div>
           )
         })}

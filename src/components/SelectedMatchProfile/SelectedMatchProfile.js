@@ -39,10 +39,10 @@ const SelectedMatchProfile = ({
         {biography
           ? (<p>
             {biography}
-          </p>) : (
-               <p className={styles.placeholder}>
-              This user does not have a biography yet.
-            </p>)}
+             </p>) : (
+            <p className={styles.placeholder}>
+                This user does not have a biography yet.
+               </p>)}
 
         <h3 className={styles.SectionTitle}>profile information</h3>
         {/* how far away the person is
@@ -57,7 +57,7 @@ const SelectedMatchProfile = ({
                 key={index}
                 className={styles.interestTag}
               >
-                {interest.label}
+                #{interest.label}
               </div>
             )
           }) : (
