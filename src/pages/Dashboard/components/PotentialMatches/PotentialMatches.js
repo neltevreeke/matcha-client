@@ -33,6 +33,15 @@ const PotentialMatches = ({
     )
   }
 
+  const handlePotentialMatchOnClick = potentialMatch => () => {
+    if (selectedMatch === potentialMatch) {
+      setSelectedMatch(null)
+      return null
+    }
+
+    setSelectedMatch(potentialMatch)
+  }
+
   return (
     <div className={styles.component}>
       {potentialMatchesList.map((potentialMatch, index) => {
@@ -41,8 +50,7 @@ const PotentialMatches = ({
             onlineUsers={onlineUsers}
             key={index}
             potentialMatch={potentialMatch}
-            setSelectedMatch={setSelectedMatch}
-            selectedMatch={selectedMatch}
+            onClick={handlePotentialMatchOnClick(potentialMatch)}
           />
         )
       })}

@@ -10,9 +10,11 @@ const SelectedMatchProfile = ({
     return null
   }
 
-  const biography = selectedMatch.biography
-  const photos = selectedMatch?.photos?.length
-  const interests = selectedMatch?.interests?.length
+  const {
+    biography,
+    photos,
+    interests
+  } = selectedMatch
 
   return (
     <div className={styles.component}>
@@ -30,26 +32,41 @@ const SelectedMatchProfile = ({
         )}
       </div>
       <div className={styles.matchInfo}>
-        <h3 className={styles.SectionTitle}>personal details</h3>
-        <p>Name: {selectedMatch.firstName} {selectedMatch.lastName}</p>
-        <p>Age: {selectedMatch.age} years old</p>
+        <h3 className={styles.SectionTitle}>
+          personal details
+        </h3>
+        <p>
+          Name: {selectedMatch.firstName} {selectedMatch.lastName}
+        </p>
+        <p>
+          Age: {selectedMatch.age} years old
+        </p>
 
-        <h3 className={styles.SectionTitle}>biography</h3>
+        <h3 className={styles.SectionTitle}>
+          biography
+        </h3>
 
-        {biography
-          ? (<p>
+        {biography ? (
+          <p>
             {biography}
-             </p>) : (
-            <p className={styles.placeholder}>
-                This user does not have a biography yet.
-               </p>)}
+          </p>
+        ) : (
+          <p className={styles.placeholder}>
+            This user does not have a biography yet.
+          </p>
+        )}
 
-        <h3 className={styles.SectionTitle}>profile information</h3>
-        {/* how far away the person is
-              last seen online etc
+        <h3 className={styles.SectionTitle}>
+          profile information
+        </h3>
+        {/* 1. how far away the person is
+            2. last seen online etc
+            3. ???
           */}
 
-        <h3 className={styles.SectionTitle}>interest tags</h3>
+        <h3 className={styles.SectionTitle}>
+          interest tags
+        </h3>
         <div className={styles.interestTagsContainer}>
           {interests ? selectedMatch.interests.map((interest, index) => {
             return (
@@ -61,7 +78,9 @@ const SelectedMatchProfile = ({
               </div>
             )
           }) : (
-            <p className={styles.placeholder}>This user does not have interest tags yet.</p>
+            <p className={styles.placeholder}>
+              This user does not have interest tags yet.
+            </p>
           )}
         </div>
       </div>

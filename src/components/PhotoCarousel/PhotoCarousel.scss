@@ -2,6 +2,7 @@
 
 .component {
   height: 100%;
+  position: relative;
 }
 
 .slide {
@@ -14,5 +15,40 @@
   ul {
     padding: 0;
     margin: 0;
+  }
+}
+
+.dotGroup {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  bottom: .5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  :global {
+    .carousel__dot {
+      $size: 8px;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, .2);
+      border: 0;
+      -webkit-appearance: none;
+      padding: 0;
+      margin-right: .2rem;
+      outline: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .carousel__dot--selected {
+      background-color: rgba(0, 0, 0, .7);
+    }
   }
 }

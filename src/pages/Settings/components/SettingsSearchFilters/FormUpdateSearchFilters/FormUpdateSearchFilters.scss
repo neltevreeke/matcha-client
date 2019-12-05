@@ -1,0 +1,27 @@
+@import 'base.scss';
+
+.component {
+  :global {
+    .rc-slider-track {
+      background-color: $color-primary;
+    }
+
+    .rc-slider-rail {
+      background-color: $gray-400;
+    }
+
+    .rc-slider-handle {
+      border: 0;
+      background-color: $color-primary;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.submitError {
+  color: red;
+}
+
