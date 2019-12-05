@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './FormUpdateSearchFilters.scss'
-import * as Gender from 'constants/Gender'
-// import * as Yup from 'yup'
+import * as GenderPreference from 'constants/GenderPreference'
+import * as Yup from 'yup'
 
 import {
   Formik,
@@ -15,26 +15,24 @@ import {
 } from 'components/FormElements'
 import Button from 'components/Button/Button'
 
-const initialValues = {
-  ageRange: [18, 25],
-  maxDistance: [0, 25],
-  commonTags: [0, 4],
-  fameRating: [0, 100],
-  interestedInGender: Gender.FEMALE
-}
-
 const orientationOptions = [{
   label: 'Male',
-  value: Gender.MALE
+  value: GenderPreference.MALE
 }, {
   label: 'Female',
-  value: Gender.FEMALE
+  value: GenderPreference.FEMALE
 }, {
   label: 'Bisexual',
-  value: Gender.MALE + ' and ' + Gender.FEMALE
+  value: GenderPreference.BISEXUAL
 }]
 
+const validationSchema = Yup.object().shape({
+  genderPreference: Yup.string()
+    .required('Required')
+})
+
 const FormUpdateSearchFilters = ({
+  initialValues,
   onSubmit,
   isSubmitting,
   error
@@ -43,24 +41,25 @@ const FormUpdateSearchFilters = ({
     <div className={styles.component}>
       <Formik
         initialValues={initialValues}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         onSubmit={onSubmit}
         render={({ handleSubmit }) => {
           return (
             <Form>
               <Field
-                name='ageRange'
+                name='age'
                 label='Age range'
-                id='ageRange'
+                id='age'
                 min={18}
                 max={99}
                 component={Slider}
               />
 
               <Field
-                name='maxDistance'
+                name='distance'
                 label='Maximum distance'
-                id='maxDistance'
+                id='distance'
+                max={50}
                 component={Slider}
               />
 
@@ -68,6 +67,7 @@ const FormUpdateSearchFilters = ({
                 name='commonTags'
                 label='Amount of common interest tags'
                 id='commonTags'
+                max={10}
                 component={Slider}
               />
 
@@ -75,13 +75,14 @@ const FormUpdateSearchFilters = ({
                 name='fameRating'
                 label='Fame rating'
                 id='fameRating'
+                max={200}
                 component={Slider}
               />
 
               <Field
-                name='interestedInGender'
-                label='Sexual orientation'
-                id='interestedInGender'
+                name='genderPreference'
+                label='Gender preference'
+                id='genderPreference'
                 component={Select}
                 options={orientationOptions}
               />
