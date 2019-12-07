@@ -8,6 +8,7 @@ import {
 } from '../../selectors/user'
 import { Redirect } from 'react-router-dom'
 import * as Routes from 'constants/Routes'
+import PageSpinner from 'components/PageSpinner/PageSpinner'
 
 const MainRoute = ({
   matchProps,
@@ -23,8 +24,7 @@ const MainRoute = ({
   }, [])
 
   if (!isMeLoaded) {
-    // TODO: show a page spinner...
-    return null
+    <PageSpinner />
   }
 
   if (isProtected && !isLoggedIn) {

@@ -13,7 +13,8 @@ const SelectedMatchProfile = ({
   const {
     biography,
     photos,
-    interests
+    interests,
+    fameRating
   } = selectedMatch
 
   return (
@@ -41,18 +42,13 @@ const SelectedMatchProfile = ({
         <p>
           Age: {selectedMatch.age} years old
         </p>
-
-        <h3 className={styles.SectionTitle}>
-          biography
-        </h3>
-
         {biography ? (
           <p>
-            {biography}
+            biography: {biography}
           </p>
         ) : (
           <p className={styles.placeholder}>
-            This user does not have a biography yet.
+            biography: This user does not have a biography yet.
           </p>
         )}
 
@@ -61,8 +57,9 @@ const SelectedMatchProfile = ({
         </h3>
         {/* 1. how far away the person is
             2. last seen online etc
-            3. ???
+            3. √ famerating
           */}
+        <p>Famerating: {fameRating}</p>
 
         <h3 className={styles.SectionTitle}>
           interest tags

@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   height: unquote("calc(100vh - #{$header-height})");
+  width: unquote("calc(100vw - #{$header-height})");
   justify-content: center;
 }
 

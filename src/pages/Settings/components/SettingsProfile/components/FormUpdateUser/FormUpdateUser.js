@@ -41,6 +41,7 @@ const validationSchema = Yup.object().shape({
   gender: Yup.string()
     .required('Required'),
   biography: Yup.string()
+    .max(140, 'Maximum of 140 characters allowed')
     .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
 })
 
