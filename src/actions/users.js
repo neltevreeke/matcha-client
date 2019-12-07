@@ -84,6 +84,7 @@ export const update = (body) => async dispatch => {
 
   try {
     const { user } = await usersApi.update(body)
+
     dispatch({
       type: ActionTypes.USER_UPDATE_SUCCESS,
       payload: user

@@ -10,17 +10,18 @@ import {
 } from 'selectors/user'
 
 const getInitialValuesFromUser = user => {
+  // todo: set initial values in redux too, get from redux, redux needs a get request to get them from db
   // example :
   // return {
   //   ageRange: [user.minAge, user.maxAge]
   // }
 
   return {
-    age: [18, 25],
-    distance: [0, 25],
-    commonTags: [0, 3],
-    fameRating: [0, 100],
-    genderPreference: ''
+    age: [user.minAge, user.maxAge],
+    distance: [user.minDistance, user.maxDistance],
+    commonTags: [user.minTags, user.maxTags],
+    fameRating: [user.minFameRating, user.maxFameRating],
+    genderPreference: user.genderPreference
   }
 }
 

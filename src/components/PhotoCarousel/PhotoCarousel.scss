@@ -31,15 +31,15 @@
 
   :global {
     .carousel__dot {
-      $size: 8px;
+      $size: 12px;
       width: $size;
       height: $size;
       border-radius: 50%;
-      background-color: rgba(0, 0, 0, .2);
+      background-color: white;
       border: 0;
       -webkit-appearance: none;
       padding: 0;
-      margin-right: .2rem;
+      margin-right: .5rem;
       outline: 0;
 
       &:last-child {
@@ -48,7 +48,7 @@
     }
 
     .carousel__dot--selected {
-      background-color: rgba(0, 0, 0, .7);
+      background-color: $color-primary;
     }
   }
 }
