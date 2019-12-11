@@ -103,10 +103,11 @@ export const potentialMatches = () => async dispatch => {
   })
 
   try {
-    const { potentialMatches } = await usersApi.potentialMatches()
+    const { filteredPotentialMatches } = await usersApi.potentialMatches()
+
     dispatch({
       type: ActionTypes.POTENTIAL_MATCHES_SUCCESS,
-      payload: potentialMatches
+      payload: filteredPotentialMatches
     })
   } catch (error) {
     dispatch({
