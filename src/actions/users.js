@@ -8,6 +8,7 @@ import {
 import * as Routes from 'constants/Routes'
 import { history } from '../utils/configureStore'
 import { initSockets } from '../utils/sockets'
+import { getPosition } from 'utils/location'
 
 export const logout = () => dispatch => {
   clearToken()
@@ -65,9 +66,23 @@ export const me = () => async dispatch => {
     const user = await usersApi.me()
     initSockets()
 
+    const {
+      lat,
+      long
+    } = await getPosition()
+
+    dispatch(update({
+      lat,
+      long
+    }))
+
     dispatch({
       type: ActionTypes.ME_SUCCESS,
-      payload: user
+      payload: {
+        lat,
+        long,
+        ...user
+      }
     })
   } catch (error) {
     dispatch({
