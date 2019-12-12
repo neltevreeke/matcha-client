@@ -71,16 +71,16 @@ export const me = () => async dispatch => {
       long
     } = await getPosition()
 
+    const loc = [lat, long]
+
     dispatch(update({
-      lat,
-      long
+      loc
     }))
 
     dispatch({
       type: ActionTypes.ME_SUCCESS,
       payload: {
-        lat,
-        long,
+        loc,
         ...user
       }
     })
