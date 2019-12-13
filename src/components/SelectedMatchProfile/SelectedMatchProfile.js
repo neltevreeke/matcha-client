@@ -2,12 +2,22 @@ import React from 'react'
 import styles from './SelectedMatchProfile.scss'
 import PhotoCarousel from '../PhotoCarousel/PhotoCarousel'
 import Avatar from '../Avatar/Avatar'
+import Button from 'components/Button/Button'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { useDispatch } from 'react-redux'
 
 const SelectedMatchProfile = ({
   selectedMatch
 }) => {
+  // const dispatch = useDispatch()
+
   if (!selectedMatch) {
     return null
+  }
+
+  const handleOnConnectClick = selectedMatch => () => {
+    // todo:
+    // dispatch aciont userId and matchUserId to new collection, matches.
   }
 
   const {
@@ -55,9 +65,8 @@ const SelectedMatchProfile = ({
         <h3 className={styles.SectionTitle}>
           profile information
         </h3>
-        {/* 1. how far away the person is
-            2. last seen online etc
-            3. √ famerating
+        {/* 1. last seen online etc
+            2. √ famerating
           */}
         <p>Famerating: {fameRating}</p>
 
@@ -81,6 +90,16 @@ const SelectedMatchProfile = ({
           )}
         </div>
       </div>
+      <Button
+        variant={Button.VARIANT_DEFAULT}
+        onClick={handleOnConnectClick(selectedMatch)}
+      >
+        <FontAwesomeIcon
+          className={styles.icon}
+          icon='bolt'
+        />
+        connect
+      </Button>
     </div>
   )
 }

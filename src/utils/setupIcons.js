@@ -11,7 +11,8 @@ import {
   faHashtag,
   faFilter,
   faMapMarkedAlt,
-  faCamera
+  faCamera,
+  faBolt
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -25,5 +26,6 @@ library.add(
   faHashtag,
   faFilter,
   faMapMarkedAlt,
-  faCamera
+  faCamera,
+  faBolt
 )
