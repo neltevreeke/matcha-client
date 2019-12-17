@@ -31,3 +31,10 @@ export const potentialMatches = () => {
     method: 'GET'
   })
 }
+
+export const connectedMatch = (body) => {
+  return request('connected-matches', {
+    method: 'POST',
+    body
+  })
+}

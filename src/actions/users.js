@@ -131,3 +131,23 @@ export const potentialMatches = () => async dispatch => {
     })
   }
 }
+
+export const connectedMatch = (body) => async dispatch => {
+  dispatch({
+    type: ActionTypes.CONNECTED_MATCH_START
+  })
+
+  try {
+    const { connectedMatches } = await usersApi.connectedMatch(body)
+
+    dispatch({
+      type: ActionTypes.CONNECTED_MATCH_SUCCESS,
+      payload: connectedMatches
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.CONNECTED_MATCH_ERROR,
+      payload: error
+    })
+  }
+}

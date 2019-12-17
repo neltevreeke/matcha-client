@@ -4,27 +4,35 @@ import PhotoCarousel from '../PhotoCarousel/PhotoCarousel'
 import Avatar from '../Avatar/Avatar'
 import Button from 'components/Button/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { connectedMatch } from 'actions/users'
+import {
+  getUser
+} from '../../selectors/user'
 
 const SelectedMatchProfile = ({
   selectedMatch
 }) => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  const user = useSelector(getUser)
 
   if (!selectedMatch) {
     return null
   }
 
   const handleOnConnectClick = selectedMatch => () => {
-    // todo:
-    // dispatch aciont userId and matchUserId to new collection, matches.
+    dispatch(connectedMatch({
+      sourceUserId: user._id,
+      likedUserId: selectedMatch._id
+    }))
   }
 
   const {
     biography,
     photos,
     interests,
-    fameRating
+    fameRating,
+    isConnected
   } = selectedMatch
 
   return (
@@ -90,16 +98,18 @@ const SelectedMatchProfile = ({
           )}
         </div>
       </div>
-      <Button
-        variant={Button.VARIANT_DEFAULT}
-        onClick={handleOnConnectClick(selectedMatch)}
-      >
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon='bolt'
-        />
-        connect
-      </Button>
+      {!isConnected && (
+        <Button
+          variant={Button.VARIANT_DEFAULT}
+          onClick={handleOnConnectClick(selectedMatch)}
+        >
+          <FontAwesomeIcon
+            className={styles.icon}
+            icon='bolt'
+          />
+          connect
+        </Button>
+      )}
     </div>
   )
 }
