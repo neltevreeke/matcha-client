@@ -36,6 +36,7 @@
   outline: 0;
   cursor: pointer;
   transition: background-color $transition-speed, color $transition-speed;
+  border-radius: $border-radius;
 
   &:hover {
     color: $color-primary;
@@ -45,4 +46,5 @@
 
 .avatar {
   border: 2px solid white;
+  cursor: pointer;
 }
