@@ -8,6 +8,7 @@ import { history } from '../utils/configureStore'
 import Home from './Home'
 import Dashboard from './Dashboard'
 import Settings from './Settings'
+import Matches from './Matches'
 import PageSpinner from '../components/PageSpinner/PageSpinner'
 
 export default (
@@ -22,6 +23,7 @@ export default (
           {Home}
           {Dashboard}
           {Settings}
+          {Matches}
         </Switch>
       </Suspense>
     </ModalProvider>

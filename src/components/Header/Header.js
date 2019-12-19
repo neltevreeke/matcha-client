@@ -77,12 +77,20 @@ const Header = () => {
       </Link>
       <div className={styles.controls}>
         {isLoggedIn ? (
-          <Avatar
-            onClick={handleAvatarClick}
-            user={user}
-            size={Avatar.SIZE_S}
-            backgroundClassName={styles.avatar}
-          />
+          <>
+            <Link
+              to={Routes.MATCHES}
+              className={styles.link}
+            >
+              matches
+            </Link>
+            <Avatar
+              onClick={handleAvatarClick}
+              user={user}
+              size={Avatar.SIZE_S}
+              backgroundClassName={styles.avatar}
+            />
+          </>
         ) : (
           <>
             <Button
