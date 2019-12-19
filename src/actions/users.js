@@ -41,6 +41,8 @@ export const login = ({
       payload: user
     })
 
+    // here possible?
+
     initSockets()
     history.push(Routes.DASHBOARD)
   } catch (error) {
@@ -76,6 +78,8 @@ export const me = () => async dispatch => {
     dispatch(update({
       loc
     }))
+
+    dispatch(getConnectedMatches())
 
     dispatch({
       type: ActionTypes.ME_SUCCESS,
@@ -139,6 +143,26 @@ export const connectedMatch = (body) => async dispatch => {
 
   try {
     const { connectedMatches } = await usersApi.connectedMatch(body)
+
+    dispatch({
+      type: ActionTypes.CONNECTED_MATCH_SUCCESS,
+      payload: connectedMatches
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.CONNECTED_MATCH_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const getConnectedMatches = () => async dispatch => {
+  dispatch({
+    type: ActionTypes.CONNECTED_MATCH_START
+  })
+
+  try {
+    const { connectedMatches } = await usersApi.getConnectedMatches()
 
     dispatch({
       type: ActionTypes.CONNECTED_MATCH_SUCCESS,

@@ -38,3 +38,9 @@ export const connectedMatch = (body) => {
     body
   })
 }
+
+export const getConnectedMatches = () => {
+  return request('connected-matches', {
+    method: 'GET'
+  })
+}

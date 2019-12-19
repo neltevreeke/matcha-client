@@ -14,6 +14,10 @@ export const getPotentialMatchesError = state => state.user.potentialMatches.err
 export const getPotentialMatchesIsLoading = state => state.user.potentialMatches.isLoading
 export const getPotentialMatchesIsLoaded = state => state.user.potentialMatches.isLoaded
 
+export const getConnectedMatches = state => state.user.connectedMatches.connectedMatches
+export const getConnectedMatchesError = state => state.user.connectedMatches.error
+export const getConnectedMatchesIsLoading = state => state.user.connectedMatches.isLoading
+
 export const getIsLoggedIn = state => {
   const isMeLoaded = getMeIsLoaded(state)
   return isMeLoaded && !!state.user.user

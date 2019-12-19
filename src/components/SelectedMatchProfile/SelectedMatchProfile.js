@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { connectedMatch } from 'actions/users'
 import {
-  getUser
+  getUser,
+  getConnectedMatches
 } from '../../selectors/user'
 
 const SelectedMatchProfile = ({
@@ -15,9 +16,31 @@ const SelectedMatchProfile = ({
 }) => {
   const dispatch = useDispatch()
   const user = useSelector(getUser)
+  const connectedMatches = useSelector(getConnectedMatches)
 
   if (!selectedMatch) {
     return null
+  }
+
+  const {
+    _id: potentialMatchId,
+    firstName,
+    lastName,
+    age,
+    biography,
+    photos,
+    interests,
+    fameRating
+  } = selectedMatch
+
+  let isConnected = false
+
+  if (connectedMatches) {
+    for (const c of connectedMatches) {
+      if (potentialMatchId.toString() === c.likedUserId.toString()) {
+        isConnected = true
+      }
+    }
   }
 
   const handleOnConnectClick = selectedMatch => () => {
@@ -27,13 +50,13 @@ const SelectedMatchProfile = ({
     }))
   }
 
-  const {
-    biography,
-    photos,
-    interests,
-    fameRating,
-    isConnected
-  } = selectedMatch
+  const handleOnDisconnectClick = selectedMatch => () => {
+    dispatch(connectedMatch({
+      sourceUserId: user._id,
+      likedUserId: selectedMatch._id,
+      action: 'disconnect'
+    }))
+  }
 
   return (
     <div className={styles.component}>
@@ -55,10 +78,10 @@ const SelectedMatchProfile = ({
           personal details
         </h3>
         <p>
-          Name: {selectedMatch.firstName} {selectedMatch.lastName}
+          Name: {firstName} {lastName}
         </p>
         <p>
-          Age: {selectedMatch.age} years old
+          Age: {age} years old
         </p>
         {biography ? (
           <p>
@@ -73,9 +96,6 @@ const SelectedMatchProfile = ({
         <h3 className={styles.SectionTitle}>
           profile information
         </h3>
-        {/* 1. last seen online etc
-            2. √ famerating
-          */}
         <p>Famerating: {fameRating}</p>
 
         <h3 className={styles.SectionTitle}>
@@ -98,7 +118,7 @@ const SelectedMatchProfile = ({
           )}
         </div>
       </div>
-      {!isConnected && (
+      {!isConnected ? (
         <Button
           variant={Button.VARIANT_DEFAULT}
           onClick={handleOnConnectClick(selectedMatch)}
@@ -109,7 +129,19 @@ const SelectedMatchProfile = ({
           />
           connect
         </Button>
+      ) : (
+        <Button
+          variant={Button.VARIANT_DEFAULT}
+          onClick={handleOnDisconnectClick(selectedMatch)}
+        >
+          <FontAwesomeIcon
+            className={styles.icon}
+            icon='unlink'
+          />
+          disconnect
+        </Button>
       )}
+
     </div>
   )
 }
