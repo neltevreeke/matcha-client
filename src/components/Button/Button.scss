@@ -30,3 +30,12 @@
 .variant--default {
   background: $color-primary;
 }
+
+.variant--default-red {
+  background: $red;
+  border: 2px solid $red;
+
+  &:hover {
+    color: $red;
+  }
+}

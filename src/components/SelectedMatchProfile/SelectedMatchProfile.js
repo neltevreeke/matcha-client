@@ -131,7 +131,7 @@ const SelectedMatchProfile = ({
         </Button>
       ) : (
         <Button
-          variant={Button.VARIANT_DEFAULT}
+          variant={Button.VARIANT_DEFAULT_RED}
           onClick={handleOnDisconnectClick(selectedMatch)}
         >
           <FontAwesomeIcon
