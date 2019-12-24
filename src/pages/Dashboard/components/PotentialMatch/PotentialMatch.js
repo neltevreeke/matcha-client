@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from './PotentialMatch.scss'
 import Avatar from '../../../../components/Avatar/Avatar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PotentialMatch = ({
   potentialMatch,
   onlineUsers,
-  onClick
+  onClick,
+  isConnected
 }) => {
   const isOnline = onlineUsers.some(onlineUser => onlineUser._id === potentialMatch._id)
 
@@ -21,6 +23,12 @@ const PotentialMatch = ({
           size={Avatar.SIZE_M}
           isRounded={false}
         />
+        {isConnected && (
+          <FontAwesomeIcon
+            className={styles.icon}
+            icon='bolt'
+          />
+        )}
       </div>
     </div>
   )

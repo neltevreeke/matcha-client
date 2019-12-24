@@ -26,6 +26,11 @@ const initialState = {
     error: null,
     isLoading: false,
     connectedMatches: null
+  },
+  userMatches: {
+    error: null,
+    isLoading: false,
+    userMatches: null
   }
 }
 
@@ -184,6 +189,37 @@ export default createReducer(initialState, {
         error,
         isLoaded: true,
         potentialMatches: null
+      }
+    }
+  },
+
+  [ActionTypes.MATCH_LIST_START]: (state) => {
+    return {
+      ...state,
+      userMatches: {
+        isLoading: true,
+        error: null,
+        userMatches: null
+      }
+    }
+  },
+  [ActionTypes.MATCH_LIST_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      userMatches: {
+        isLoading: false,
+        error: null,
+        userMatches: payload
+      }
+    }
+  },
+  [ActionTypes.MATCH_LIST_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      userMatches: {
+        isLoading: false,
+        error,
+        userMatches: null
       }
     }
   }

@@ -1,0 +1,30 @@
+@import 'base.scss';
+
+.component {
+  // Empty
+}
+
+.profile {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  width: 15rem;
+  padding-left: 2rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-300;
+  }
+}
+
+.info {
+  margin-left: .75rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.message {
+  color: $gray-500;
+}
