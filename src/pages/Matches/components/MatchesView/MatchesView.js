@@ -35,7 +35,7 @@ const MatchesView = () => {
     isLoaded
   ])
 
-  if (!isLoaded) {
+  if (!isLoaded || !selectedMatch) {
     return (
       <PageSpinner />
     )
@@ -53,7 +53,7 @@ const MatchesView = () => {
         />
         <SelectedMatchProfile
           className={styles.selectedProfile}
-          selectedMatch={selectedMatch}
+          selectedMatch={selectedMatch.likedUserId}
         />
       </div>
     </Page>

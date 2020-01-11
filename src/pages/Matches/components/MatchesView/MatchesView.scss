@@ -10,5 +10,6 @@ $padding: 2rem;
 }
 
 .selectedProfile {
+  flex-shrink: 0;
   position: static !important;
 }
