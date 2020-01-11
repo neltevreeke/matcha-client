@@ -1,7 +1,10 @@
 @import 'base.scss';
 
+$padding: 2rem;
+
 .component {
-  // Empty
+  overflow-y: scroll;
+  height: unquote("calc(100vh - #{$header-height + ($padding * 3.9)})");
 }
 
 .userAvatar {
@@ -10,11 +13,11 @@
 
 .userMessage {
   display: flex;
-  margin-left: auto;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 1rem;
+  height: auto;
 
   p {
     background-color: $color-primary;
@@ -35,6 +38,7 @@
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 1rem;
+  height: auto;
 
   p {
     padding: .5rem 1rem;

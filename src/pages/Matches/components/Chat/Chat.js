@@ -89,6 +89,15 @@ const Chat = ({
   }, {
     user,
     value: 'ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus '
+  }, {
+    user,
+    value: 'ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus '
+  }, {
+    user,
+    value: 'ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus '
+  }, {
+    user,
+    value: 'ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus ik heb dit zelf verstuurd dikke anus '
   }]
 
   return (

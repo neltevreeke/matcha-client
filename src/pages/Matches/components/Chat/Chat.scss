@@ -1,7 +1,9 @@
 @import 'base.scss';
 
+$padding: 2rem;
+
 .component {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: $padding;
+  padding-right: $padding;
   width: 100%;
 }

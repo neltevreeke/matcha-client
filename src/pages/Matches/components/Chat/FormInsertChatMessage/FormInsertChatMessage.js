@@ -10,7 +10,6 @@ import {
   Field,
   Input
 } from 'components/FormElements'
-import Button from '../../../../../components/Button/Button'
 
 const initialValues = {
   message: ''
@@ -40,6 +39,7 @@ const FormInsertChatMessage = ({
                 name='message'
                 type='text'
                 component={Input}
+                className={styles.chatInput}
               />
 
               {error &&
@@ -48,15 +48,6 @@ const FormInsertChatMessage = ({
                 >
                   {error}
                 </div>}
-
-              <Button
-                type='submit'
-                onClick={handleSubmit}
-                variant={Button.VARIANT_DEFAULT}
-                isLoading={isSubmitting}
-              >
-                send message
-              </Button>
             </Form>
           )
         }}
