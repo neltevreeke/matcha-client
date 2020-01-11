@@ -1,7 +1,9 @@
 @import 'base.scss';
 
 .component {
-  // Empty
+  border-right: 2px solid $color-primary;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile {
@@ -19,6 +21,7 @@
 
 .info {
   margin-left: .75rem;
+  width: 100%;
 
   p {
     margin: 0;
@@ -27,4 +30,9 @@
 
 .message {
   color: $gray-500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 60%;
+  height: 1.2em;
+  white-space: nowrap;
 }

@@ -6,14 +6,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { matchList } from '../../../../actions/users'
 
 import {
-  getMatchesList,
   getMatchesListIsLoading
 } from 'selectors/user'
 import { getOnlineUsers } from '../../../../selectors/onlineUsers'
 
-const MatchesList = () => {
+const MatchesList = ({
+  matchesList,
+  setSelectedMatch
+}) => {
   const dispatch = useDispatch()
-  const matchesList = useSelector(getMatchesList)
   const isLoading = useSelector(getMatchesListIsLoading)
   const onlineUsers = useSelector(getOnlineUsers)
 
@@ -24,6 +25,10 @@ const MatchesList = () => {
   if (isLoading) {
     // spinner?
     return null
+  }
+
+  const handleProfileOnClick = match => () => {
+    setSelectedMatch(match)
   }
 
   return (
@@ -40,6 +45,7 @@ const MatchesList = () => {
           <div
             key={index}
             className={styles.profile}
+            onClick={handleProfileOnClick(match)}
           >
             <Avatar
               user={match.likedUserId}
@@ -56,7 +62,7 @@ const MatchesList = () => {
               <p
                 className={styles.message}
               >
-                blabla
+                blablablablablablablablablablablablablablabla
               </p>
             </div>
           </div>

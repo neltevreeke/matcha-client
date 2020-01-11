@@ -1,8 +1,10 @@
 @import 'base.scss';
 
+$padding: 2rem;
+
 .component {
+  margin: $padding 0;
   display: flex;
+  min-height: unquote("calc(100vh - #{$header-height + ($padding * 2)})");
   flex-direction: row;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
