@@ -1,32 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './MatchesList.scss'
 import Avatar from 'components/Avatar/Avatar'
-
-import { useDispatch, useSelector } from 'react-redux'
-import { matchList } from '../../../../actions/users'
-
-import {
-  getMatchesList,
-  getMatchesListIsLoading
-} from 'selectors/user'
-import { getOnlineUsers } from '../../../../selectors/onlineUsers'
+import { useSelector } from 'react-redux'
+import { getOnlineUsers } from 'selectors/onlineUsers'
 
 const MatchesList = ({
+  matches,
   setSelectedMatch
 }) => {
-  const matchesList = useSelector(getMatchesList)
-  const dispatch = useDispatch()
-  const isLoading = useSelector(getMatchesListIsLoading)
   const onlineUsers = useSelector(getOnlineUsers)
-
-  useEffect(() => {
-    dispatch(matchList())
-  }, [])
-
-  if (isLoading) {
-    // spinner?
-    return null
-  }
 
   const handleProfileOnClick = match => () => {
     setSelectedMatch(match)
@@ -34,7 +16,7 @@ const MatchesList = ({
 
   return (
     <div className={styles.component}>
-      {matchesList?.map((match, index) => {
+      {matches?.map((match, index) => {
         const isOnline = onlineUsers.some(onlineUser => onlineUser._id === match._id)
 
         const {

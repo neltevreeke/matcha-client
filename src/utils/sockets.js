@@ -21,9 +21,8 @@ export const initSockets = () => {
 
   isInitialized = true
 
-  socket.on('server message', (response) => {
+  socket.on('online-users', (response) => {
     const onlineUsers = JSON.parse(response)
-
     store.dispatch(setOnlineUsers(onlineUsers))
   })
 }

@@ -44,9 +44,3 @@ export const getConnectedMatches = () => {
     method: 'GET'
   })
 }
-
-export const getMatchList = () => {
-  return request('get-matches', {
-    method: 'GET'
-  })
-}

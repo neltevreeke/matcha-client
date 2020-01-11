@@ -23,8 +23,8 @@ export const CONNECTED_MATCH_START = '@connectedMatch/CONNECTED_MATCH_START'
 export const CONNECTED_MATCH_SUCCESS = '@connectedMatch/CONNECTED_MATCH_SUCCESS'
 export const CONNECTED_MATCH_ERROR = '@connectedMatch/CONNECTED_MATCH_ERROR'
 
-export const MATCH_LIST_START = '@matchList/MATCH_LIST_START'
-export const MATCH_LIST_SUCCESS = '@matchList/MATCH_LIST_SUCCESS'
-export const MATCH_LIST_ERROR = '@matchList/MATCH_LIST_ERROR'
+export const MATCHES_LOAD_START = '@matches/MATCHES_LOAD_START'
+export const MATCHES_LOAD_SUCCESS = '@matches/MATCHES_LOAD_SUCCESS'
+export const MATCHES_LOAD_ERROR = '@matches/MATCHES_LOAD_ERROR'
 
 export const SET_ONLINE_USERS = '@online-users/SET_ONLINE_USERS'

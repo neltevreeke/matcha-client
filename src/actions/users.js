@@ -116,26 +116,6 @@ export const update = (body) => async dispatch => {
   }
 }
 
-export const matchList = () => async dispatch => {
-  dispatch({
-    type: ActionTypes.MATCH_LIST_START
-  })
-
-  try {
-    const { userMatches } = await usersApi.getMatchList()
-
-    dispatch({
-      type: ActionTypes.MATCH_LIST_SUCCESS,
-      payload: userMatches
-    })
-  } catch (error) {
-    dispatch({
-      type: ActionTypes.MATCH_LIST_ERROR,
-      payload: error
-    })
-  }
-}
-
 export const potentialMatches = () => async dispatch => {
   dispatch({
     type: ActionTypes.POTENTIAL_MATCHES_START
