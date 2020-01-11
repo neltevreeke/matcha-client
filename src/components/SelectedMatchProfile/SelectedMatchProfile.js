@@ -10,9 +10,11 @@ import {
   getUser,
   getConnectedMatches
 } from '../../selectors/user'
+import cx from 'classnames'
 
 const SelectedMatchProfile = ({
-  selectedMatch
+  selectedMatch,
+  className
 }) => {
   const dispatch = useDispatch()
   const user = useSelector(getUser)
@@ -59,7 +61,11 @@ const SelectedMatchProfile = ({
   }
 
   return (
-    <div className={styles.component}>
+    <div
+      className={cx(styles.component, {
+        [className]: className
+      })}
+    >
       <div className={styles.slider}>
         {photos ? (
           <PhotoCarousel

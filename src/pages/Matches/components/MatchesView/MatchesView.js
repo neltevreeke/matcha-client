@@ -52,6 +52,7 @@ const MatchesView = () => {
           selectedMatch={selectedMatch}
         />
         <SelectedMatchProfile
+          className={styles.selectedProfile}
           selectedMatch={selectedMatch}
         />
       </div>
