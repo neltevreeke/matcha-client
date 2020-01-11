@@ -14,6 +14,7 @@ import {
 } from 'selectors/matches'
 import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { loadMatches } from 'actions/matches'
+import { joinRoom } from '../../../../utils/sockets'
 
 const MatchesView = () => {
   const dispatch = useDispatch()
@@ -35,6 +36,17 @@ const MatchesView = () => {
     isLoaded
   ])
 
+  useEffect(() => {
+    if (!selectedMatch) {
+      // eslint-disable-next-line no-useless-return
+      return
+    }
+
+    joinRoom(selectedMatch.room)
+  }, [
+    selectedMatch
+  ])
+
   if (!isLoaded || !selectedMatch) {
     return (
       <PageSpinner />
@@ -49,6 +61,7 @@ const MatchesView = () => {
           setSelectedMatch={setSelectedMatch}
         />
         <Chat
+          messages={[]}
           selectedMatch={selectedMatch}
         />
         <SelectedMatchProfile
