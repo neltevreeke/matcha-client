@@ -24,7 +24,9 @@ const MainRoute = ({
   }, [])
 
   if (!isMeLoaded) {
-    <PageSpinner />
+    return (
+      <PageSpinner />
+    )
   }
 
   if (isProtected && !isLoggedIn) {
