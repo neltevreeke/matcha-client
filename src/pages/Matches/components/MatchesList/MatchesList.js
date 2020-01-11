@@ -6,14 +6,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { matchList } from '../../../../actions/users'
 
 import {
+  getMatchesList,
   getMatchesListIsLoading
 } from 'selectors/user'
 import { getOnlineUsers } from '../../../../selectors/onlineUsers'
 
 const MatchesList = ({
-  matchesList,
   setSelectedMatch
 }) => {
+  const matchesList = useSelector(getMatchesList)
   const dispatch = useDispatch()
   const isLoading = useSelector(getMatchesListIsLoading)
   const onlineUsers = useSelector(getOnlineUsers)
@@ -59,9 +60,7 @@ const MatchesList = ({
               >
                 {firstName + ' ' + lastName}
               </p>
-              <p
-                className={styles.message}
-              >
+              <p className={styles.message}>
                 blablablablablablablablablablablablablablabla
               </p>
             </div>
