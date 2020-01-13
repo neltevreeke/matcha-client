@@ -8,11 +8,13 @@ const Chat = ({
   messages,
   selectedMatch
 }) => {
-  const handleSubmit = ({ message }) => {
+  const handleSubmit = ({ message }, { resetForm }) => {
     sendNewMessage({
       message,
       roomId: selectedMatch.room
     })
+
+    resetForm()
   }
 
   return (
