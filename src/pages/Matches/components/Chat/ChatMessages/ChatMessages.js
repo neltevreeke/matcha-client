@@ -14,9 +14,9 @@ const ChatMessages = ({
   return (
     <div className={styles.component}>
       {messages.map((message, index) => {
-        const isOnline = onlineUsers.some(onlineUser => onlineUser._id === message.user._id)
+        const isOnline = onlineUsers.some(onlineUser => onlineUser._id === message.createdBy)
 
-        if (message.user._id !== user._id) {
+        if (message.createdBy !== user._id) {
           return (
             <div
               className={styles.matchMessage}
@@ -26,14 +26,14 @@ const ChatMessages = ({
                 className={styles.matchAvatar}
               >
                 <Avatar
-                  user={message.user}
+                  user={message.createdBy}
                   isOnline={isOnline}
                 />
               </div>
               <p
                 key={index}
               >
-                {message.value}
+                {message.content}
               </p>
             </div>
           )
@@ -45,7 +45,7 @@ const ChatMessages = ({
             className={styles.userMessage}
           >
             <p>
-              {message.value}
+              {message.content}
             </p>
             <div
               className={styles.userAvatar}

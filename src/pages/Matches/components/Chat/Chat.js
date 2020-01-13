@@ -5,8 +5,8 @@ import ChatMessages from './ChatMessages/ChatMessages'
 import { sendNewMessage } from '../../../../utils/sockets'
 
 const Chat = ({
-  selectedMatch,
-  messages
+  messages,
+  selectedMatch
 }) => {
   const handleSubmit = ({ message }) => {
     sendNewMessage({

@@ -15,16 +15,30 @@ import {
 import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { loadMatches } from 'actions/matches'
 import { joinRoom } from '../../../../utils/sockets'
+import { loadRoomMessages } from 'actions/roomMessage'
+import { getIsMessagesLoaded, getRoomMessages } from '../../../../selectors/roomMessages'
 
 const MatchesView = () => {
   const dispatch = useDispatch()
   const [selectedMatch, setSelectedMatch] = useState(null)
   const isLoaded = useSelector(getIsMatchesLoaded)
   const matches = useSelector(getMatches)
+  const messages = useSelector(getRoomMessages)
+  const messagesIsLoaded = useSelector(getIsMessagesLoaded)
 
   useEffect(() => {
     dispatch(loadMatches())
   }, [])
+
+  useEffect(() => {
+    if (!selectedMatch) {
+      return
+    }
+
+    dispatch(loadRoomMessages(selectedMatch.room))
+  }, [
+    selectedMatch
+  ])
 
   useEffect(() => {
     if (!isLoaded) {
@@ -53,6 +67,12 @@ const MatchesView = () => {
     )
   }
 
+  if (!messagesIsLoaded) {
+    return (
+      <PageSpinner />
+    )
+  }
+
   return (
     <Page>
       <div className={styles.component}>
@@ -61,7 +81,7 @@ const MatchesView = () => {
           setSelectedMatch={setSelectedMatch}
         />
         <Chat
-          messages={[]}
+          messages={messages}
           selectedMatch={selectedMatch}
         />
         <SelectedMatchProfile

@@ -22,7 +22,6 @@ const validationSchema = Yup.object().shape({
 
 const FormInsertChatMessage = ({
   onSubmit,
-  isSubmitting,
   error
 }) => {
   return (
