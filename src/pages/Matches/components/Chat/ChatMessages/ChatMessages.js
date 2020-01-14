@@ -20,7 +20,11 @@ const ChatMessages = ({
     'You miss 100% of the memories you never make',
     'Some things are better left unsaid, but most things aren’t',
     'The heart wants what the heart wants',
-    'Life’s too short to not send a message'
+    'Life’s too short to not send a message',
+    'One good conversation can shift the direction of change forever',
+    'Good conversation is as stimulating as black coffee, and just as hard to sleep after',
+    'Nothing compares to a beautiful conversation with a beautiful mind',
+    'Conversation isn’t about proving a point; true conversation is about going on a journey with the person you are speaking with'
   ]
 
   const scrollToBottom = () => {
