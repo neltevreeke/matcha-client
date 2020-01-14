@@ -17,6 +17,7 @@ const Field = ({
   className,
   isFast = false,
   isNarrow,
+  hideFieldError,
   ...props
 }) => {
   if (hideFieldLabel) {
@@ -50,14 +51,16 @@ const Field = ({
           {...props}
         />
       </div>
-      <FormikErrorMessage
-        name={name}
-        render={(error) => (
-          <div className={styles.error}>
-            <small>{error}</small>
-          </div>
-        )}
-      />
+      {!hideFieldError && (
+        <FormikErrorMessage
+          name={name}
+          render={(error) => (
+            <div className={styles.error}>
+              <small>{error}</small>
+            </div>
+          )}
+        />
+      )}
     </div>
   )
 }

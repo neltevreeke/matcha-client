@@ -9,12 +9,14 @@ $padding: 2rem;
 
 .userAvatar {
   margin-left: 2rem;
+  margin-bottom: 0px;
+  margin-top: 15px;
 }
 
 .userMessage {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  //align-items: center;
   justify-content: flex-end;
   margin-bottom: 1rem;
   height: auto;
@@ -30,12 +32,14 @@ $padding: 2rem;
 
 .matchAvatar {
   margin-right: 2rem;
+  margin-bottom: 0px;
+  //margin-top: 15px;
 }
 
 .matchMessage {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  //align-items: center;
   justify-content: flex-start;
   margin-bottom: 1rem;
   height: auto;

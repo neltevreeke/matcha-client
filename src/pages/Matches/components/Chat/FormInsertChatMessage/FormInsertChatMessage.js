@@ -10,19 +10,22 @@ import {
   Field,
   Input
 } from 'components/FormElements'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Button from 'components/Button/Button'
 
 const initialValues = {
   message: ''
 }
 
 const validationSchema = Yup.object().shape({
-  tag: Yup.string()
+  message: Yup.string()
     .matches(/^[A-Z]*.[a-z]*/, 'Can only contain latin characters')
+    .min(1)
+    .ensure()
 })
 
 const FormInsertChatMessage = ({
-  onSubmit,
-  error
+  onSubmit
 }) => {
   return (
     <div className={styles.component}>
@@ -32,21 +35,27 @@ const FormInsertChatMessage = ({
         onSubmit={onSubmit}
         render={({ handleSubmit }) => {
           return (
-            <Form>
+            <Form className={styles.form}>
               <Field
                 id='message'
                 name='message'
                 type='text'
                 component={Input}
                 className={styles.chatInput}
+                hideFieldError
+                hideFieldLabel
               />
 
-              {error &&
-                <div
-                  className={styles.submitError}
-                >
-                  {error}
-                </div>}
+              <Button
+                variant={Button.VARIANT_DEFAULT}
+                type='submit'
+                className={styles.submitButton}
+              >
+                <FontAwesomeIcon
+                  className={styles.menuIcon}
+                  icon='paper-plane'
+                />
+              </Button>
             </Form>
           )
         }}

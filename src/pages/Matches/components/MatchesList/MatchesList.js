@@ -17,7 +17,7 @@ const MatchesList = ({
   return (
     <div className={styles.component}>
       {matches?.map((match, index) => {
-        const isOnline = onlineUsers.some(onlineUser => onlineUser._id === match._id)
+        const isOnline = onlineUsers.some(onlineUser => onlineUser._id === match.likedUserId._id)
 
         const {
           firstName,
