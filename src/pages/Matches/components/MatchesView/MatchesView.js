@@ -36,6 +36,7 @@ const MatchesView = () => {
     }
 
     dispatch(loadRoomMessages(selectedMatch.room))
+    joinRoom(selectedMatch.room)
   }, [
     selectedMatch
   ])
@@ -48,17 +49,6 @@ const MatchesView = () => {
     setSelectedMatch(matches[0])
   }, [
     isLoaded
-  ])
-
-  useEffect(() => {
-    if (!selectedMatch) {
-      // eslint-disable-next-line no-useless-return
-      return
-    }
-
-    joinRoom(selectedMatch.room)
-  }, [
-    selectedMatch
   ])
 
   if (!isLoaded || !selectedMatch) {

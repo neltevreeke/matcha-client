@@ -10,7 +10,6 @@ $padding: 2rem;
 .noMessages {
   width: 100%;
   height: 100%;
-  text-align: center;
   color: $gray-500;
   align-items: center;
   justify-content: center;
@@ -26,7 +25,6 @@ $padding: 2rem;
 .userMessage {
   display: flex;
   flex-direction: row;
-  //align-items: center;
   justify-content: flex-end;
   margin-bottom: 1rem;
   height: auto;

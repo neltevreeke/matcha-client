@@ -19,6 +19,9 @@ const MatchesList = ({
       {matches?.map((match, index) => {
         const isOnline = onlineUsers.some(onlineUser => onlineUser._id === match.likedUserId._id)
 
+        let matchDate = match.date.split('T')
+        matchDate = matchDate[0].split('-')
+
         const {
           firstName,
           lastName
@@ -43,7 +46,7 @@ const MatchesList = ({
                 {firstName + ' ' + lastName}
               </p>
               <p className={styles.message}>
-                blablablablablablablablablablablablablablabla
+                {'match: ' + matchDate[2] + '-' + matchDate[1] + '-' + matchDate[0]}
               </p>
             </div>
           </div>
