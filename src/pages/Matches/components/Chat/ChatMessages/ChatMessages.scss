@@ -7,6 +7,16 @@ $padding: 2rem;
   height: unquote("calc(100vh - #{$header-height + ($padding * 3.9)})");
 }
 
+.noMessages {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: $gray-500;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 .userAvatar {
   margin-left: 2rem;
   margin-bottom: 0px;
