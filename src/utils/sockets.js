@@ -8,7 +8,7 @@ import { setNewRoomMessage } from '../actions/roomMessage'
 let isInitialized = false
 let socket = null
 
-export const initSockets = () => {
+export const initSockets = () => new Promise(resolve => {
   if (isInitialized) {
     return
   }
@@ -23,6 +23,7 @@ export const initSockets = () => {
 
   socket.on('connect', () => {
     isInitialized = true
+    resolve(socket)
   })
 
   socket.on('online-users', (response) => {
@@ -34,12 +35,19 @@ export const initSockets = () => {
     const newMessage = JSON.parse(message)
     store.dispatch(setNewRoomMessage(newMessage))
   })
-}
+})
 
 export const sendNewMessage = ({ message, roomId }) => {
   socket.emit('new-message', {
     roomId,
     message
+  })
+}
+
+export const sendEvent = ({ type, data }) => {
+  socket.emit('event', {
+    type,
+    data
   })
 }
 

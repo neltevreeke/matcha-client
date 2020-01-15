@@ -9,6 +9,8 @@ import * as Routes from 'constants/Routes'
 import { history } from '../utils/configureStore'
 import { initSockets } from '../utils/sockets'
 import { getPosition } from 'utils/location'
+import { toast } from 'react-toastify'
+import * as EventType from 'constants/EventType'
 
 export const logout = () => dispatch => {
   clearToken()
@@ -18,6 +20,19 @@ export const logout = () => dispatch => {
   })
 
   history.push(Routes.HOME)
+}
+
+const setupSocketNotifications = (socket) => {
+  socket.on('event-receive', (event) => {
+    const {
+      type
+      // data
+    } = JSON.parse(event)
+
+    if (type === EventType.EVENT_TYPE_PROFILE_VIEW) {
+      toast.info('kanker')
+    }
+  })
 }
 
 export const login = ({
@@ -41,9 +56,9 @@ export const login = ({
       payload: user
     })
 
-    // here possible?
+    const socket = await initSockets()
+    setupSocketNotifications(socket)
 
-    initSockets()
     history.push(Routes.DASHBOARD)
   } catch (error) {
     dispatch({
@@ -66,7 +81,9 @@ export const me = () => async dispatch => {
 
   try {
     const user = await usersApi.me()
-    initSockets()
+
+    const socket = await initSockets()
+    setupSocketNotifications(socket)
 
     const {
       lat,
