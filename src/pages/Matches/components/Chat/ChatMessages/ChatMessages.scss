@@ -19,7 +19,6 @@ $padding: 2rem;
 .userAvatar {
   margin-left: 2rem;
   margin-bottom: 0px;
-  margin-top: 15px;
 }
 
 .userMessage {
@@ -35,6 +34,7 @@ $padding: 2rem;
     padding: .5rem 1rem;
     border-radius: $border-radius;
     max-width: 40%;
+    margin: 0;
   }
 }
 
