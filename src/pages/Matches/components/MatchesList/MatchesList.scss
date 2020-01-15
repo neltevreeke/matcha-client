@@ -36,3 +36,12 @@
   height: 1.2em;
   white-space: nowrap;
 }
+
+.noMatches {
+  color: $gray-500;
+  width: 15rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

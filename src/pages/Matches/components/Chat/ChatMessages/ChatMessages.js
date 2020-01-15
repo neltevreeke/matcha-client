@@ -41,7 +41,7 @@ const ChatMessages = ({
   return (
     <>
       <div className={styles.component}>
-        {messages.length > 0 ? (
+        {messages?.length > 0 ? (
           messages.map((message, index) => {
             const isOnline = onlineUsers.some(onlineUser => onlineUser._id === message.createdBy._id)
 

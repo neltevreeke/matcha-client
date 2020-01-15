@@ -16,7 +16,7 @@ const MatchesList = ({
 
   return (
     <div className={styles.component}>
-      {matches?.map((match, index) => {
+      {matches?.length > 0 ? matches?.map((match, index) => {
         const isOnline = onlineUsers.some(onlineUser => onlineUser._id === match.likedUserId._id)
 
         let matchDate = match.date.split('T')
@@ -51,7 +51,11 @@ const MatchesList = ({
             </div>
           </div>
         )
-      })}
+      }) : (
+        <div className={styles.noMatches}>
+          No matches found...
+        </div>
+      )}
     </div>
   )
 }

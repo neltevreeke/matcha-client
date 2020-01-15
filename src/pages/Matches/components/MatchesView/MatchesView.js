@@ -16,7 +16,7 @@ import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { loadMatches } from 'actions/matches'
 import { joinRoom } from '../../../../utils/sockets'
 import { loadRoomMessages } from 'actions/roomMessage'
-import { getIsMessagesLoaded, getRoomMessages } from '../../../../selectors/roomMessages'
+import { getRoomMessages } from '../../../../selectors/roomMessages'
 
 const MatchesView = () => {
   const dispatch = useDispatch()
@@ -24,7 +24,6 @@ const MatchesView = () => {
   const isLoaded = useSelector(getIsMatchesLoaded)
   const matches = useSelector(getMatches)
   const messages = useSelector(getRoomMessages)
-  const messagesIsLoaded = useSelector(getIsMessagesLoaded)
 
   useEffect(() => {
     dispatch(loadMatches())
@@ -42,7 +41,7 @@ const MatchesView = () => {
   ])
 
   useEffect(() => {
-    if (!isLoaded) {
+    if (!isLoaded || selectedMatch) {
       return
     }
 
@@ -51,13 +50,7 @@ const MatchesView = () => {
     isLoaded
   ])
 
-  if (!isLoaded || !selectedMatch) {
-    return (
-      <PageSpinner />
-    )
-  }
-
-  if (!messagesIsLoaded) {
+  if (!isLoaded) {
     return (
       <PageSpinner />
     )
@@ -76,7 +69,7 @@ const MatchesView = () => {
         />
         <SelectedMatchProfile
           className={styles.selectedProfile}
-          selectedMatch={selectedMatch.likedUserId}
+          selectedMatch={selectedMatch?.likedUserId}
         />
       </div>
     </Page>
