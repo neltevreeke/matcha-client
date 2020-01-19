@@ -12,6 +12,8 @@ import { getPosition } from 'utils/location'
 import { toast } from 'react-toastify'
 import * as EventType from 'constants/EventType'
 
+import styles from '../styles/toastify.scss'
+
 export const logout = () => dispatch => {
   clearToken()
 
@@ -25,12 +27,27 @@ export const logout = () => dispatch => {
 const setupSocketNotifications = (socket) => {
   socket.on('event-receive', (event) => {
     const {
-      type
-      // data
+      type,
+      data
     } = JSON.parse(event)
 
+    const {
+      firstName,
+      lastName
+    } = data
+
     if (type === EventType.EVENT_TYPE_PROFILE_VIEW) {
-      toast.info('kanker')
+      toast.info(firstName + ' ' + lastName + ' viewed your profile!', {
+        className: styles.toastify
+      })
+    } else if (type === EventType.EVENT_TYPE_CONNECT) {
+      toast.info(firstName + ' ' + lastName + ' connected you!', {
+        className: styles.toastify
+      })
+    } else if (type === EventType.EVENT_TYPE_MATCH) {
+      toast.info('You have a new match with ' + firstName + ' ' + lastName, {
+        className: styles.toastify
+      })
     }
   })
 }

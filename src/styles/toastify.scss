@@ -1,4 +1,7 @@
-.test {
-  color: red !important;
+@import '_base.scss';
+
+.toastify {
+  background-color: $color-primary !important;
+  top: 91px !important;
 }
 
