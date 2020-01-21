@@ -37,15 +37,19 @@ const setupSocketNotifications = (socket) => {
     } = data
 
     if (type === EventType.EVENT_TYPE_PROFILE_VIEW) {
-      toast.info(firstName + ' ' + lastName + ' viewed your profile!', {
+      toast.info(firstName + ' ' + lastName + ' viewed your profile', {
         className: styles.toastify
       })
     } else if (type === EventType.EVENT_TYPE_CONNECT) {
-      toast.info(firstName + ' ' + lastName + ' connected you!', {
+      toast.info(firstName + ' ' + lastName + ' connected you', {
         className: styles.toastify
       })
     } else if (type === EventType.EVENT_TYPE_MATCH) {
       toast.info('You have a new match with ' + firstName + ' ' + lastName, {
+        className: styles.toastify
+      })
+    } else if (type === EventType.EVENT_TYPE_UNMATCH) {
+      toast.info(firstName + ' ' + lastName + ' unmatched you', {
         className: styles.toastify
       })
     }
