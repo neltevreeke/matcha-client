@@ -13,6 +13,8 @@ import { toast } from 'react-toastify'
 import * as EventType from 'constants/EventType'
 
 import styles from '../styles/toastify.scss'
+import { store } from '../index'
+import { setNewRoomMessage } from './roomMessage'
 
 export const logout = () => dispatch => {
   clearToken()
@@ -28,7 +30,8 @@ const setupSocketNotifications = (socket) => {
   socket.on('event-receive', (event) => {
     const {
       type,
-      data
+      data,
+      message
     } = JSON.parse(event)
 
     const {
@@ -52,6 +55,12 @@ const setupSocketNotifications = (socket) => {
       toast.info(firstName + ' ' + lastName + ' unmatched you', {
         className: styles.toastify
       })
+    } else if (type === EventType.EVENT_TYPE_MESSAGE) {
+      toast.info(firstName + ' ' + lastName + ' has send you a new message', {
+        className: styles.toastify
+      })
+
+      store.dispatch(setNewRoomMessage(message))
     }
   })
 }
