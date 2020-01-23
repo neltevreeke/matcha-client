@@ -14,7 +14,8 @@ import cx from 'classnames'
 
 const SelectedMatchProfile = ({
   selectedMatch,
-  className
+  className,
+  onDisconnect
 }) => {
   const dispatch = useDispatch()
   const user = useSelector(getUser)
@@ -53,11 +54,19 @@ const SelectedMatchProfile = ({
   }
 
   const handleOnDisconnectClick = selectedMatch => () => {
+    const hasConfirmed = window.confirm('Are you sure you want to unmatch this person?')
+
+    if (!hasConfirmed) {
+      return
+    }
+
     dispatch(connectedMatch({
       sourceUserId: user._id,
       likedUserId: selectedMatch._id,
       action: 'disconnect'
     }))
+
+    onDisconnect()
   }
 
   return (

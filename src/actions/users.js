@@ -15,6 +15,7 @@ import * as EventType from 'constants/EventType'
 import styles from '../styles/toastify.scss'
 import { store } from '../index'
 import { setNewRoomMessage } from './roomMessage'
+import { loadMatches } from 'actions/matches'
 import ToastifyBody from '../components/ToastifyBody/ToastifyBody'
 import React from 'react'
 
@@ -170,7 +171,8 @@ export const potentialMatches = () => async dispatch => {
 
 export const connectedMatch = (body) => async dispatch => {
   dispatch({
-    type: ActionTypes.CONNECTED_MATCH_START
+    type: ActionTypes.CONNECTED_MATCH_START,
+    payload: body
   })
 
   try {
@@ -180,6 +182,8 @@ export const connectedMatch = (body) => async dispatch => {
       type: ActionTypes.CONNECTED_MATCH_SUCCESS,
       payload: connectedMatches
     })
+
+    dispatch(loadMatches())
   } catch (error) {
     dispatch({
       type: ActionTypes.CONNECTED_MATCH_ERROR,

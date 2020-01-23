@@ -33,7 +33,7 @@ const FormInsertChatMessage = ({
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => {
+        render={() => {
           return (
             <Form className={styles.form}>
               <Field

@@ -40,15 +40,9 @@ const MatchesView = () => {
     selectedMatch
   ])
 
-  useEffect(() => {
-    if (!isLoaded || selectedMatch) {
-      return
-    }
-
-    setSelectedMatch(matches[0])
-  }, [
-    isLoaded
-  ])
+  const handleDisconnect = () => {
+    return setSelectedMatch(null)
+  }
 
   if (!isLoaded) {
     return (
@@ -70,6 +64,8 @@ const MatchesView = () => {
         <SelectedMatchProfile
           className={styles.selectedProfile}
           selectedMatch={selectedMatch?.likedUserId}
+          setSelectedMatch={setSelectedMatch}
+          onDisconnect={handleDisconnect}
         />
       </div>
     </Page>

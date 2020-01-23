@@ -38,5 +38,12 @@ export default createReducer(initialState, {
       isLoaded: true,
       error
     }
+  },
+  [ActionTypes.CONNECTED_MATCH_START]: (state, { payload }) => {
+    if (payload?.action !== 'disconnect') {
+      return state
+    }
+
+    return initialState
   }
 })
