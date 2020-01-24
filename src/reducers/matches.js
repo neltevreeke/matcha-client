@@ -19,12 +19,16 @@ export default createReducer(initialState, {
     }
   },
   [ActionTypes.MATCHES_LOAD_SUCCESS]: (state, { payload }) => {
+    const userMatches = payload
+    const [firstMatch] = userMatches
+
     return {
       ...state,
       isLoading: false,
       isLoaded: true,
       error: null,
-      userMatches: payload
+      userMatches,
+      selectedMatch: firstMatch
     }
   },
   [ActionTypes.MATCHES_LOAD_ERROR]: (state, { payload: error }) => {
