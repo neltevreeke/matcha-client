@@ -44,6 +44,7 @@ const FormInsertChatMessage = ({
                 className={styles.chatInput}
                 hideFieldError
                 hideFieldLabel
+                autoFocus
               />
 
               <Button

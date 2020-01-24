@@ -20,3 +20,12 @@ export const loadMatches = () => async dispatch => {
     })
   }
 }
+
+export const setSelectedMatch = selectedMatch => {
+  return {
+    type: ActionTypes.MATCHES_SET_SELECTED_MATCH,
+    payload: {
+      selectedMatch
+    }
+  }
+}

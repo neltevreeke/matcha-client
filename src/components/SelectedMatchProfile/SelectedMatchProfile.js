@@ -5,12 +5,15 @@ import Avatar from '../Avatar/Avatar'
 import Button from 'components/Button/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
-import { connectedMatch } from 'actions/users'
 import {
-  getUser,
+  matchConnect,
+  matchDisconnect
+} from 'actions/users'
+import {
   getConnectedMatches
 } from '../../selectors/user'
 import cx from 'classnames'
+import { getIsConnected } from '../../utils/matches'
 
 const SelectedMatchProfile = ({
   selectedMatch,
@@ -18,7 +21,6 @@ const SelectedMatchProfile = ({
   onDisconnect
 }) => {
   const dispatch = useDispatch()
-  const user = useSelector(getUser)
   const connectedMatches = useSelector(getConnectedMatches)
 
   if (!selectedMatch) {
@@ -36,21 +38,10 @@ const SelectedMatchProfile = ({
     fameRating
   } = selectedMatch
 
-  let isConnected = false
-
-  if (connectedMatches) {
-    for (const c of connectedMatches) {
-      if (potentialMatchId.toString() === c.likedUserId.toString()) {
-        isConnected = true
-      }
-    }
-  }
+  const isConnected = getIsConnected(potentialMatchId, connectedMatches)
 
   const handleOnConnectClick = selectedMatch => () => {
-    dispatch(connectedMatch({
-      sourceUserId: user._id,
-      likedUserId: selectedMatch._id
-    }))
+    dispatch(matchConnect(selectedMatch._id))
   }
 
   const handleOnDisconnectClick = selectedMatch => () => {
@@ -60,15 +51,9 @@ const SelectedMatchProfile = ({
       return
     }
 
-    dispatch(connectedMatch({
-      sourceUserId: user._id,
-      likedUserId: selectedMatch._id,
-      action: 'disconnect'
-    }))
+    dispatch(matchDisconnect(selectedMatch._id))
 
-    if (onDisconnect) {
-      onDisconnect()
-    }
+    onDisconnect && onDisconnect()
   }
 
   return (

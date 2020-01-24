@@ -123,33 +123,69 @@ export default createReducer(initialState, {
     }
   },
 
-  [ActionTypes.CONNECTED_MATCH_START]: (state) => {
-    return {
-      ...state,
-      connectedMatches: {
-        isLoading: true,
-        error: null,
-        connectedMatches: null
-      }
-    }
-  },
   [ActionTypes.CONNECTED_MATCH_SUCCESS]: (state, { payload }) => {
     return {
       ...state,
       connectedMatches: {
-        isLoading: false,
-        error: null,
         connectedMatches: payload
       }
     }
   },
-  [ActionTypes.CONNECTED_MATCH_ERROR]: (state, { payload: error }) => {
+
+  [ActionTypes.CONNECT_MATCH_START]: (state) => {
+    return {
+      ...state,
+      connectedMatches: {
+        isLoading: true,
+        error: null
+      }
+    }
+  },
+  [ActionTypes.CONNECT_MATCH_SUCCESS]: (state, { payload }) => {
     return {
       ...state,
       connectedMatches: {
         isLoading: false,
-        error,
-        connectedMatches: null
+        error: null,
+        connectedMatches: payload.connectedMatches
+      }
+    }
+  },
+  [ActionTypes.CONNECT_MATCH_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      connectedMatches: {
+        isLoading: false,
+        error
+      }
+    }
+  },
+
+  [ActionTypes.DISCONNECT_MATCH_START]: (state) => {
+    return {
+      ...state,
+      connectedMatches: {
+        isLoading: true,
+        error: null
+      }
+    }
+  },
+  [ActionTypes.DISCONNECT_MATCH_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      connectedMatches: {
+        isLoading: false,
+        error: null,
+        connectedMatches: payload.connectedMatches
+      }
+    }
+  },
+  [ActionTypes.DISCONNECT_MATCH_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      connectedMatches: {
+        isLoading: false,
+        error
       }
     }
   },

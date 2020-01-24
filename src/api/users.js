@@ -32,10 +32,21 @@ export const potentialMatches = () => {
   })
 }
 
-export const connectedMatch = (body) => {
-  return request('connected-matches', {
+export const matchConnect = (userId) => {
+  return request('matches', {
     method: 'POST',
-    body
+    body: {
+      userId
+    }
+  })
+}
+
+export const matchDisconnect = (userId) => {
+  return request('matches', {
+    method: 'DELETE',
+    body: {
+      userId
+    }
   })
 }
 

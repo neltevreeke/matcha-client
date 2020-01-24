@@ -15,7 +15,6 @@ import * as EventType from 'constants/EventType'
 import styles from '../styles/toastify.scss'
 import { store } from '../index'
 import { setNewRoomMessage } from './roomMessage'
-import { loadMatches } from 'actions/matches'
 import ToastifyBody from '../components/ToastifyBody/ToastifyBody'
 import React from 'react'
 
@@ -169,24 +168,53 @@ export const potentialMatches = () => async dispatch => {
   }
 }
 
-export const connectedMatch = (body) => async dispatch => {
+export const matchConnect = userId => async dispatch => {
   dispatch({
-    type: ActionTypes.CONNECTED_MATCH_START,
-    payload: body
+    type: ActionTypes.CONNECT_MATCH_START,
+    payload: {
+      userId
+    }
   })
 
   try {
-    const { connectedMatches } = await usersApi.connectedMatch(body)
+    const { connectedMatches, userMatches } = await usersApi.matchConnect(userId)
 
     dispatch({
-      type: ActionTypes.CONNECTED_MATCH_SUCCESS,
-      payload: connectedMatches
+      type: ActionTypes.CONNECT_MATCH_SUCCESS,
+      payload: {
+        connectedMatches,
+        userMatches
+      }
     })
-
-    dispatch(loadMatches())
   } catch (error) {
     dispatch({
-      type: ActionTypes.CONNECTED_MATCH_ERROR,
+      type: ActionTypes.CONNECT_MATCH_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const matchDisconnect = userId => async dispatch => {
+  dispatch({
+    type: ActionTypes.DISCONNECT_MATCH_START,
+    payload: {
+      userId
+    }
+  })
+
+  try {
+    const { connectedMatches, userMatches } = await usersApi.matchDisconnect(userId)
+
+    dispatch({
+      type: ActionTypes.DISCONNECT_MATCH_SUCCESS,
+      payload: {
+        connectedMatches,
+        userMatches
+      }
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.DISCONNECT_MATCH_ERROR,
       payload: error
     })
   }

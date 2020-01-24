@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styles from './MatchesView.scss'
 import Page from 'components/Page/Page'
 import MatchesList from '../MatchesList/MatchesList'
@@ -10,19 +10,21 @@ import {
 } from 'react-redux'
 import {
   getIsMatchesLoaded,
-  getMatches
+  getMatches,
+  getSelectedMatch
 } from 'selectors/matches'
 import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { loadMatches } from 'actions/matches'
-import { joinRoom } from '../../../../utils/sockets'
+import { joinRoom } from 'utils/sockets'
 import { loadRoomMessages } from 'actions/roomMessage'
-import { getRoomMessages } from '../../../../selectors/roomMessages'
+import { getRoomMessages } from 'selectors/roomMessages'
 
 const MatchesView = () => {
   const dispatch = useDispatch()
-  const [selectedMatch, setSelectedMatch] = useState(null)
   const isLoaded = useSelector(getIsMatchesLoaded)
   const matches = useSelector(getMatches)
+  const selectedMatch = useSelector(getSelectedMatch)
+
   const messages = useSelector(getRoomMessages)
 
   useEffect(() => {
@@ -40,8 +42,8 @@ const MatchesView = () => {
     selectedMatch
   ])
 
-  const handleDisconnect = () => {
-    return setSelectedMatch(null)
+  const setSelectedMatch = match => {
+    dispatch(setSelectedMatch(match))
   }
 
   if (!isLoaded) {
@@ -64,7 +66,6 @@ const MatchesView = () => {
         <SelectedMatchProfile
           className={styles.selectedProfile}
           selectedMatch={selectedMatch?.likedUserId}
-          onDisconnect={handleDisconnect}
         />
       </div>
     </Page>

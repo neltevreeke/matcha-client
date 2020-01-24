@@ -5,7 +5,8 @@ const initialState = {
   isLoaded: false,
   error: null,
   isLoading: false,
-  userMatches: null
+  userMatches: null,
+  selectedMatch: null
 }
 
 export default createReducer(initialState, {
@@ -32,6 +33,18 @@ export default createReducer(initialState, {
       isLoading: false,
       isLoaded: true,
       error
+    }
+  },
+  [ActionTypes.CONNECT_MATCH_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      userMatches: payload.userMatches
+    }
+  },
+  [ActionTypes.DISCONNECT_MATCH_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      userMatches: payload.userMatches
     }
   }
 })
