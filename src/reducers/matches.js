@@ -46,5 +46,11 @@ export default createReducer(initialState, {
       ...state,
       userMatches: payload.userMatches
     }
+  },
+  [ActionTypes.MATCHES_SET_SELECTED_MATCH]: (state, { payload }) => {
+    return {
+      ...state,
+      selectedMatch: payload.selectedMatch
+    }
   }
 })

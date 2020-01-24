@@ -14,7 +14,7 @@ import {
   getSelectedMatch
 } from 'selectors/matches'
 import PageSpinner from 'components/PageSpinner/PageSpinner'
-import { loadMatches } from 'actions/matches'
+import { loadMatches, setSelectedMatch } from 'actions/matches'
 import { joinRoom } from 'utils/sockets'
 import { loadRoomMessages } from 'actions/roomMessage'
 import { getRoomMessages } from 'selectors/roomMessages'
@@ -42,7 +42,7 @@ const MatchesView = () => {
     selectedMatch
   ])
 
-  const setSelectedMatch = match => {
+  const handleSetSelectedMatch = match => {
     dispatch(setSelectedMatch(match))
   }
 
@@ -57,7 +57,7 @@ const MatchesView = () => {
       <div className={styles.component}>
         <MatchesList
           matches={matches}
-          setSelectedMatch={setSelectedMatch}
+          onSelectedMatch={handleSetSelectedMatch}
         />
         <Chat
           messages={messages}

@@ -6,12 +6,12 @@ import { getOnlineUsers } from 'selectors/onlineUsers'
 
 const MatchesList = ({
   matches,
-  setSelectedMatch
+  onSelectedMatch
 }) => {
   const onlineUsers = useSelector(getOnlineUsers)
 
   const handleProfileOnClick = match => () => {
-    setSelectedMatch(match)
+    onSelectedMatch(match)
   }
 
   return (
