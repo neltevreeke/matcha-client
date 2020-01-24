@@ -39,11 +39,7 @@ export default createReducer(initialState, {
       error
     }
   },
-  [ActionTypes.CONNECTED_MATCH_START]: (state, { payload }) => {
-    if (payload?.action !== 'disconnect') {
-      return state
-    }
-
+  [ActionTypes.DISCONNECT_MATCH_SUCCESS]: () => {
     return initialState
   }
 })
