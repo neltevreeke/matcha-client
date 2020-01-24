@@ -46,9 +46,12 @@ export default createReducer(initialState, {
     }
   },
   [ActionTypes.DISCONNECT_MATCH_SUCCESS]: (state, { payload }) => {
+    const newSelectedMatch = payload.userMatches[0] || null
+
     return {
       ...state,
-      userMatches: payload.userMatches
+      userMatches: payload.userMatches,
+      selectedMatch: newSelectedMatch
     }
   },
   [ActionTypes.MATCHES_SET_SELECTED_MATCH]: (state, { payload }) => {
