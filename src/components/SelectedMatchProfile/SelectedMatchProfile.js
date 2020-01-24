@@ -15,8 +15,7 @@ import cx from 'classnames'
 const SelectedMatchProfile = ({
   selectedMatch,
   className,
-  onDisconnect,
-  room
+  onDisconnect
 }) => {
   const dispatch = useDispatch()
   const user = useSelector(getUser)
@@ -62,9 +61,8 @@ const SelectedMatchProfile = ({
     }
 
     dispatch(connectedMatch({
-      sourceUserId: user,
-      likedUserId: selectedMatch,
-      room,
+      sourceUserId: user._id,
+      likedUserId: selectedMatch._id,
       action: 'disconnect'
     }))
 

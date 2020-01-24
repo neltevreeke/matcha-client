@@ -64,8 +64,6 @@ const MatchesView = () => {
         <SelectedMatchProfile
           className={styles.selectedProfile}
           selectedMatch={selectedMatch?.likedUserId}
-          room={selectedMatch?.room}
-          setSelectedMatch={setSelectedMatch}
           onDisconnect={handleDisconnect}
         />
       </div>
