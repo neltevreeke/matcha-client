@@ -2,8 +2,9 @@ import React from 'react'
 import styles from './ToastifyBody.scss'
 import * as EventType from 'constants/EventType'
 import Avatar from '../Avatar/Avatar'
+import { loadMatches } from '../../actions/matches'
 
-const ToastifyBody = ({ data, type }) => {
+const ToastifyBody = ({ data, type, dispatch }) => {
   let notificationText
 
   const {
@@ -17,8 +18,12 @@ const ToastifyBody = ({ data, type }) => {
     notificationText = firstName + ' ' + lastName + ' connected you'
   } else if (type === EventType.EVENT_TYPE_MATCH) {
     notificationText = 'You have a new match with ' + firstName + ' ' + lastName
+
+    dispatch(loadMatches())
   } else if (type === EventType.EVENT_TYPE_UNMATCH) {
     notificationText = firstName + ' ' + lastName + ' unmatched you'
+
+    dispatch(loadMatches())
   } else if (type === EventType.EVENT_TYPE_MESSAGE) {
     notificationText = firstName + ' ' + lastName + ' has send you a new message'
   }

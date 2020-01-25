@@ -18,13 +18,13 @@ import { loadMatches, setSelectedMatch } from 'actions/matches'
 import { joinRoom } from 'utils/sockets'
 import { loadRoomMessages } from 'actions/roomMessage'
 import { getRoomMessages } from 'selectors/roomMessages'
+import * as ActionTypes from 'constants/ActionTypes'
 
 const MatchesView = () => {
   const dispatch = useDispatch()
   const isLoaded = useSelector(getIsMatchesLoaded)
   const matches = useSelector(getMatches)
   const selectedMatch = useSelector(getSelectedMatch)
-
   const messages = useSelector(getRoomMessages)
 
   useEffect(() => {
@@ -33,6 +33,9 @@ const MatchesView = () => {
 
   useEffect(() => {
     if (!selectedMatch) {
+      dispatch({
+        type: ActionTypes.ROOMMESSAGES_DUMP_MESSAGES
+      })
       return
     }
 

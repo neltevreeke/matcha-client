@@ -39,7 +39,7 @@ export default createReducer(initialState, {
       error
     }
   },
-  [ActionTypes.DISCONNECT_MATCH_SUCCESS]: () => {
+  [ActionTypes.ROOMMESSAGES_DUMP_MESSAGES]: () => {
     return initialState
   }
 })

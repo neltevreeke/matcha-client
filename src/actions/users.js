@@ -28,7 +28,7 @@ export const logout = () => dispatch => {
   history.push(Routes.HOME)
 }
 
-const setupSocketNotifications = (socket) => {
+const setupSocketNotifications = (socket, dispatch) => {
   socket.on('event-receive', (event) => {
     const {
       type,
@@ -40,6 +40,7 @@ const setupSocketNotifications = (socket) => {
       <ToastifyBody
         type={type}
         data={data}
+        dispatch={dispatch}
       />, {
         className: styles.toastify
       })
@@ -72,7 +73,7 @@ export const login = ({
     })
 
     const socket = await initSockets()
-    setupSocketNotifications(socket)
+    setupSocketNotifications(socket, dispatch)
 
     history.push(Routes.DASHBOARD)
   } catch (error) {
@@ -98,7 +99,7 @@ export const me = () => async dispatch => {
     const user = await usersApi.me()
 
     const socket = await initSockets()
-    setupSocketNotifications(socket)
+    setupSocketNotifications(socket, dispatch)
 
     const {
       lat,
