@@ -4,7 +4,7 @@ import * as ActionTypes from 'constants/ActionTypes'
 const initialState = {
   error: null,
   isLoading: false,
-  roomMessages: null,
+  roomMessages: [],
   isLoaded: false
 }
 
