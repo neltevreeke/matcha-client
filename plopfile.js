@@ -1,7 +1,7 @@
 const path = require('path')
 const paths = require('./scripts/utils/paths')
 const { getPagePrompt } = require('./scripts/utils/plop')
-const pascalCase = require('pascal-case')
+const { pascalCase } = require('pascal-case')
 
 const getRootDir = (answers) => {
   const {

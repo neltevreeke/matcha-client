@@ -79,6 +79,12 @@ const Header = () => {
         {isLoggedIn ? (
           <>
             <Link
+              to={Routes.HISTORY}
+              className={styles.link}
+            >
+              history
+            </Link>
+            <Link
               to={Routes.MATCHES}
               className={styles.link}
             >

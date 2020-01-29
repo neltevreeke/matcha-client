@@ -10,3 +10,5 @@ export const SETTINGS_LOCATION = `${SETTINGS}/location`
 export const SETTINGS_NOTIFICATIONS = `${SETTINGS}/notifications`
 
 export const MATCHES = '/matches'
+
+export const HISTORY = '/history'
