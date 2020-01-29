@@ -41,11 +41,12 @@ export const matchConnect = (userId) => {
   })
 }
 
-export const matchDisconnect = (userId) => {
+export const matchDisconnect = ({ userId, room }) => {
   return request('matches', {
     method: 'DELETE',
     body: {
-      userId
+      userId,
+      room
     }
   })
 }

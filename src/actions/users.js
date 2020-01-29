@@ -195,16 +195,20 @@ export const matchConnect = userId => async dispatch => {
   }
 }
 
-export const matchDisconnect = userId => async dispatch => {
+export const matchDisconnect = ({ userId, room }) => async dispatch => {
   dispatch({
     type: ActionTypes.DISCONNECT_MATCH_START,
     payload: {
-      userId
+      userId,
+      room
     }
   })
 
   try {
-    const { connectedMatches, userMatches } = await usersApi.matchDisconnect(userId)
+    const { connectedMatches, userMatches } = await usersApi.matchDisconnect({
+      userId,
+      room
+    })
 
     dispatch({
       type: ActionTypes.DISCONNECT_MATCH_SUCCESS,

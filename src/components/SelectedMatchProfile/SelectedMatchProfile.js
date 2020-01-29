@@ -27,6 +27,12 @@ const SelectedMatchProfile = ({
     return null
   }
 
+  const connectedMatchRoom = connectedMatches?.find(cM => {
+    if (cM.likedUserId === selectedMatch._id) {
+      return cM.room
+    }
+  })
+
   const {
     _id: potentialMatchId,
     firstName,
@@ -45,13 +51,16 @@ const SelectedMatchProfile = ({
   }
 
   const handleOnDisconnectClick = selectedMatch => () => {
-    const hasConfirmed = window.confirm('Are you sure you want to unmatch this person?')
+    const hasConfirmed = window.confirm('Are you sure you want to disconnect this person?')
 
     if (!hasConfirmed) {
       return
     }
 
-    dispatch(matchDisconnect(selectedMatch._id))
+    dispatch(matchDisconnect({
+      userId: selectedMatch._id,
+      room: connectedMatchRoom.room
+    }))
 
     onDisconnect && onDisconnect()
   }

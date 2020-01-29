@@ -3,6 +3,7 @@ import styles from './ToastifyBody.scss'
 import * as EventType from 'constants/EventType'
 import Avatar from '../Avatar/Avatar'
 import { loadMatches } from '../../actions/matches'
+import { getConnectedMatches } from 'actions/users'
 
 const ToastifyBody = ({ data, type, dispatch }) => {
   let notificationText
@@ -24,6 +25,7 @@ const ToastifyBody = ({ data, type, dispatch }) => {
     notificationText = firstName + ' ' + lastName + ' unmatched you'
 
     dispatch(loadMatches())
+    dispatch(getConnectedMatches())
   } else if (type === EventType.EVENT_TYPE_MESSAGE) {
     notificationText = firstName + ' ' + lastName + ' has send you a new message'
   }
