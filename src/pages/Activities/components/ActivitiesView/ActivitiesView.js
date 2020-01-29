@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from './HistoryView.scss'
+import styles from './ActivitiesView.scss'
 import Page from 'components/Page/Page'
 import ActionList from '../ActionList/ActionList'
 import NotificationList from '../NotificationList/NotificationList'
 
-const HistoryView = () => {
+const Activities = () => {
   // get notifications
 
   // get your actions
@@ -19,4 +19,4 @@ const HistoryView = () => {
   )
 }
 
-export default HistoryView
+export default Activities

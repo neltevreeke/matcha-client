@@ -9,7 +9,7 @@ import Home from './Home'
 import Dashboard from './Dashboard'
 import Settings from './Settings'
 import Matches from './Matches'
-import History from './History'
+import Activities from './Activities'
 import PageSpinner from '../components/PageSpinner/PageSpinner'
 
 export default (
@@ -25,7 +25,7 @@ export default (
           {Dashboard}
           {Settings}
           {Matches}
-          {History}
+          {Activities}
         </Switch>
       </Suspense>
     </ModalProvider>

@@ -79,10 +79,10 @@ const Header = () => {
         {isLoggedIn ? (
           <>
             <Link
-              to={Routes.HISTORY}
+              to={Routes.ACTIVITIES}
               className={styles.link}
             >
-              history
+              activities
             </Link>
             <Link
               to={Routes.MATCHES}

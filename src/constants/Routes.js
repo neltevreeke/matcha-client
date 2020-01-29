@@ -11,4 +11,4 @@ export const SETTINGS_NOTIFICATIONS = `${SETTINGS}/notifications`
 
 export const MATCHES = '/matches'
 
-export const HISTORY = '/history'
+export const ACTIVITIES = '/activities'
