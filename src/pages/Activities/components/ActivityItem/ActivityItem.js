@@ -17,9 +17,15 @@ const ActivityItem = ({
   const myAction = userId._id === user._id
 
   if (myAction && type === ActivityType.ACTIVITY_TYPE_PROFILE_VIEW) {
-    text = 'You viewed the profile of ' + targetUserId.firstName + ' ' + targetUserId.lastName
+    // text = 'You viewed the profile of ' + targetUserId.firstName + ' ' + targetUserId.lastName
   } else if (!myAction && type === ActivityType.ACTIVITY_TYPE_PROFILE_VIEW) {
-    text = userId.firstName + ' ' + userId.lastName + ' viewed your profile'
+    // text = userId.firstName + ' ' + userId.lastName + ' viewed your profile'
+  }
+
+  if (myAction && type === ActivityType.ACTIVITY_TYPE_CONNECT) {
+    // text = 'You connected ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (!myAction && type === ActivityType.ACTIVITY_TYPE_CONNECT) {
+    // text = userId.firstName + ' ' + userId.lastName + ' connected you'
   }
 
   return (

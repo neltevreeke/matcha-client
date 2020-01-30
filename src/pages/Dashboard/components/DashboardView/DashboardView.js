@@ -4,24 +4,15 @@ import Page from 'components/Page/Page'
 import PotentialMatches from '../PotentialMatches/PotentialMatches'
 import SelectedMatchProfile from '../../../../components/SelectedMatchProfile/SelectedMatchProfile'
 import * as EventType from 'constants/EventType'
-import * as ActivityType from 'constants/ActivityType'
 import { sendEvent } from '../../../../utils/sockets'
-import { postNewActivity } from 'actions/activity'
-import { useDispatch } from 'react-redux'
 
 const DashboardView = () => {
   const [selectedMatch, setSelectedMatch] = useState(null)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!selectedMatch) {
       return
     }
-
-    postNewActivity(dispatch, {
-      targetUserId: selectedMatch._id,
-      type: ActivityType.ACTIVITY_TYPE_PROFILE_VIEW
-    })
 
     sendEvent({
       type: EventType.EVENT_TYPE_PROFILE_VIEW,
