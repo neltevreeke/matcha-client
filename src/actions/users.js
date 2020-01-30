@@ -113,6 +113,7 @@ export const me = () => async dispatch => {
     }))
 
     dispatch(getConnectedMatches())
+    dispatch(getActivities())
 
     dispatch({
       type: ActionTypes.ME_SUCCESS,
@@ -220,6 +221,26 @@ export const matchDisconnect = ({ userId, room }) => async dispatch => {
   } catch (error) {
     dispatch({
       type: ActionTypes.DISCONNECT_MATCH_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const getActivities = () => async dispatch => {
+  dispatch({
+    type: ActionTypes.ACTIVITIES_LOAD_START
+  })
+
+  try {
+    const { activities } = await usersApi.getActivities()
+
+    dispatch({
+      type: ActionTypes.ACTIVITIES_LOAD_SUCCESS,
+      payload: activities
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.ACTIVITIES_LOAD_ERROR,
       payload: error
     })
   }

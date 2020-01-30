@@ -56,3 +56,9 @@ export const getConnectedMatches = () => {
     method: 'GET'
   })
 }
+
+export const getActivities = () => {
+  return request('activities', {
+    method: 'GET'
+  })
+}
