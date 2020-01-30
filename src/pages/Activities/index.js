@@ -8,7 +8,7 @@ export default (
   <MainRoute
     exact
     isProtected
-    path={Routes.HISTORY}
+    path={Routes.ACTIVITIES}
     component={HistoryView}
   />
 )

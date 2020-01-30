@@ -1,5 +1,37 @@
 @import 'base.scss';
 
-.component {
-  // Empty
+.myActionContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: $border-radius;
+  border: 2px solid $color-primary;
+  align-items: center;
+  transition: background-color $transition-speed, color $transition-speed;
+
+  &:hover {
+    background-color: $color-primary;
+    color: white;
+  }
 }
+
+.oppositeActionContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: $border-radius;
+  border: 2px solid $gray-400;
+  align-items: center;
+  transition: background-color $transition-speed;
+
+  &:hover {
+    background-color: $gray-400;
+  }
+}
+
+.avatarContainer {
+  margin-right: 1rem;
+}
+

@@ -8,6 +8,12 @@ const initialState = {
 }
 
 export default createReducer(initialState, {
+  [ActionTypes.ACTIVITIES_SET_NEW]: (state, { payload: newActivity }) => {
+    return {
+      ...state,
+      activities: [newActivity, ...state.activities]
+    }
+  },
   [ActionTypes.ACTIVITIES_LOAD_START]: (state) => {
     return {
       ...state,
