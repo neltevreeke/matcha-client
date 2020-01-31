@@ -2,7 +2,9 @@ import * as ActionTypes from '../constants/ActionTypes'
 import * as usersApi from '../api/users'
 import * as activityApi from '../api/activities'
 
-export const getActivities = () => async dispatch => {
+export const getActivities = ({
+  shouldMarkAsSeen = false
+} = {}) => async dispatch => {
   dispatch({
     type: ActionTypes.ACTIVITIES_LOAD_START
   })
@@ -14,9 +16,33 @@ export const getActivities = () => async dispatch => {
       type: ActionTypes.ACTIVITIES_LOAD_SUCCESS,
       payload: activities
     })
+
+    if (shouldMarkAsSeen) {
+      const activityIds = activities.map(a => a._id)
+      dispatch(markActivitiesSeen(activityIds))
+    }
   } catch (error) {
     dispatch({
       type: ActionTypes.ACTIVITIES_LOAD_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const markActivitiesSeen = activityIds => async dispatch => {
+  dispatch({
+    type: ActionTypes.ACTIVITIES_SEEN_START
+  })
+
+  try {
+    await usersApi.markActivitiesSeen(activityIds)
+
+    dispatch({
+      type: ActionTypes.ACTIVITIES_SEEN_SUCCESS
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.ACTIVITIES_SEEN_ERROR,
       payload: error
     })
   }

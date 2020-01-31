@@ -62,3 +62,12 @@ export const getActivities = () => {
     method: 'GET'
   })
 }
+
+export const markActivitiesSeen = (activityIds) => {
+  return request('activities/seen', {
+    method: 'POST',
+    body: {
+      activityIds
+    }
+  })
+}

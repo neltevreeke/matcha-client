@@ -13,7 +13,9 @@ const Activities = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getActivities())
+    dispatch(getActivities({
+      shouldMarkAsSeen: true
+    }))
   }, [])
 
   if (isLoading) {
