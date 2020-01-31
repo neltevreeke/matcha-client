@@ -13,6 +13,7 @@ import {
 import PotentialMatch from '../PotentialMatch/PotentialMatch'
 import PageSpinner from 'components/PageSpinner/PageSpinner'
 import { getOnlineUsers } from 'selectors/onlineUsers'
+import PotentialMatchesFilter from '../PotentialMatchesFilter/PotentialMatchesFilter'
 
 const PotentialMatches = ({
   setSelectedMatch,
@@ -45,21 +46,24 @@ const PotentialMatches = ({
   }
 
   return (
-    <div className={styles.component}>
-      {potentialMatchesList.map((potentialMatch, index) => {
-        const isConnected = connectedMatches?.some(connectedMatch => connectedMatch.likedUserId === potentialMatch._id)
+    <>
+      <PotentialMatchesFilter />
+      <div className={styles.component}>
+        {potentialMatchesList.map((potentialMatch, index) => {
+          const isConnected = connectedMatches?.some(connectedMatch => connectedMatch.likedUserId === potentialMatch._id)
 
-        return (
-          <PotentialMatch
-            onlineUsers={onlineUsers}
-            key={index}
-            potentialMatch={potentialMatch}
-            onClick={handlePotentialMatchOnClick(potentialMatch)}
-            isConnected={isConnected}
-          />
-        )
-      })}
-    </div>
+          return (
+            <PotentialMatch
+              onlineUsers={onlineUsers}
+              key={index}
+              potentialMatch={potentialMatch}
+              onClick={handlePotentialMatchOnClick(potentialMatch)}
+              isConnected={isConnected}
+            />
+          )
+        })}
+      </div>
+    </>
   )
 }
 
