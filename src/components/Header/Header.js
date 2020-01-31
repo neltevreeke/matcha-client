@@ -16,6 +16,7 @@ import { getIsMenuOpen } from 'selectors/menu'
 
 import { menuOpen, menuClose } from 'actions/menu'
 import Avatar from '../Avatar/Avatar'
+import HeaderNotifiableLink from '../HeaderNotifiableLink/HeaderNotifiableLink'
 
 const Header = () => {
   const user = useSelector(getUser)
@@ -78,12 +79,11 @@ const Header = () => {
       <div className={styles.controls}>
         {isLoggedIn ? (
           <>
-            <Link
+            <HeaderNotifiableLink
+              unreadCount={6}
               to={Routes.ACTIVITIES}
-              className={styles.link}
-            >
-              activities
-            </Link>
+              label='activities'
+            />
             <Link
               to={Routes.MATCHES}
               className={styles.link}
