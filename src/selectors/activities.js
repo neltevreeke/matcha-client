@@ -10,7 +10,7 @@ export const getUnreadActivitiesCount = state => {
 
   return activities
     .reduce((output, currentActivity) => {
-      if (!currentActivity?.seenBy?.includes(userId)) {
+      if (!currentActivity?.seenBy?.some(u => u._id === userId)) {
         output++
       }
 
