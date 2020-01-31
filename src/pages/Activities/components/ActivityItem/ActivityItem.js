@@ -5,73 +5,66 @@ import { getUser } from 'selectors/user'
 import Avatar from '../../../../components/Avatar/Avatar'
 import * as ActivityType from '../../../../constants/ActivityType'
 
-const ActivityItem = ({
-  userId,
-  targetUserId,
-  type
-}) => {
-  const user = useSelector(getUser)
-  let text
-
-  const myAction = userId._id !== user._id
+const getText = (user, userId, type, targetUserId) => {
+  const isOwner = userId._id !== user._id
   const profileView = type === ActivityType.ACTIVITY_TYPE_PROFILE_VIEW
   const connect = type === ActivityType.ACTIVITY_TYPE_CONNECT
   const disconnect = type === ActivityType.ACTIVITY_TYPE_DISCONNECT
   const match = type === ActivityType.ACTIVITY_TYPE_MATCH
   const unmatch = type === ActivityType.ACTIVITY_TYPE_UNMATCH
 
-  if (!myAction && profileView) {
-    text = 'You viewed the profile of ' + targetUserId.firstName + ' ' + targetUserId.lastName
-  } else if (myAction && profileView) {
-    text = userId.firstName + ' ' + userId.lastName + ' viewed your profile'
+  if (!isOwner && profileView) {
+    return 'You viewed the profile of ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (isOwner && profileView) {
+    return userId.firstName + ' ' + userId.lastName + ' viewed your profile'
   }
 
-  if (!myAction && connect) {
-    text = 'You connected ' + targetUserId.firstName + ' ' + targetUserId.lastName
-  } else if (myAction && connect) {
-    text = userId.firstName + ' ' + userId.lastName + ' connected you'
+  if (!isOwner && connect) {
+    return 'You connected ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (isOwner && connect) {
+    return userId.firstName + ' ' + userId.lastName + ' connected you'
   }
 
-  if (!myAction && disconnect) {
-    text = 'You disconnected with ' + targetUserId.firstName + ' ' + targetUserId.lastName
-  } else if (myAction && disconnect) {
-    text = userId.firstName + ' ' + userId.lastName + ' disconnected with you'
+  if (!isOwner && disconnect) {
+    return 'You disconnected with ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (isOwner && disconnect) {
+    return userId.firstName + ' ' + userId.lastName + ' disconnected with you'
   }
 
-  if (!myAction && match) {
-    text = 'You matched with ' + targetUserId.firstName + ' ' + targetUserId.lastName
-  } else if (myAction && match) {
-    text = userId.firstName + ' ' + userId.lastName + ' matched with you'
+  if (!isOwner && match) {
+    return 'You matched with ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (isOwner && match) {
+    return userId.firstName + ' ' + userId.lastName + ' matched with you'
   }
 
-  if (!myAction && unmatch) {
-    text = 'You unmatched with ' + targetUserId.firstName + ' ' + targetUserId.lastName
-  } else if (myAction && unmatch) {
-    text = userId.firstName + ' ' + userId.lastName + ' unmatched with you'
+  if (!isOwner && unmatch) {
+    return 'You unmatched with ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (isOwner && unmatch) {
+    return userId.firstName + ' ' + userId.lastName + ' unmatched with you'
   }
+}
+
+const ActivityItem = ({
+  userId,
+  targetUserId,
+  type
+}) => {
+  const user = useSelector(getUser)
+  const text = getText(user, userId, type, targetUserId)
+  const isOwner = userId._id !== user._id
 
   return (
-    (myAction ? (
-      <div className={styles.myActionContainer}>
-        <div className={styles.avatarContainer}>
-          <Avatar
-            user={userId}
-            size={Avatar.SIZE_S}
-          />
-        </div>
-        <p>{text}</p>
+    <div
+      className={isOwner ? styles.myActionContainer : styles.oppositeActionContainer}
+    >
+      <div className={styles.avatarContainer}>
+        <Avatar
+          user={userId}
+          size={Avatar.SIZE_S}
+        />
       </div>
-    ) : (
-      <div className={styles.oppositeActionContainer}>
-        <div className={styles.avatarContainer}>
-          <Avatar
-            user={userId}
-            size={Avatar.SIZE_S}
-          />
-        </div>
-        <p>{text}</p>
-      </div>
-    ))
+      <p>{text}</p>
+    </div>
   )
 }
 

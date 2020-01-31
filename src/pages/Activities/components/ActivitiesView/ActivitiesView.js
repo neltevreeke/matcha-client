@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styles from './ActivitiesView.scss'
 import Page from 'components/Page/Page'
-import ActivityLog from '../AcvitiyLog/ActivityLog'
+import ActivityLog from '../ActivityLog/ActivityLog'
 import { getActivitiesList, getActivitiesIsLoading } from 'selectors/activities'
 import { useDispatch, useSelector } from 'react-redux'
 import PageSpinner from 'components/PageSpinner/PageSpinner'

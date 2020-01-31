@@ -7,7 +7,9 @@ const ActivityLog = ({
 }) => {
   return (
     <div className={styles.component}>
-      <p className={styles.title}>Your activity log</p>
+      <p className={styles.title}>
+        Your activity log
+      </p>
       {activities.map((activity, index) => {
         const {
           userId,

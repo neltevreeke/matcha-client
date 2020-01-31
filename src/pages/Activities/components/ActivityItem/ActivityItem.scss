@@ -9,11 +9,6 @@
   border: 2px solid $color-primary;
   align-items: center;
   transition: background-color $transition-speed, color $transition-speed;
-
-  &:hover {
-    background-color: $color-primary;
-    color: white;
-  }
 }
 
 .oppositeActionContainer {
@@ -25,10 +20,6 @@
   border: 2px solid $gray-400;
   align-items: center;
   transition: background-color $transition-speed;
-
-  &:hover {
-    background-color: $gray-400;
-  }
 }
 
 .avatarContainer {
