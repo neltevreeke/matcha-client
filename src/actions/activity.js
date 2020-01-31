@@ -35,10 +35,11 @@ export const markActivitiesSeen = activityIds => async dispatch => {
   })
 
   try {
-    await usersApi.markActivitiesSeen(activityIds)
+    const { activities } = await usersApi.markActivitiesSeen(activityIds)
 
     dispatch({
-      type: ActionTypes.ACTIVITIES_SEEN_SUCCESS
+      type: ActionTypes.ACTIVITIES_SEEN_SUCCESS,
+      payload: activities
     })
   } catch (error) {
     dispatch({

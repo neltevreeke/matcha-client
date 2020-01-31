@@ -27,6 +27,12 @@ export default createReducer(initialState, {
       activities
     }
   },
+  [ActionTypes.ACTIVITIES_SEEN_SUCCESS]: (state, { payload: activities }) => {
+    return {
+      ...state,
+      activities
+    }
+  },
   [ActionTypes.ACTIVITIES_LOAD_ERROR]: (state, { payload: error }) => {
     return {
       ...state,
