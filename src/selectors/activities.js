@@ -5,12 +5,17 @@ export const getActivitiesIsLoading = state => state.activities.isLoading
 
 export const getUnreadActivitiesCount = state => {
   const user = getUser(state)
+
+  if (!user) {
+    return null
+  }
+
   const userId = user._id
   const activities = getActivitiesList(state)
 
   return activities
     .reduce((output, currentActivity) => {
-      if (!currentActivity?.seenBy?.some(u => u._id === userId)) {
+      if (!currentActivity?.seenBy?.some(u => u._id === userId) && currentActivity.userId._id !== userId) {
         output++
       }
 
