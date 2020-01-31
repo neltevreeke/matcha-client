@@ -17,10 +17,12 @@ import { getIsMenuOpen } from 'selectors/menu'
 import { menuOpen, menuClose } from 'actions/menu'
 import Avatar from '../Avatar/Avatar'
 import HeaderNotifiableLink from '../HeaderNotifiableLink/HeaderNotifiableLink'
+import { getUnreadActivitiesCount } from '../../selectors/activities'
 
 const Header = () => {
   const user = useSelector(getUser)
   const isMenuOpen = useSelector(getIsMenuOpen)
+  const unreadActivitiesCount = useSelector(getUnreadActivitiesCount)
   const dispatch = useDispatch()
   const isLoggedIn = !!user
 
@@ -80,7 +82,7 @@ const Header = () => {
         {isLoggedIn ? (
           <>
             <HeaderNotifiableLink
-              unreadCount={6}
+              unreadCount={unreadActivitiesCount}
               to={Routes.ACTIVITIES}
               label='activities'
             />
