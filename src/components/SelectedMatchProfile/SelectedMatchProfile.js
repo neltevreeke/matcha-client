@@ -10,10 +10,13 @@ import {
   matchDisconnect
 } from 'actions/users'
 import {
-  getConnectedMatches
+  getConnectedMatches,
+  getUser
 } from '../../selectors/user'
 import cx from 'classnames'
 import { getIsConnected } from '../../utils/matches'
+import * as ActivityType from '../../constants/ActivityType'
+import { postNewActivity } from 'actions/activity'
 
 const SelectedMatchProfile = ({
   selectedMatch,
@@ -22,6 +25,7 @@ const SelectedMatchProfile = ({
 }) => {
   const dispatch = useDispatch()
   const connectedMatches = useSelector(getConnectedMatches)
+  const user = useSelector(getUser)
 
   if (!selectedMatch) {
     return null
@@ -48,6 +52,12 @@ const SelectedMatchProfile = ({
 
   const handleOnConnectClick = selectedMatch => () => {
     dispatch(matchConnect(selectedMatch._id))
+
+    dispatch(postNewActivity({
+      type: ActivityType.ACTIVITY_TYPE_CONNECT,
+      targetUserId: selectedMatch._id,
+      userId: user._id
+    }))
   }
 
   const handleOnDisconnectClick = selectedMatch => () => {
@@ -60,6 +70,12 @@ const SelectedMatchProfile = ({
     dispatch(matchDisconnect({
       userId: selectedMatch._id,
       room: connectedMatchRoom.room
+    }))
+
+    dispatch(postNewActivity({
+      type: ActivityType.ACTIVITY_TYPE_DISCONNECT,
+      targetUserId: selectedMatch._id,
+      userId: user._id
     }))
 
     onDisconnect && onDisconnect()

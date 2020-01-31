@@ -1,19 +1,34 @@
 import * as ActionTypes from '../constants/ActionTypes'
-import request from '../utils/request'
+import * as usersApi from '../api/users'
+import * as activityApi from '../api/activities'
 
-export const setNewActivity = async (dispatch, newActivity) => {
+export const getActivities = () => async dispatch => {
   dispatch({
-    type: ActionTypes.ACTIVITIES_SET_NEW,
-    payload: newActivity
+    type: ActionTypes.ACTIVITIES_LOAD_START
   })
+
+  try {
+    const { activities } = await usersApi.getActivities()
+
+    dispatch({
+      type: ActionTypes.ACTIVITIES_LOAD_SUCCESS,
+      payload: activities
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.ACTIVITIES_LOAD_ERROR,
+      payload: error
+    })
+  }
 }
 
-export const postNewActivity = async (dispatch, newActivity) => {
+export const postNewActivity = newActivity => async dispatch => {
+  dispatch({
+    type: ActionTypes.ACTIVITIES_LOAD_START
+  })
+
   try {
-    const { activities } = await request('activities', {
-      method: 'POST',
-      body: newActivity
-    })
+    const { activities } = await activityApi.newActivity(newActivity)
 
     dispatch({
       type: ActionTypes.ACTIVITIES_LOAD_SUCCESS,

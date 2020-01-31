@@ -17,6 +17,7 @@ import { store } from '../index'
 import { setNewRoomMessage } from './roomMessage'
 import ToastifyBody from '../components/ToastifyBody/ToastifyBody'
 import React from 'react'
+import { getActivities } from 'actions/activity'
 
 export const logout = () => dispatch => {
   clearToken()
@@ -221,26 +222,6 @@ export const matchDisconnect = ({ userId, room }) => async dispatch => {
   } catch (error) {
     dispatch({
       type: ActionTypes.DISCONNECT_MATCH_ERROR,
-      payload: error
-    })
-  }
-}
-
-export const getActivities = () => async dispatch => {
-  dispatch({
-    type: ActionTypes.ACTIVITIES_LOAD_START
-  })
-
-  try {
-    const { activities } = await usersApi.getActivities()
-
-    dispatch({
-      type: ActionTypes.ACTIVITIES_LOAD_SUCCESS,
-      payload: activities
-    })
-  } catch (error) {
-    dispatch({
-      type: ActionTypes.ACTIVITIES_LOAD_ERROR,
       payload: error
     })
   }

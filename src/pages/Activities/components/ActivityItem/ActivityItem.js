@@ -9,23 +9,31 @@ const ActivityItem = ({
   userId,
   targetUserId,
   type
-  // date
 }) => {
   const user = useSelector(getUser)
   let text
 
-  const myAction = userId._id === user._id
+  const myAction = userId._id !== user._id
+  const profileView = type === ActivityType.ACTIVITY_TYPE_PROFILE_VIEW
+  const connect = type === ActivityType.ACTIVITY_TYPE_CONNECT
+  const disconnect = type === ActivityType.ACTIVITY_TYPE_DISCONNECT
 
-  if (myAction && type === ActivityType.ACTIVITY_TYPE_PROFILE_VIEW) {
-    // text = 'You viewed the profile of ' + targetUserId.firstName + ' ' + targetUserId.lastName
-  } else if (!myAction && type === ActivityType.ACTIVITY_TYPE_PROFILE_VIEW) {
-    // text = userId.firstName + ' ' + userId.lastName + ' viewed your profile'
+  if (!myAction && profileView) {
+    text = 'You viewed the profile of ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (myAction && profileView) {
+    text = userId.firstName + ' ' + userId.lastName + ' viewed your profile'
   }
 
-  if (myAction && type === ActivityType.ACTIVITY_TYPE_CONNECT) {
-    // text = 'You connected ' + targetUserId.firstName + ' ' + targetUserId.lastName
-  } else if (!myAction && type === ActivityType.ACTIVITY_TYPE_CONNECT) {
-    // text = userId.firstName + ' ' + userId.lastName + ' connected you'
+  if (!myAction && connect) {
+    text = 'You connected ' + targetUserId.lastName + ' ' + targetUserId.lastName
+  } else if (myAction && connect) {
+    text = userId.firstName + ' ' + userId.lastName + ' connected you'
+  }
+
+  if (!myAction && disconnect) {
+    text = 'You disconnected with ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (myAction && disconnect) {
+    text = userId.firstName + ' ' + userId.lastName + ' disconnected with you'
   }
 
   return (
