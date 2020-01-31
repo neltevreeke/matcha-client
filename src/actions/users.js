@@ -153,13 +153,15 @@ export const update = (body) => async dispatch => {
   }
 }
 
-export const potentialMatches = () => async dispatch => {
+export const potentialMatches = ({ sortBy }) => async dispatch => {
   dispatch({
     type: ActionTypes.POTENTIAL_MATCHES_START
   })
 
   try {
-    const { filteredPotentialMatches } = await usersApi.potentialMatches()
+    const { filteredPotentialMatches } = await usersApi.potentialMatches({
+      sortBy
+    })
 
     dispatch({
       type: ActionTypes.POTENTIAL_MATCHES_SUCCESS,

@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react'
+import React, {
+  useEffect,
+  useState
+} from 'react'
 import styles from './PotentialMatches.scss'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -25,10 +28,15 @@ const PotentialMatches = ({
   const isLoaded = useSelector(getPotentialMatchesIsLoaded)
   const onlineUsers = useSelector(getOnlineUsers)
   const connectedMatches = useSelector(getConnectedMatches)
+  const [sortBy, setSortBy] = useState(null)
 
   useEffect(() => {
-    dispatch(potentialMatches())
-  }, [])
+    dispatch(potentialMatches({
+      sortBy
+    }))
+  }, [
+    sortBy
+  ])
 
   if (!isLoaded) {
     return (
@@ -47,7 +55,10 @@ const PotentialMatches = ({
 
   return (
     <>
-      <PotentialMatchesFilter />
+      <PotentialMatchesFilter
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+      />
       <div className={styles.component}>
         {potentialMatchesList.map((potentialMatch, index) => {
           const isConnected = connectedMatches?.some(connectedMatch => connectedMatch.likedUserId === potentialMatch._id)

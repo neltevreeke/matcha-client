@@ -26,8 +26,8 @@ export const update = (body) => {
   })
 }
 
-export const potentialMatches = () => {
-  return request('potential-matches', {
+export const potentialMatches = ({ sortBy }) => {
+  return request(`potential-matches?sortBy=${sortBy}`, {
     method: 'GET'
   })
 }

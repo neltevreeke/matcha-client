@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './PotentialMatchesFilter.scss'
 import { Select } from 'components/FormElements'
 
@@ -16,9 +16,10 @@ const sortByOptions = [{
   value: 'tags-in-common'
 }]
 
-const PotentialMatchesFilter = () => {
-  const [sortBy, setSortBy] = useState(null)
-
+const PotentialMatchesFilter = ({
+  sortBy,
+  setSortBy
+}) => {
   const handleSetFieldValue = (name, value) => {
     setSortBy(value)
   }
