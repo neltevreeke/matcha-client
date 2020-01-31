@@ -11,20 +11,10 @@ const ActivityLog = ({
         Your activity log
       </p>
       {activities.map((activity, index) => {
-        const {
-          userId,
-          targetUserId,
-          type,
-          createdOn
-        } = activity
-
         return (
           <ActivityItem
             key={index}
-            userId={userId}
-            targetUserId={targetUserId}
-            type={type}
-            date={createdOn}
+            activity={activity}
           />
         )
       })}

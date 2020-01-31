@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { getUser } from 'selectors/user'
 import Avatar from '../../../../components/Avatar/Avatar'
 import * as ActivityType from '../../../../constants/ActivityType'
+import moment from 'moment'
 
 const getText = (user, userId, type, targetUserId) => {
   const isOwner = userId._id !== user._id
@@ -45,10 +46,16 @@ const getText = (user, userId, type, targetUserId) => {
 }
 
 const ActivityItem = ({
-  userId,
-  targetUserId,
-  type
+  activity
 }) => {
+  const {
+    userId,
+    targetUserId,
+    type,
+    createdOn
+  } = activity
+
+  const mDate = moment.utc(createdOn)
   const user = useSelector(getUser)
   const text = getText(user, userId, type, targetUserId)
   const isOwner = userId._id !== user._id
@@ -63,7 +70,14 @@ const ActivityItem = ({
           size={Avatar.SIZE_S}
         />
       </div>
-      <p>{text}</p>
+      <div className={styles.info}>
+        <div className={styles.activityText}>
+          {text}
+        </div>
+        <div className={styles.activityDate}>
+          {mDate.format('DD-MM-YYYY HH:mm')}
+        </div>
+      </div>
     </div>
   )
 }

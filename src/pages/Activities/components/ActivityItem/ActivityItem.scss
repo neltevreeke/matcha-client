@@ -26,3 +26,15 @@
   margin-right: 1rem;
 }
 
+.activityInfo {
+  display: flex;
+}
+
+.activityText {
+  font-weight: 700;
+}
+
+.activityDate {
+  font-size: .8rem;
+  color: $gray-700;
+}
