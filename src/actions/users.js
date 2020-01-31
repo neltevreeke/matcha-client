@@ -48,6 +48,8 @@ const setupSocketNotifications = (socket, dispatch) => {
 
     if (type === EventType.EVENT_TYPE_MESSAGE) {
       store.dispatch(setNewRoomMessage(message))
+    } else {
+      store.dispatch(getActivities())
     }
   })
 }
