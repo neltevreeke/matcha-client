@@ -37,8 +37,8 @@ const Select = ({
   form,
   ...props
 }) => {
-  const hasTouched = !!form.touched[field.name]
-  const hasError = !!form.errors[field.name]
+  const hasTouched = form?.touched && !!form.touched[field.name]
+  const hasError = form?.errors && !!form.errors[field.name]
 
   field.value = getValueFromOptions(props.options, field.value)
 
