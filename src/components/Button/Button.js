@@ -12,11 +12,12 @@ const Button = ({
   variant = VARIANT_TRANSPARENT,
   className,
   isLoading,
+  hasPhoto,
   ...props
 }) => {
   return (
     <button
-      disabled={isLoading}
+      disabled={isLoading || hasPhoto}
       className={cx(styles.component, {
         [styles[`variant--${variant}`]]: variant,
         [className]: className

@@ -17,6 +17,7 @@ import cx from 'classnames'
 import { getIsConnected } from '../../utils/matches'
 import * as ActivityType from '../../constants/ActivityType'
 import { postNewActivity } from 'actions/activity'
+import moment from 'moment'
 
 const SelectedMatchProfile = ({
   selectedMatch,
@@ -31,12 +32,6 @@ const SelectedMatchProfile = ({
     return null
   }
 
-  const connectedMatchRoom = connectedMatches?.find(cM => {
-    if (cM.likedUserId === selectedMatch._id) {
-      return cM.room
-    }
-  })
-
   const {
     _id: potentialMatchId,
     firstName,
@@ -45,10 +40,19 @@ const SelectedMatchProfile = ({
     biography,
     photos,
     interests,
-    fameRating
+    fameRating,
+    lastSeen
   } = selectedMatch
 
+  const connectedMatchRoom = connectedMatches?.find(cM => {
+    if (cM.likedUserId === selectedMatch._id) {
+      return cM.room
+    }
+  })
+
   const isConnected = getIsConnected(potentialMatchId, connectedMatches)
+  const hasPhoto = user.photos.length < 0 || user.photos.length === 0
+  const mDate = moment.utc(lastSeen)
 
   const handleOnConnectClick = selectedMatch => () => {
     dispatch(matchConnect(selectedMatch._id))
@@ -124,6 +128,7 @@ const SelectedMatchProfile = ({
           profile information
         </h3>
         <p>Famerating: {fameRating}</p>
+        <p>Last seen online: {mDate.format('DD-MM-YYYY HH:mm')}</p>
 
         <h3 className={styles.SectionTitle}>
           interest tags
@@ -149,6 +154,7 @@ const SelectedMatchProfile = ({
         <Button
           variant={Button.VARIANT_DEFAULT}
           onClick={handleOnConnectClick(selectedMatch)}
+          disabled={hasPhoto}
         >
           <FontAwesomeIcon
             className={styles.icon}

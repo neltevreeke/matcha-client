@@ -109,10 +109,14 @@ export const me = () => async dispatch => {
       long
     } = await getPosition()
 
-    const loc = [lat, long]
+    const coordinates = [lat, long]
 
     dispatch(update({
-      loc
+      loc: {
+        type: 'Point',
+        coordinates
+      },
+      lastSeen: Date.now
     }))
 
     dispatch(getConnectedMatches())
@@ -121,7 +125,10 @@ export const me = () => async dispatch => {
     dispatch({
       type: ActionTypes.ME_SUCCESS,
       payload: {
-        loc,
+        loc: {
+          type: 'Point',
+          coordinates
+        },
         ...user
       }
     })
