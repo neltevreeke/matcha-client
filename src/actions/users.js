@@ -116,7 +116,7 @@ export const me = () => async dispatch => {
         type: 'Point',
         coordinates
       },
-      lastSeen: Date.now
+      lastSeen: await Date.now()
     }))
 
     dispatch(getConnectedMatches())
