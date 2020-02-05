@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   matchConnect,
-  matchDisconnect
+  matchDisconnect,
+  blockMatch
 } from 'actions/users'
 import {
   getConnectedMatches,
@@ -54,13 +55,21 @@ const SelectedMatchProfile = ({
   const hasPhoto = user.photos.length < 0 || user.photos.length === 0
   const mDate = moment.utc(lastSeen)
 
+  const handleOnBlockClick = selectedMatch => () => {
+    dispatch(blockMatch(selectedMatch._id))
+
+    dispatch({
+      type: ActivityType.ACTIVITY_TYPE_BLOCK,
+      targetUserId: selectedMatch._id
+    })
+  }
+
   const handleOnConnectClick = selectedMatch => () => {
     dispatch(matchConnect(selectedMatch._id))
 
     dispatch(postNewActivity({
       type: ActivityType.ACTIVITY_TYPE_CONNECT,
-      targetUserId: selectedMatch._id,
-      userId: user._id
+      targetUserId: selectedMatch._id
     }))
   }
 
@@ -174,7 +183,27 @@ const SelectedMatchProfile = ({
           disconnect
         </Button>
       )}
-
+      <div className={styles.blockAndReport}>
+        <Button
+          variant={Button.VARIANT_DEFAULT_RED}
+          onClick={handleOnBlockClick(selectedMatch)}
+        >
+          <FontAwesomeIcon
+            className={styles.icon}
+            icon='ban'
+          />
+          block
+        </Button>
+        <Button
+          variant={Button.VARIANT_DEFAULT_RED}
+        >
+          <FontAwesomeIcon
+            className={styles.icon}
+            icon='flag'
+          />
+          report
+        </Button>
+      </div>
     </div>
   )
 }

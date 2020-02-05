@@ -14,7 +14,9 @@ import {
   faCamera,
   faBolt,
   faUnlink,
-  faPaperPlane
+  faPaperPlane,
+  faBan,
+  faFlag
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -31,5 +33,7 @@ library.add(
   faCamera,
   faBolt,
   faUnlink,
-  faPaperPlane
+  faPaperPlane,
+  faBan,
+  faFlag
 )

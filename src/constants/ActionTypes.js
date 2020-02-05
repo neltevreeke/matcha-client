@@ -53,4 +53,8 @@ export const ACTIVITIES_SEEN_START = '@activities/ACTIVITIES_SEEN_START'
 export const ACTIVITIES_SEEN_SUCCESS = '@activities/ACTIVITIES_SEEN_SUCCESS'
 export const ACTIVITIES_SEEN_ERROR = '@activities/ACTIVITIES_SEEN_ERROR'
 
+export const BLOCK_MATCH_START = '@blockedMatches/BLOCK_MATCH_START'
+export const BLOCK_MATCH_SUCCESS = '@blockedMatches/BLOCK_MATCH_SUCCESS'
+export const BLOCK_MATCH_ERROR = '@blockedMatches/BLOCK_MATCH_ERROR'
+
 export const SET_ONLINE_USERS = '@online-users/SET_ONLINE_USERS'

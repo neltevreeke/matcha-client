@@ -32,6 +32,30 @@ export const potentialMatches = ({ sortBy }) => {
   })
 }
 
+export const deleteBlockedUser = (userId) => {
+  return request('block-user', {
+    method: 'DELETE',
+    body: {
+      blockedUserId: userId
+    }
+  })
+}
+
+export const postBlockMatch = (userId) => {
+  return request('block-user', {
+    method: 'POST',
+    body: {
+      blockedUserId: userId
+    }
+  })
+}
+
+export const getBlockedUsers = () => {
+  return request('block-user', {
+    method: 'GET'
+  })
+}
+
 export const matchConnect = (userId) => {
   return request('matches', {
     method: 'POST',

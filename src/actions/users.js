@@ -11,13 +11,17 @@ import { initSockets } from '../utils/sockets'
 import { getPosition } from 'utils/location'
 import { toast } from 'react-toastify'
 import * as EventType from 'constants/EventType'
+import * as ActivityType from 'constants/ActivityType'
 
 import styles from '../styles/toastify.scss'
 import { store } from '../index'
 import { setNewRoomMessage } from './roomMessage'
 import ToastifyBody from '../components/ToastifyBody/ToastifyBody'
 import React from 'react'
-import { getActivities } from 'actions/activity'
+import {
+  getActivities,
+  postNewActivity
+} from 'actions/activity'
 
 export const logout = () => dispatch => {
   clearToken()
@@ -121,6 +125,7 @@ export const me = () => async dispatch => {
 
     dispatch(getConnectedMatches())
     dispatch(getActivities())
+    dispatch(getBlockedUsers())
 
     dispatch({
       type: ActionTypes.ME_SUCCESS,
@@ -177,6 +182,78 @@ export const potentialMatches = ({ sortBy }) => async dispatch => {
   } catch (error) {
     dispatch({
       type: ActionTypes.POTENTIAL_MATCHES_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const blockMatch = userId => async dispatch => {
+  dispatch({
+    type: ActionTypes.BLOCK_MATCH_START,
+    payload: {
+      userId
+    }
+  })
+
+  try {
+    const { blockedUsers } = await usersApi.postBlockMatch(userId)
+
+    dispatch(getConnectedMatches)
+    dispatch(postNewActivity({
+      type: ActivityType.ACTIVITY_TYPE_BLOCK,
+      targetUserId: userId
+    }))
+
+    dispatch({
+      type: ActionTypes.BLOCK_MATCH_SUCCESS,
+      payload: blockedUsers
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.BLOCK_MATCH_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const deleteBlockedUser = userId => async dispatch => {
+  dispatch({
+    type: ActionTypes.BLOCK_MATCH_START,
+    payload: {
+      userId
+    }
+  })
+
+  try {
+    const { blockedUsers } = await usersApi.deleteBlockedUser(userId)
+
+    dispatch({
+      type: ActionTypes.BLOCK_MATCH_SUCCESS,
+      payload: blockedUsers
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.BLOCK_MATCH_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const getBlockedUsers = () => async dispatch => {
+  dispatch({
+    type: ActionTypes.BLOCK_MATCH_START
+  })
+
+  try {
+    const { blockedUsers } = await usersApi.getBlockedUsers()
+
+    dispatch({
+      type: ActionTypes.BLOCK_MATCH_SUCCESS,
+      payload: blockedUsers
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.BLOCK_MATCH_ERROR,
       payload: error
     })
   }

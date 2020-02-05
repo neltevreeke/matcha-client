@@ -13,6 +13,7 @@ const getText = (user, userId, type, targetUserId) => {
   const disconnect = type === ActivityType.ACTIVITY_TYPE_DISCONNECT
   const match = type === ActivityType.ACTIVITY_TYPE_MATCH
   const unmatch = type === ActivityType.ACTIVITY_TYPE_UNMATCH
+  const block = type === ActivityType.ACTIVITY_TYPE_BLOCK
 
   if (!isOwner && profileView) {
     return 'You viewed the profile of ' + targetUserId.firstName + ' ' + targetUserId.lastName
@@ -42,6 +43,12 @@ const getText = (user, userId, type, targetUserId) => {
     return 'You unmatched with ' + targetUserId.firstName + ' ' + targetUserId.lastName
   } else if (isOwner && unmatch) {
     return userId.firstName + ' ' + userId.lastName + ' unmatched with you'
+  }
+
+  if (!isOwner && block) {
+    return 'You blocked ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  } else if (isOwner && block) {
+    return userId.firstName + ' ' + userId.lastName + ' blocked you'
   }
 }
 
