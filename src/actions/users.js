@@ -198,7 +198,9 @@ export const blockMatch = userId => async dispatch => {
   try {
     const { blockedUsers } = await usersApi.postBlockMatch(userId)
 
-    dispatch(getConnectedMatches)
+    dispatch(potentialMatches({
+      sortBy: null
+    }))
     dispatch(postNewActivity({
       type: ActivityType.ACTIVITY_TYPE_BLOCK,
       targetUserId: userId
