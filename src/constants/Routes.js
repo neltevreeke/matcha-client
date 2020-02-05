@@ -8,6 +8,7 @@ export const SETTINGS_INTEREST_TAGS = `${SETTINGS}/interests`
 export const SETTINGS_SEARCH_FILTERS = `${SETTINGS}/filters`
 export const SETTINGS_LOCATION = `${SETTINGS}/location`
 export const SETTINGS_NOTIFICATIONS = `${SETTINGS}/notifications`
+export const SETTINGS_BLOCKED_USERS = `${SETTINGS}/blocked-users`
 
 export const MATCHES = '/matches'
 

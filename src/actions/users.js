@@ -220,7 +220,7 @@ export const deleteBlockedUser = userId => async dispatch => {
   dispatch({
     type: ActionTypes.BLOCK_MATCH_START,
     payload: {
-      userId
+      blockedUserId: userId
     }
   })
 

@@ -28,6 +28,10 @@ const links = [{
   to: Routes.SETTINGS_NOTIFICATIONS,
   icon: 'bell',
   label: 'email notifications'
+}, {
+  to: Routes.SETTINGS_BLOCKED_USERS,
+  icon: 'ban',
+  label: 'blocked users'
 }]
 
 const SettingsMenu = () => {

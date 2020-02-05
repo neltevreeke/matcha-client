@@ -44,7 +44,6 @@ export const ROOMMESSAGES_LOAD_SUCCESS = '@roomMessage/ROOMMESSAGES_LOAD_SUCCESS
 export const ROOMMESSAGES_LOAD_ERROR = '@roomMessage/ROOMMESSAGES_LOAD_ERROR'
 
 export const ACTIVITIES_SET_NEW = '@activities/ACTIVITIES_SET_NEW'
-
 export const ACTIVITIES_LOAD_START = '@activities/ACTIVITIES_LOAD_START'
 export const ACTIVITIES_LOAD_SUCCESS = '@activities/ACTIVITIES_LOAD_SUCCESS'
 export const ACTIVITIES_LOAD_ERROR = '@activities/ACTIVITIES_LOAD_ERROR'
@@ -53,8 +52,8 @@ export const ACTIVITIES_SEEN_START = '@activities/ACTIVITIES_SEEN_START'
 export const ACTIVITIES_SEEN_SUCCESS = '@activities/ACTIVITIES_SEEN_SUCCESS'
 export const ACTIVITIES_SEEN_ERROR = '@activities/ACTIVITIES_SEEN_ERROR'
 
-export const BLOCK_MATCH_START = '@blockedMatches/BLOCK_MATCH_START'
-export const BLOCK_MATCH_SUCCESS = '@blockedMatches/BLOCK_MATCH_SUCCESS'
-export const BLOCK_MATCH_ERROR = '@blockedMatches/BLOCK_MATCH_ERROR'
+export const BLOCK_MATCH_START = '@blockedUsers/BLOCK_MATCH_START'
+export const BLOCK_MATCH_SUCCESS = '@blockedUsers/BLOCK_MATCH_SUCCESS'
+export const BLOCK_MATCH_ERROR = '@blockedUsers/BLOCK_MATCH_ERROR'
 
 export const SET_ONLINE_USERS = '@online-users/SET_ONLINE_USERS'

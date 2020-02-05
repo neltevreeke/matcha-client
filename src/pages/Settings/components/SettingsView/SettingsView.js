@@ -11,6 +11,7 @@ import SettingsInterestTags from '../SettingsInterestTags/SettingsInterestTags'
 import SettingsSearchFilters from '../SettingsSearchFilters/SettingsSearchFilters'
 import SettingsLocation from '../SettingsLocation/SettingsLocation'
 import SettingsEmailNotifications from '../SettingsEmailNotifications/SettingsEmailNotifications'
+import SettingsBlockedUsers from '../SettingsBlockedUsers/SettingsBlockedUsers'
 
 const SettingsView = () => {
   return (
@@ -49,6 +50,10 @@ const SettingsView = () => {
             <Route
               path={Routes.SETTINGS_NOTIFICATIONS}
               component={SettingsEmailNotifications}
+            />
+            <Route
+              path={Routes.SETTINGS_BLOCKED_USERS}
+              component={SettingsBlockedUsers}
             />
           </Switch>
         </div>

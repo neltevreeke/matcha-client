@@ -1,0 +1,36 @@
+@import 'base.scss';
+
+.component {
+  width: 100%;
+}
+
+.blockedUser {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: $border-radius;
+  border: 2px solid $red;
+  align-items: center;
+}
+
+.avatarContainer {
+  margin-right: 1rem;
+}
+
+.blockInfo {
+  display: flex;
+}
+
+.blockText {
+  font-weight: 700;
+}
+
+.blockDate {
+  font-size: .8rem;
+  color: $gray-700;
+}
+
+.controls {
+  margin-left: auto;
+}
