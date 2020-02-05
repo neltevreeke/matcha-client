@@ -62,6 +62,11 @@ const SelectedMatchProfile = ({
       type: ActivityType.ACTIVITY_TYPE_BLOCK,
       targetUserId: selectedMatch._id
     })
+
+    dispatch(matchDisconnect({
+      userId: selectedMatch._id,
+      room: connectedMatchRoom.room
+    }))
   }
 
   const handleOnConnectClick = selectedMatch => () => {

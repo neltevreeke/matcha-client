@@ -26,7 +26,7 @@ const SettingsBlockedUsers = () => {
 
   return (
     <div className={styles.component}>
-      {blockedUsers.map((bU, index) => {
+      {blockedUsers.length > 0 ? blockedUsers.map((bU, index) => {
         const mDate = moment.utc(bU.blockedOn)
 
         return (
@@ -58,7 +58,11 @@ const SettingsBlockedUsers = () => {
             </div>
           </div>
         )
-      })}
+      }) : (
+        <div className={styles.noBlockedUsers}>
+          You don't have any blocked users...
+        </div>
+      )}
     </div>
   )
 }
