@@ -67,6 +67,10 @@ const ActivityItem = ({
   const text = getText(user, userId, type, targetUserId)
   const isOwner = userId._id !== user._id
 
+  if (isOwner && type === ActivityType.ACTIVITY_TYPE_BLOCK) {
+    return null
+  }
+
   return (
     <div
       className={isOwner ? styles.myActionContainer : styles.oppositeActionContainer}
