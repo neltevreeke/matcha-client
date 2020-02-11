@@ -5,7 +5,7 @@ import React, {
 import styles from './PotentialMatches.scss'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { potentialMatches } from 'actions/users'
+import { potentialMatches, setSelectedPotentialMatch } from 'actions/users'
 
 import {
   getConnectedMatches,
@@ -19,7 +19,6 @@ import { getOnlineUsers } from 'selectors/onlineUsers'
 import PotentialMatchesFilter from '../PotentialMatchesFilter/PotentialMatchesFilter'
 
 const PotentialMatches = ({
-  setSelectedMatch,
   selectedMatch,
   ...props
 }) => {
@@ -46,11 +45,12 @@ const PotentialMatches = ({
 
   const handlePotentialMatchOnClick = potentialMatch => () => {
     if (selectedMatch === potentialMatch) {
-      setSelectedMatch(null)
+      dispatch(setSelectedPotentialMatch(null))
+
       return null
     }
 
-    setSelectedMatch(potentialMatch)
+    dispatch(setSelectedPotentialMatch(potentialMatch))
   }
 
   return (

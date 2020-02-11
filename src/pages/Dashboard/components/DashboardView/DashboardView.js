@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styles from './DashboardView.scss'
 import Page from 'components/Page/Page'
 import PotentialMatches from '../PotentialMatches/PotentialMatches'
@@ -8,10 +8,13 @@ import { sendEvent } from '../../../../utils/sockets'
 import { postNewActivity } from '../../../../actions/activity'
 import * as ActivityType from '../../../../constants/ActivityType'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser } from '../../../../selectors/user'
+import {
+  getUser,
+  getSelectedPotentialMatch
+} from '../../../../selectors/user'
 
 const DashboardView = () => {
-  const [selectedMatch, setSelectedMatch] = useState(null)
+  const selectedMatch = useSelector(getSelectedPotentialMatch)
   const dispatch = useDispatch()
   const user = useSelector(getUser)
 
@@ -39,7 +42,6 @@ const DashboardView = () => {
       <div className={styles.component}>
         <div className={styles.potentialMatchesList}>
           <PotentialMatches
-            setSelectedMatch={setSelectedMatch}
             selectedMatch={selectedMatch}
           />
         </div>

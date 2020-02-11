@@ -41,6 +41,16 @@ const setupSocketNotifications = (socket, dispatch) => {
       message
     } = JSON.parse(event)
 
+    if (type === EventType.EVENT_TYPE_BLOCK) {
+      dispatch(potentialMatches({
+        sortBy: null
+      }))
+
+      dispatch(setSelectedPotentialMatch(null))
+
+      return
+    }
+
     toast.info(
       <ToastifyBody
         type={type}
@@ -335,4 +345,11 @@ export const getConnectedMatches = () => async dispatch => {
       payload: error
     })
   }
+}
+
+export const setSelectedPotentialMatch = (potentialMatch) => async dispatch => {
+  dispatch({
+    type: ActionTypes.SET_SELECTED_POTENTIAL_MATCH,
+    payload: potentialMatch
+  })
 }

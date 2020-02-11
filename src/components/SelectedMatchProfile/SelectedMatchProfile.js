@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   matchConnect,
   matchDisconnect,
-  blockMatch
+  blockMatch, setSelectedPotentialMatch
 } from 'actions/users'
 import {
   getConnectedMatches,
@@ -19,6 +19,8 @@ import { getIsConnected } from '../../utils/matches'
 import * as ActivityType from '../../constants/ActivityType'
 import { postNewActivity } from 'actions/activity'
 import moment from 'moment'
+import * as EventType from 'constants/EventType'
+import { sendEvent } from 'utils/sockets'
 
 const SelectedMatchProfile = ({
   selectedMatch,
@@ -65,8 +67,15 @@ const SelectedMatchProfile = ({
 
     dispatch(matchDisconnect({
       userId: selectedMatch._id,
-      room: connectedMatchRoom.room
+      room: connectedMatchRoom?.room
     }))
+
+    sendEvent({
+      type: EventType.EVENT_TYPE_BLOCK,
+      data: selectedMatch._id
+    })
+
+    dispatch(setSelectedPotentialMatch(null))
   }
 
   const handleOnConnectClick = selectedMatch => () => {

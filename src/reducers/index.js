@@ -8,6 +8,7 @@ import matches from './matches'
 import roomMessage from './roomMessage'
 import activities from './activities'
 import blockedUsers from './blockedUsers'
+import selectedPotentialMatch from './selectedPotentialMatch'
 
 export default (history) => combineReducers({
   router: connectRouter(history),
@@ -17,5 +18,6 @@ export default (history) => combineReducers({
   matches,
   roomMessage,
   activities,
-  blockedUsers
+  blockedUsers,
+  selectedPotentialMatch
 })

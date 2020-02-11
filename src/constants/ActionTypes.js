@@ -57,3 +57,5 @@ export const BLOCK_MATCH_SUCCESS = '@blockedUsers/BLOCK_MATCH_SUCCESS'
 export const BLOCK_MATCH_ERROR = '@blockedUsers/BLOCK_MATCH_ERROR'
 
 export const SET_ONLINE_USERS = '@online-users/SET_ONLINE_USERS'
+
+export const SET_SELECTED_POTENTIAL_MATCH = '@user/SET_SELECTED_POTENTIAL_MATCH'
