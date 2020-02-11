@@ -11,3 +11,17 @@ export const getIsConnected = (potentialMatchId, connectedMatches) => {
 
   return false
 }
+
+export const getIsReported = (potentialMatchId, reportedUsers) => {
+  if (!reportedUsers) {
+    return false
+  }
+
+  for (const r of reportedUsers) {
+    if (potentialMatchId === r.reportedUserId._id) {
+      return true
+    }
+  }
+
+  return false
+}

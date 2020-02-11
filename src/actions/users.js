@@ -142,6 +142,7 @@ export const me = () => async dispatch => {
     dispatch(getConnectedMatches())
     dispatch(getActivities())
     dispatch(getBlockedUsers())
+    dispatch(getMatchReport())
 
     dispatch({
       type: ActionTypes.ME_SUCCESS,
@@ -278,6 +279,49 @@ export const getBlockedUsers = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: ActionTypes.BLOCK_MATCH_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const getMatchReport = () => async dispatch => {
+  dispatch({
+    type: ActionTypes.REPORT_MATCH_START
+  })
+
+  try {
+    const { reportedUsers } = await usersApi.getMatchReport()
+
+    dispatch({
+      type: ActionTypes.REPORT_MATCH_SUCCESS,
+      payload: reportedUsers
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.REPORT_MATCH_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const matchReport = userId => async dispatch => {
+  dispatch({
+    type: ActionTypes.REPORT_MATCH_START,
+    payload: {
+      userId
+    }
+  })
+
+  try {
+    const { reportedUsers } = await usersApi.postMatchReport(userId)
+
+    dispatch({
+      type: ActionTypes.REPORT_MATCH_SUCCESS,
+      payload: reportedUsers
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.REPORT_MATCH_ERROR,
       payload: error
     })
   }

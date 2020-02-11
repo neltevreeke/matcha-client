@@ -32,6 +32,21 @@ export const potentialMatches = ({ sortBy }) => {
   })
 }
 
+export const postMatchReport = (userId) => {
+  return request('report-user', {
+    method: 'POST',
+    body: {
+      reportedUserId: userId
+    }
+  })
+}
+
+export const getMatchReport = () => {
+  return request('report-user', {
+    method: 'GET'
+  })
+}
+
 export const deleteBlockedUser = (userId) => {
   return request('block-user', {
     method: 'DELETE',

@@ -8,14 +8,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   matchConnect,
   matchDisconnect,
-  blockMatch, setSelectedPotentialMatch
+  blockMatch, setSelectedPotentialMatch,
+  matchReport
 } from 'actions/users'
 import {
   getConnectedMatches,
   getUser
 } from '../../selectors/user'
+import {
+  getReportedUsers
+} from 'selectors/reportedUsers'
 import cx from 'classnames'
-import { getIsConnected } from '../../utils/matches'
+import {
+  getIsConnected,
+  getIsReported
+} from '../../utils/matches'
 import * as ActivityType from '../../constants/ActivityType'
 import { postNewActivity } from 'actions/activity'
 import moment from 'moment'
@@ -29,6 +36,7 @@ const SelectedMatchProfile = ({
 }) => {
   const dispatch = useDispatch()
   const connectedMatches = useSelector(getConnectedMatches)
+  const reportedUsers = useSelector(getReportedUsers)
   const user = useSelector(getUser)
 
   if (!selectedMatch) {
@@ -54,6 +62,7 @@ const SelectedMatchProfile = ({
   })
 
   const isConnected = getIsConnected(potentialMatchId, connectedMatches)
+  const isReported = getIsReported(potentialMatchId, reportedUsers)
   const hasPhoto = user.photos.length < 0 || user.photos.length === 0
   const mDate = moment.utc(lastSeen)
 
@@ -83,6 +92,15 @@ const SelectedMatchProfile = ({
 
     dispatch(postNewActivity({
       type: ActivityType.ACTIVITY_TYPE_CONNECT,
+      targetUserId: selectedMatch._id
+    }))
+  }
+
+  const handleOnReportClick = selectedMatch => () => {
+    dispatch(matchReport(selectedMatch._id))
+
+    dispatch(postNewActivity({
+      type: ActivityType.ACTIVITY_TYPE_REPORT,
       targetUserId: selectedMatch._id
     }))
   }
@@ -210,6 +228,8 @@ const SelectedMatchProfile = ({
         </Button>
         <Button
           variant={Button.VARIANT_DEFAULT_RED}
+          onClick={handleOnReportClick(selectedMatch)}
+          disabled={isReported}
         >
           <FontAwesomeIcon
             className={styles.icon}

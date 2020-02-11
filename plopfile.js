@@ -96,7 +96,7 @@ module.exports = plop => {
         actions.push({
           type: 'append',
           path: path.resolve(paths.formElementsPath, 'index.js'),
-          template: 'export {{name}} from \'./components/{{name}}/{{name}}\''
+          template: 'export {{name}} from \'./FormEmailNotifications/{{name}}/{{name}}\''
         })
       }
 

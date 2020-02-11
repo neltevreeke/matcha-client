@@ -56,6 +56,10 @@ export const BLOCK_MATCH_START = '@blockedUsers/BLOCK_MATCH_START'
 export const BLOCK_MATCH_SUCCESS = '@blockedUsers/BLOCK_MATCH_SUCCESS'
 export const BLOCK_MATCH_ERROR = '@blockedUsers/BLOCK_MATCH_ERROR'
 
+export const REPORT_MATCH_START = '@reportedUsers/REPORT_MATCH_START'
+export const REPORT_MATCH_SUCCESS = '@reportedUsers/REPORT_MATCH_SUCCESS'
+export const REPORT_MATCH_ERROR = '@reportedUsers/REPORT_MATCH_ERROR'
+
 export const SET_ONLINE_USERS = '@online-users/SET_ONLINE_USERS'
 
 export const SET_SELECTED_POTENTIAL_MATCH = '@user/SET_SELECTED_POTENTIAL_MATCH'
