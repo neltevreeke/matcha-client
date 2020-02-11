@@ -49,6 +49,12 @@ const setupSocketNotifications = (socket, dispatch) => {
       dispatch(setSelectedPotentialMatch(null))
 
       return
+    } else if (type === EventType.EVENT_TYPE_UNBLOCK) {
+      dispatch(potentialMatches({
+        sortBy: null
+      }))
+
+      return
     }
 
     toast.info(
@@ -211,6 +217,7 @@ export const blockMatch = userId => async dispatch => {
     dispatch(potentialMatches({
       sortBy: null
     }))
+
     dispatch(postNewActivity({
       type: ActivityType.ACTIVITY_TYPE_BLOCK,
       targetUserId: userId
@@ -238,6 +245,11 @@ export const deleteBlockedUser = userId => async dispatch => {
 
   try {
     const { blockedUsers } = await usersApi.deleteBlockedUser(userId)
+
+    dispatch(postNewActivity({
+      type: ActivityType.ACTIVITY_TYPE_UNBLOCK,
+      targetUserId: userId
+    }))
 
     dispatch({
       type: ActionTypes.BLOCK_MATCH_SUCCESS,

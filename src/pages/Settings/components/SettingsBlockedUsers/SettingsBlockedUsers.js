@@ -10,6 +10,8 @@ import PageSpinner from '../../../../components/PageSpinner/PageSpinner'
 import Avatar from '../../../../components/Avatar/Avatar'
 import moment from 'moment'
 import { deleteBlockedUser } from 'actions/users'
+import { sendEvent } from '../../../../utils/sockets'
+import * as EventType from 'constants/EventType'
 
 const SettingsBlockedUsers = () => {
   const blockedUsers = useSelector(getBlockedUsers)
@@ -22,6 +24,11 @@ const SettingsBlockedUsers = () => {
 
   const handleUnblockClick = userId => () => {
     dispatch(deleteBlockedUser(userId))
+
+    sendEvent({
+      type: EventType.EVENT_TYPE_UNBLOCK,
+      data: userId
+    })
   }
 
   return (
