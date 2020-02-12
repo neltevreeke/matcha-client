@@ -1,21 +1,22 @@
 import React from 'react'
-import styles from './Toggle.scss'
+import styles from './Switch.scss'
 import 'react-toggle/style.css'
+import Toggle from 'react-toggle'
 
-const Toggle = ({
+const Switch = ({
   field,
   form,
   ...props
 }) => {
-  const handleChange = value => {
-    form.setFieldValue(field.name, value)
+  const handleChange = () => {
+    form.setFieldValue(field.name, !field.value)
   }
 
   return (
     <div className={styles.component}>
       <Toggle
         checked={field.value}
-        name={field.name}
+        icons={false}
         onChange={handleChange}
         {...props}
       />
@@ -23,4 +24,4 @@ const Toggle = ({
   )
 }
 
-export default Toggle
+export default Switch

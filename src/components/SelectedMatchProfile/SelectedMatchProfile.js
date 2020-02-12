@@ -235,7 +235,7 @@ const SelectedMatchProfile = ({
             className={styles.icon}
             icon='flag'
           />
-          report
+          report as fake
         </Button>
       </div>
     </div>
