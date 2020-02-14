@@ -12,7 +12,7 @@ const sortByOptions = [{
   label: 'Fame rating',
   value: 'fame-rating'
 }, {
-  label: 'Tags in common',
+  label: 'Interest tags in common',
   value: 'tags-in-common'
 }]
 

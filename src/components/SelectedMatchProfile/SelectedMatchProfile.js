@@ -74,10 +74,12 @@ const SelectedMatchProfile = ({
       targetUserId: selectedMatch._id
     })
 
-    dispatch(matchDisconnect({
-      userId: selectedMatch._id,
-      room: connectedMatchRoom?.room
-    }))
+    if (isConnected) {
+      dispatch(matchDisconnect({
+        userId: selectedMatch._id,
+        room: connectedMatchRoom?.room
+      }))
+    }
 
     sendEvent({
       type: EventType.EVENT_TYPE_BLOCK,
