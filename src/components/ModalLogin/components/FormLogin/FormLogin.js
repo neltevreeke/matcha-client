@@ -24,6 +24,10 @@ const getErrorMessage = error => {
     return 'Invalid email or password'
   }
 
+  if (message === 'not-allowed') {
+    return 'This account has been reported as fake multiple times and will not be able to log in'
+  }
+
   return 'Something went wrong, please try again later'
 }
 

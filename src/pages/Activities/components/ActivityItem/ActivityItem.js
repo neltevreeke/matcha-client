@@ -15,6 +15,7 @@ const getText = (user, userId, type, targetUserId) => {
   const unmatch = type === ActivityType.ACTIVITY_TYPE_UNMATCH
   const block = type === ActivityType.ACTIVITY_TYPE_BLOCK
   const unblock = type === ActivityType.ACTIVITY_TYPE_UNBLOCK
+  const report = type === ActivityType.ACTIVITY_TYPE_REPORT
 
   if (!isOwner && profileView) {
     return 'You viewed the profile of ' + targetUserId.firstName + ' ' + targetUserId.lastName
@@ -53,6 +54,10 @@ const getText = (user, userId, type, targetUserId) => {
   if (!isOwner && unblock) {
     return 'You unblocked ' + targetUserId.firstName + ' ' + targetUserId.lastName
   }
+
+  if (!isOwner && report) {
+    return 'You reported ' + targetUserId.firstName + ' ' + targetUserId.lastName
+  }
 }
 
 const ActivityItem = ({
@@ -73,6 +78,8 @@ const ActivityItem = ({
   if (isOwner && type === ActivityType.ACTIVITY_TYPE_BLOCK) {
     return null
   } else if (isOwner && type === ActivityType.ACTIVITY_TYPE_UNBLOCK) {
+    return null
+  } else if (isOwner && type === ActivityType.ACTIVITY_TYPE_REPORT) {
     return null
   }
 
