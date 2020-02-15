@@ -1,4 +1,9 @@
+// unprotected routes
 export const HOME = '/'
+
+export const RESET_PASSWORD = '/login/reset'
+
+// protected routes
 export const DASHBOARD = '/dashboard'
 
 export const SETTINGS = '/settings'

@@ -10,6 +10,7 @@ import Dashboard from './Dashboard'
 import Settings from './Settings'
 import Matches from './Matches'
 import Activities from './Activities'
+import ResetPassword from './ResetPassword'
 import PageSpinner from '../components/PageSpinner/PageSpinner'
 
 export default (
@@ -26,6 +27,7 @@ export default (
           {Settings}
           {Matches}
           {Activities}
+          {ResetPassword}
         </Switch>
       </Suspense>
     </ModalProvider>

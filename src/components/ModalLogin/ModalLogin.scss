@@ -1,5 +1,12 @@
 @import 'base.scss';
 
 .component {
-  // Empty
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
 }

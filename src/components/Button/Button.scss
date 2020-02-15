@@ -39,3 +39,15 @@
     color: $red;
   }
 }
+
+.variant--transparent-red {
+  color: $red;
+  background: none;
+  border: 2px solid white;
+  transition: border $transition-speed;
+
+  &:hover {
+    border: 2px solid $red;
+    color: $red;
+  }
+}
