@@ -2,13 +2,13 @@ import React from 'react'
 import styles from './ResetPasswordView.scss'
 import Page from 'components/Page/Page'
 import FormResetPassword from '../FormResetPassword/FormResetPassword'
-// import { useDispatch } from 'react-redux'
-
+import { useDispatch } from 'react-redux'
+import { postResetPassword } from 'actions/users'
 const ResetPasswordView = () => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-  const handleFormSubmit = ({ email }, { resetForm }) => {
-    // todo: dispatch action that sends {email} to api (request to reset-password route)
+  const handleFormSubmit = ({ resetPasswordEmail }, { resetForm }) => {
+    dispatch(postResetPassword(resetPasswordEmail))
 
     resetForm()
   }

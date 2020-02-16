@@ -107,6 +107,44 @@ export const login = ({
   }
 }
 
+export const postNewPassword = (newPassword) => async dispatch => {
+  dispatch({
+    type: ActionTypes.NEW_PASSWORD_START
+  })
+
+  try {
+    await usersApi.newPassword(newPassword)
+
+    dispatch({
+      type: ActionTypes.NEW_PASSWORD_SUCCESS
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.NEW_PASSWORD_ERROR,
+      payload: error
+    })
+  }
+}
+
+export const postResetPassword = (email) => async dispatch => {
+  dispatch({
+    type: ActionTypes.PASSWORD_RESET_START
+  })
+
+  try {
+    await usersApi.resetPassword(email)
+
+    dispatch({
+      type: ActionTypes.PASSWORD_RESET_SUCCESS
+    })
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.PASSWORD_RESET_ERROR,
+      payload: error
+    })
+  }
+}
+
 export const me = () => async dispatch => {
   const tokenFromHeader = getToken()
 

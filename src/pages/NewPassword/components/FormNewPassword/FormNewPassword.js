@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './FormResetPassword.scss'
+import styles from './FormNewPassword.scss'
 import * as Yup from 'yup'
 import {
   Formik,
@@ -13,16 +13,21 @@ import {
 import Button from 'components/Button/Button'
 
 const initialValues = {
-  resetPasswordEmail: ''
+  password: '',
+  passwordRepeat: ''
 }
 
 const validationSchema = Yup.object().shape({
-  resetPasswordEmail: Yup.string()
-    .email('Invalid email')
-    .required('Required')
+  password: Yup.string()
+    .min(7, 'Too short!')
+    .matches(/[a-zA-Z]/, 'Only latin letters are allowed')
+    .required('Required'),
+  passwordRepeat: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Please make sure that the passwords are matching')
+    .required()
 })
 
-const FormResetPassword = ({
+const FormNewPassword = ({
   onSubmit,
   isSubmitting,
   error
@@ -37,11 +42,18 @@ const FormResetPassword = ({
           return (
             <Form>
               <Field
-                label='Email'
-                id='resetPasswordEmail'
-                name='resetPasswordEmail'
-                type='email'
-                placeholder='Enter your email'
+                label='Enter your new password'
+                id='password'
+                name='password'
+                type='password'
+                component={Input}
+              />
+
+              <Field
+                label='Repeat your new password'
+                id='passwordRepeat'
+                name='passwordRepeat'
+                type='password'
                 component={Input}
               />
 
@@ -58,7 +70,7 @@ const FormResetPassword = ({
                 variant={Button.VARIANT_DEFAULT}
                 isLoading={isSubmitting}
               >
-                send email
+                set new password
               </Button>
             </Form>
           )
@@ -68,4 +80,4 @@ const FormResetPassword = ({
   )
 }
 
-export default FormResetPassword
+export default FormNewPassword

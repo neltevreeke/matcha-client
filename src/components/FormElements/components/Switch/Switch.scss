@@ -4,6 +4,64 @@
   // Empty...
 }
 
-.switch {
-  background-color: red !important;
+:global {
+  .react-toggle-track {
+    background-color: $red !important;
+  }
+
+  .react-toggle-thumb {
+    border-color: $red !important;
+  }
+
+  .react-toggle--checked {
+    &:hover {
+      .react-toggle-track {
+        background-color: darken($color-primary, 5%) !important;
+      }
+
+      .react-toggle-thumb {
+        border-color: darken($color-primary, 5%) !important;
+      }
+    }
+
+    .react-toggle-track {
+      background-color: $color-primary !important;
+    }
+
+    .react-toggle-thumb {
+      border-color: $color-primary !important;
+    }
+  }
+
+  .react-toggle {
+    &:hover {
+      .react-toggle-track {
+        background-color: darken($color-border, 5%);
+      }
+    }
+  }
+
+  .react-toggle-thumb {
+    border-color: darken($color-border, 5%);
+  }
+
+  .react-toggle-track {
+    background-color: $color-border;
+  }
+
+  .react-toggle--focus {
+    .react-toggle-thumb {
+      box-shadow: none;
+    }
+  }
+
+  .react-toggle-track-x,
+  .react-toggle-track-check {
+    display: none;
+  }
+
+  .react-toggle-thumb {
+    outline: 0;
+    box-shadow: none !important;
+  }
 }

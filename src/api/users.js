@@ -90,6 +90,24 @@ export const matchDisconnect = ({ userId, room }) => {
   })
 }
 
+export const resetPassword = (email) => {
+  return request('reset-password', {
+    method: 'POST',
+    body: {
+      email
+    }
+  })
+}
+
+export const newPassword = (newPassword) => {
+  return request('new-password', {
+    method: 'POST',
+    body: {
+      newPassword
+    }
+  })
+}
+
 export const getConnectedMatches = () => {
   return request('connected-matches', {
     method: 'GET'

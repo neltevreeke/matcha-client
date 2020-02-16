@@ -11,6 +11,7 @@ import Settings from './Settings'
 import Matches from './Matches'
 import Activities from './Activities'
 import ResetPassword from './ResetPassword'
+import NewPassword from './NewPassword'
 import PageSpinner from '../components/PageSpinner/PageSpinner'
 
 export default (
@@ -28,6 +29,7 @@ export default (
           {Matches}
           {Activities}
           {ResetPassword}
+          {NewPassword}
         </Switch>
       </Suspense>
     </ModalProvider>

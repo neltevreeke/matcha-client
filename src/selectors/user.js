@@ -20,6 +20,8 @@ export const getConnectedMatchesIsLoading = state => state.user.connectedMatches
 
 export const getSelectedPotentialMatch = state => state.selectedPotentialMatch.selectedPotentialMatch
 
+export const getNewPasswordSuccess = state => state.user.newPassword.status
+
 export const getIsLoggedIn = state => {
   const isMeLoaded = getMeIsLoaded(state)
   return isMeLoaded && !!state.user.user

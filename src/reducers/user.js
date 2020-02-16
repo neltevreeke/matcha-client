@@ -26,6 +26,15 @@ const initialState = {
     error: null,
     isLoading: false,
     connectedMatches: null
+  },
+  resetPassword: {
+    isLoading: false,
+    error: null
+  },
+  newPassword: {
+    isLoading: false,
+    status: null,
+    error: null
   }
 }
 
@@ -220,6 +229,59 @@ export default createReducer(initialState, {
         error,
         isLoaded: true,
         potentialMatches: null
+      }
+    }
+  },
+
+  [ActionTypes.PASSWORD_RESET_START]: (state) => {
+    return {
+      ...state,
+      resetPassword: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionTypes.PASSWORD_RESET_SUCCESS]: (state) => {
+    return {
+      ...state,
+      resetPassword: {
+        isLoading: false
+      }
+    }
+  },
+  [ActionTypes.PASSWORD_RESET_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      resetPassword: {
+        isLoading: false,
+        error
+      }
+    }
+  },
+
+  [ActionTypes.NEW_PASSWORD_START]: (state) => {
+    return {
+      ...state,
+      newPassword: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionTypes.NEW_PASSWORD_SUCCESS]: (state) => {
+    return {
+      ...state,
+      newPassword: {
+        isLoading: false,
+        status: 200
+      }
+    }
+  },
+  [ActionTypes.NEW_PASSWORD_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      newPassword: {
+        isLoading: false,
+        error
       }
     }
   }
