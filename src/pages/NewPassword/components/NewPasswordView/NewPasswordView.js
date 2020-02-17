@@ -15,6 +15,12 @@ const NewPasswordView = () => {
   const newPasswordSuccess = useSelector(getNewPasswordSuccess)
 
   useEffect(() => {
+    if (!routerQuery.token) {
+      history.push(Routes.HOME)
+    }
+  }, [])
+
+  useEffect(() => {
     if (newPasswordSuccess === 200) {
       history.push(Routes.HOME)
     }

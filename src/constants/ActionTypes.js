@@ -10,6 +10,10 @@ export const NEW_PASSWORD_START = '@user/NEW_PASSWORD_START'
 export const NEW_PASSWORD_SUCCESS = '@user/NEW_PASSWORD_SUCCESS'
 export const NEW_PASSWORD_ERROR = '@user/NEW_PASSWORD_ERROR'
 
+export const VERIFY_ACCOUNT_START = '@user/VERIFY_ACCOUNT_START'
+export const VERIFY_ACCOUNT_SUCCESS = '@user/VERIFY_ACCOUNT_SUCCESS'
+export const VERIFY_ACCOUNT_ERROR = '@user/VERIFY_ACCOUNT_ERROR'
+
 export const ME_START = '@user/ME_START'
 export const ME_SUCCESS = '@user/ME_SUCCESS'
 export const ME_ERROR = '@user/ME_ERROR'

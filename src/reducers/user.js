@@ -35,6 +35,10 @@ const initialState = {
     isLoading: false,
     status: null,
     error: null
+  },
+  verifyAccount: {
+    isLoading: false,
+    error: null
   }
 }
 
@@ -280,6 +284,32 @@ export default createReducer(initialState, {
     return {
       ...state,
       newPassword: {
+        isLoading: false,
+        error
+      }
+    }
+  },
+
+  [ActionTypes.VERIFY_ACCOUNT_START]: (state) => {
+    return {
+      ...state,
+      verifyAccount: {
+        isLoading: true
+      }
+    }
+  },
+  [ActionTypes.VERIFY_ACCOUNT_SUCCESS]: (state) => {
+    return {
+      ...state,
+      verifyAccount: {
+        isLoading: false
+      }
+    }
+  },
+  [ActionTypes.VERIFY_ACCOUNT_ERROR]: (state, { payload: error }) => {
+    return {
+      ...state,
+      verifyAccount: {
         isLoading: false,
         error
       }

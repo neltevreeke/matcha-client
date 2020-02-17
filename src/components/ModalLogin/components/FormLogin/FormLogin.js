@@ -28,6 +28,10 @@ const getErrorMessage = error => {
     return 'This account has been reported as fake multiple times and will not be able to log in'
   }
 
+  if (message === 'unauthorized') {
+    return 'This account has yet to be verified, you should check your email'
+  }
+
   return 'Something went wrong, please try again later'
 }
 

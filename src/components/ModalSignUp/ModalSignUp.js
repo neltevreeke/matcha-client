@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'components/Modal/Modal'
 import FormSignUp from './components/FormSignUp/FormSignUp'
 import request from 'utils/request'
+import styles from './ModalSignUp.scss'
 
 const getErrorMessage = error => {
   const { message } = error.body
@@ -18,6 +19,7 @@ const ModalSignUp = ({
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const [isEmailSend, setEmailSend] = useState(false)
 
   const handleFormSubmit = async ({ firstName, lastName, email, password, age, gender }) => {
     setIsSubmitting(true)
@@ -31,11 +33,15 @@ const ModalSignUp = ({
           email,
           age,
           gender,
-          password
+          password,
+          loc: {
+            type: 'Point',
+            coordinates: [0, 0]
+          }
         }
       })
 
-      props.hideModal()
+      setEmailSend(true)
     } catch (e) {
       setSubmitError(getErrorMessage(e))
     } finally {
@@ -52,11 +58,16 @@ const ModalSignUp = ({
         </span>
       )}
       body={(
-        <FormSignUp
-          onSubmit={handleFormSubmit}
-          isSubmitting={isSubmitting}
-          error={submitError}
-        />
+        <>
+          <FormSignUp
+            onSubmit={handleFormSubmit}
+            isSubmitting={isSubmitting}
+            error={submitError}
+          />
+          <p className={styles.emailSend}>
+            {isEmailSend && 'An email has been sent'}
+          </p>
+        </>
       )}
     />
   )

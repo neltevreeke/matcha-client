@@ -3,6 +3,7 @@ export const HOME = '/'
 
 export const RESET_PASSWORD = '/reset-password'
 export const NEW_PASSWORD = '/new-password'
+export const VERIFY_ACCOUNT = '/verify-account'
 
 // protected routes
 export const DASHBOARD = '/dashboard'

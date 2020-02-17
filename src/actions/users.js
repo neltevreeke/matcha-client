@@ -74,6 +74,27 @@ const setupSocketNotifications = (socket, dispatch) => {
   })
 }
 
+export const verifyAccount = (token) => async dispatch => {
+  dispatch({
+    type: ActionTypes.VERIFY_ACCOUNT_START
+  })
+
+  try {
+    await usersApi.verifyAccount(token)
+
+    dispatch({
+      type: ActionTypes.VERIFY_ACCOUNT_SUCCESS
+    })
+
+    history.push(Routes.HOME)
+  } catch (error) {
+    dispatch({
+      type: ActionTypes.VERIFY_ACCOUNT_ERROR,
+      payload: error
+    })
+  }
+}
+
 export const login = ({
   email,
   password
@@ -89,6 +110,21 @@ export const login = ({
     })
 
     setToken(token)
+
+    const {
+      lat,
+      long
+    } = await getPosition()
+
+    const coordinates = [lat, long]
+
+    dispatch(update({
+      loc: {
+        type: 'Point',
+        coordinates
+      },
+      lastSeen: await Date.now()
+    }))
 
     dispatch({
       type: ActionTypes.LOGIN_SUCCESS,

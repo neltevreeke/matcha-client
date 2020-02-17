@@ -108,6 +108,15 @@ export const newPassword = (newPassword) => {
   })
 }
 
+export const verifyAccount = (token) => {
+  return request('verify-account', {
+    method: 'POST',
+    body: {
+      token
+    }
+  })
+}
+
 export const getConnectedMatches = () => {
   return request('connected-matches', {
     method: 'GET'

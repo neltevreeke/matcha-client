@@ -22,6 +22,9 @@ export const getSelectedPotentialMatch = state => state.selectedPotentialMatch.s
 
 export const getNewPasswordSuccess = state => state.user.newPassword.status
 
+export const getVerifyAccountIsLoading = state => state.user.verifyAccount.isLoading
+export const getVerifyAccountStatus = state => state.user.verifyAccount.status
+
 export const getIsLoggedIn = state => {
   const isMeLoaded = getMeIsLoaded(state)
   return isMeLoaded && !!state.user.user

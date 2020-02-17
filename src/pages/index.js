@@ -12,6 +12,7 @@ import Matches from './Matches'
 import Activities from './Activities'
 import ResetPassword from './ResetPassword'
 import NewPassword from './NewPassword'
+import VerifyAccount from './VerifyAccount'
 import PageSpinner from '../components/PageSpinner/PageSpinner'
 
 export default (
@@ -30,6 +31,7 @@ export default (
           {Activities}
           {ResetPassword}
           {NewPassword}
+          {VerifyAccount}
         </Switch>
       </Suspense>
     </ModalProvider>
