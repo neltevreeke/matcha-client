@@ -45,11 +45,7 @@ const DashboardView = () => {
             selectedMatch={selectedMatch}
           />
         </div>
-        <div className={styles.selectedMatchProfile}>
-          <SelectedMatchProfile
-            selectedMatch={selectedMatch}
-          />
-        </div>
+        <SelectedMatchProfile selectedMatch={selectedMatch} />
       </div>
     </Page>
   )

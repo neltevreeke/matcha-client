@@ -65,6 +65,7 @@ const SelectedMatchProfile = ({
   const isReported = getIsReported(potentialMatchId, reportedUsers)
   const hasPhoto = user.photos.length < 0 || user.photos.length === 0
   const mDate = moment.utc(lastSeen)
+  const showCarousel = photos?.length > 0
 
   const handleOnBlockClick = selectedMatch => () => {
     dispatch(blockMatch(selectedMatch._id))
@@ -135,7 +136,7 @@ const SelectedMatchProfile = ({
       })}
     >
       <div className={styles.slider}>
-        {photos ? (
+        {showCarousel ? (
           <PhotoCarousel
             photos={selectedMatch.photos}
           />

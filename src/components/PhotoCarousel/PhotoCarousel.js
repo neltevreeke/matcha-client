@@ -10,8 +10,8 @@ const PhotoCarousel = ({
   return (
     <div className={styles.component}>
       <CarouselProvider
-        naturalSlideWidth={340}
-        naturalSlideHeight={340}
+        naturalSlideWidth={300}
+        naturalSlideHeight={300}
         totalSlides={photos.length}
         className={styles.carousel}
         isPlaying
@@ -26,8 +26,8 @@ const PhotoCarousel = ({
               >
                 <img src={
                   getCloudinaryUrlFromPublicId(photo.cloudinaryPublicId, [
-                    'w_350',
-                    'h_350',
+                    'w_300',
+                    'h_300',
                     'c_thumb',
                     'g_face',
                     'f_auto',

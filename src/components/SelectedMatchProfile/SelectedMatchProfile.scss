@@ -3,12 +3,13 @@
 $padding: 2rem;
 
 .component {
-  padding: 0 1rem;
+  padding: 0rem 0rem 0rem 2rem;
   width: 380px;
+  min-width: 340px;
   overflow-y: scroll;
   height: 380px;
   right: 0;
-  position: fixed;
+  position: sticky;
   border-left: 2px solid $color-primary;
   min-height: unquote("calc(100vh - #{$header-height + ($padding * 2)})");
   background-color: white;
