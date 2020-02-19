@@ -1,5 +1,17 @@
 @import 'base.scss';
 
+@media screen and (max-device-width: $ipad-max-device-width) and (min-device-width: $ipad-min-device-width) {
+  .photo {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .photo {
+    margin-bottom: 2rem;
+  }
+}
+
 .component {
   // Empty
 }
@@ -13,6 +25,7 @@
 
 .photos {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .photo {
@@ -33,7 +46,7 @@
     bottom: -1.7rem;
     opacity: 0;
     text-align: center;
-  } 
+  }
 
   &:hover {
     &::after {

@@ -16,6 +16,9 @@ import SettingsBlockedUsers from '../SettingsBlockedUsers/SettingsBlockedUsers'
 const SettingsView = () => {
   return (
     <Page>
+      <div className={styles.responsiveMenuControls}>
+        lolol
+      </div>
       <div className={styles.component}>
         <div className={styles.menu}>
           <SettingsMenu />

@@ -2,6 +2,23 @@
 
 $padding: 2rem;
 
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .responsiveMenuControls {
+    display: flex !important;
+    flex-direction: row;
+    border-bottom: 2px solid $gray-400;
+    height: 40px;
+  }
+
+  .displaySettingsMenu {
+    display: none;
+  }
+}
+
+.responsiveMenu {
+  display: none;
+}
+
 .component {
   margin: $padding 0;
   display: flex;
