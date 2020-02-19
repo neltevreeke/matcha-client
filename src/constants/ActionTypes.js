@@ -23,6 +23,9 @@ export const LOGOUT = '@user/LOGOUT'
 export const MENU_OPEN = '@menu/OPEN'
 export const MENU_CLOSE = '@menu/CLOSE'
 
+export const SETTINGS_MENU_OPEN = '@menu/SETTINGS_MENU_OPEN'
+export const SETTINGS_MENU_CLOSE = '@menu/SETTINGS_MENU_CLOSE'
+
 export const USER_UPDATE_START = '@user/USER_UPDATE_START'
 export const USER_UPDATE_SUCCESS = '@user/USER_UPDATE_SUCCESS'
 export const USER_UPDATE_ERROR = '@user/USER_UPDATE_ERROR'

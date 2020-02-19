@@ -12,15 +12,49 @@ import SettingsSearchFilters from '../SettingsSearchFilters/SettingsSearchFilter
 import SettingsLocation from '../SettingsLocation/SettingsLocation'
 import SettingsEmailNotifications from '../SettingsEmailNotifications/SettingsEmailNotifications'
 import SettingsBlockedUsers from '../SettingsBlockedUsers/SettingsBlockedUsers'
+import { useDispatch, useSelector } from 'react-redux'
+import { settingsMenuClose, settingsMenuOpen } from '../../../../actions/menu'
+import { getIsSettingsMenuOpen } from 'selectors/menu'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SettingsView = () => {
+  const isSettingsMenuOpen = useSelector(getIsSettingsMenuOpen)
+  const dispatch = useDispatch()
+
+  const showSettingsMenu = () => {
+    if (!isSettingsMenuOpen) {
+      dispatch(settingsMenuOpen())
+    } else if (isSettingsMenuOpen) {
+      dispatch(settingsMenuClose())
+    }
+  }
+
+  const handleClickInMenu = () => {
+    if (isSettingsMenuOpen) {
+      dispatch(settingsMenuClose())
+    }
+  }
+
   return (
     <Page>
-      <div className={styles.responsiveMenuControls}>
-        lolol
+      <div
+        className={styles.responsiveMenuControls}
+      >
+        <div
+          className={styles.iconContainer}
+          onClick={showSettingsMenu}
+        >
+          <FontAwesomeIcon
+            className={styles.hamburgerIcon}
+            icon='bars'
+          />
+        </div>
       </div>
       <div className={styles.component}>
-        <div className={styles.menu}>
+        <div
+          className={isSettingsMenuOpen ? styles.menu : styles.displaySettingsMenu}
+          onClick={handleClickInMenu}
+        >
           <SettingsMenu />
         </div>
         <div className={styles.content}>

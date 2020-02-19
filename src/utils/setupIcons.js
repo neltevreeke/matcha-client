@@ -16,7 +16,8 @@ import {
   faUnlink,
   faPaperPlane,
   faBan,
-  faFlag
+  faFlag,
+  faBars
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -35,5 +36,6 @@ library.add(
   faUnlink,
   faPaperPlane,
   faBan,
-  faFlag
+  faFlag,
+  faBars
 )

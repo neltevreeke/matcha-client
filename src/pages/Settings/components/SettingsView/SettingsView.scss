@@ -8,14 +8,32 @@ $padding: 2rem;
     flex-direction: row;
     border-bottom: 2px solid $gray-400;
     height: 40px;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .displaySettingsMenu {
     display: none;
   }
+
+  .component {
+    overflow-x: hidden;
+  }
+
+  .hamburgerIcon {
+    font-size: 1.2rem;
+  }
+
+  .iconContainer {
+    padding: .2rem .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.responsiveMenu {
+.responsiveMenuControls {
   display: none;
 }
 

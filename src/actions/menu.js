@@ -13,3 +13,15 @@ export const menuClose = (isOpen) => {
     payload: isOpen
   }
 }
+
+export const settingsMenuOpen = () => {
+  return {
+    type: ActionTypes.SETTINGS_MENU_OPEN
+  }
+}
+
+export const settingsMenuClose = () => {
+  return {
+    type: ActionTypes.SETTINGS_MENU_CLOSE
+  }
+}
