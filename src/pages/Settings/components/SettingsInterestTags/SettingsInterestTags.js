@@ -83,21 +83,19 @@ const SettingsInterestTags = () => {
           )
         })}
       </div>
-      <div className={styles.component}>
-        <p>Click on an interests to add it to your interests</p>
-        <div className={styles.tagContainer}>
-          {predefinedInterests.map((interest, index) => {
-            return (
-              <div
-                key={index}
-                className={styles.predefinedInterest}
-                onClick={handleOnClickPredefinedInterest(interest.label)}
-              >
-                #{interest.label}
-              </div>
-            )
-          })}
-        </div>
+      <p>Click on an interests to add it to your interests</p>
+      <div className={styles.tagContainer}>
+        {predefinedInterests.map((interest, index) => {
+          return (
+            <div
+              key={index}
+              className={styles.predefinedInterest}
+              onClick={handleOnClickPredefinedInterest(interest.label)}
+            >
+              #{interest.label}
+            </div>
+          )
+        })}
       </div>
     </div>
   )
