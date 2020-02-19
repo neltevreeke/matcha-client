@@ -1,5 +1,36 @@
 @import 'base.scss';
 
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .responsiveMenuControls {
+    display: flex !important;
+    flex-direction: row;
+    border-bottom: 2px solid $gray-400;
+    height: 40px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .iconContainer {
+    padding: .2rem .5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .timesIcon {
+    font-size: 1.2rem;
+  }
+
+  .displayNone {
+    display: none;
+  }
+}
+
+.responsiveMenuControls {
+  display: none;
+}
+
 .component {
   display: flex;
   flex-direction: row;

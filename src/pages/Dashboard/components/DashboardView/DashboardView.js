@@ -12,6 +12,8 @@ import {
   getUser,
   getSelectedPotentialMatch
 } from '../../../../selectors/user'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { setSelectedPotentialMatch } from 'actions/users'
 
 const DashboardView = () => {
   const selectedMatch = useSelector(getSelectedPotentialMatch)
@@ -37,8 +39,23 @@ const DashboardView = () => {
     selectedMatch
   ])
 
+  const handleOnCrossClickMobile = () => {
+    dispatch(setSelectedPotentialMatch(null))
+  }
+
   return (
     <Page>
+      <div className={styles.responsiveMenuControls}>
+        <div
+          className={selectedMatch ? styles.iconContainer : styles.displayNone}
+          onClick={handleOnCrossClickMobile}
+        >
+          <FontAwesomeIcon
+            className={styles.timesIcon}
+            icon='times'
+          />
+        </div>
+      </div>
       <div className={styles.component}>
         <div className={styles.potentialMatchesList}>
           <PotentialMatches
