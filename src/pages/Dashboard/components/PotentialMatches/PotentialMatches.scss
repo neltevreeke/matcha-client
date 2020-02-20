@@ -1,12 +1,5 @@
 @import 'base.scss';
 
-//.component {
-//  display: grid;
-//  grid-template-columns: repeat(6, $matches-card-size);
-//  grid-template-rows: auto;
-//  grid-column-gap: 2rem;
-//}
-
 .component {
   display: flex;
   flex-direction: row;

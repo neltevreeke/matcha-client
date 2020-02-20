@@ -1,11 +1,18 @@
 @import 'base.scss';
 
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .component {
+    margin-right: .9rem !important;
+    margin-bottom: .9rem !important;
+  }
+}
+
 .component {
   height: $matches-card-size;
   width: $matches-card-size;
   border-radius: $border-radius;
   cursor: pointer;
-  margin-right: 1.6rem;
+  margin-right: 2rem;
   margin-bottom: 2rem;
 }
 

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import styles from './DashboardView.scss'
+import cx from 'classnames'
 import Page from 'components/Page/Page'
 import PotentialMatches from '../PotentialMatches/PotentialMatches'
 import SelectedMatchProfile from '../../../../components/SelectedMatchProfile/SelectedMatchProfile'
@@ -19,6 +20,8 @@ const DashboardView = () => {
   const selectedMatch = useSelector(getSelectedPotentialMatch)
   const dispatch = useDispatch()
   const user = useSelector(getUser)
+  const responsiveMenuCrossClasses = [styles.iconContainer]
+  const potentialMatchesListClasses = [styles.potentialMatchesList]
 
   useEffect(() => {
     if (!selectedMatch) {
@@ -43,11 +46,19 @@ const DashboardView = () => {
     dispatch(setSelectedPotentialMatch(null))
   }
 
+  if (!selectedMatch) {
+    responsiveMenuCrossClasses.push(styles.displayNone)
+    potentialMatchesListClasses.filter(c => c !== styles.displayNone)
+  } else if (selectedMatch) {
+    potentialMatchesListClasses.push(styles.displayNone)
+    responsiveMenuCrossClasses.filter(c => c !== styles.displayNone)
+  }
+
   return (
     <Page>
       <div className={styles.responsiveMenuControls}>
         <div
-          className={selectedMatch ? styles.iconContainer : styles.displayNone}
+          className={cx(responsiveMenuCrossClasses)}
           onClick={handleOnCrossClickMobile}
         >
           <FontAwesomeIcon
@@ -57,7 +68,7 @@ const DashboardView = () => {
         </div>
       </div>
       <div className={styles.component}>
-        <div className={styles.potentialMatchesList}>
+        <div className={cx(potentialMatchesListClasses)}>
           <PotentialMatches
             selectedMatch={selectedMatch}
           />

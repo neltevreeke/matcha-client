@@ -4,6 +4,7 @@ import Page from 'components/Page/Page'
 import { Switch, Redirect, Route } from 'react-router-dom'
 import SettingsMenu from '../SettingsMenu/SettingsMenu'
 import * as Routes from 'constants/Routes'
+import cx from 'classnames'
 
 import SettingsProfile from '../SettingsProfile/SettingsProfile'
 import SettingsPictures from '../SettingsPictures/SettingsPictures'
@@ -18,10 +19,11 @@ import { getIsSettingsMenuOpen } from 'selectors/menu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SettingsView = () => {
+  const menuClasses = [styles.menu]
   const isSettingsMenuOpen = useSelector(getIsSettingsMenuOpen)
   const dispatch = useDispatch()
 
-  const showSettingsMenu = () => {
+  const handleOpenCloseSettingsMenu = () => {
     if (!isSettingsMenuOpen) {
       dispatch(settingsMenuOpen())
     } else if (isSettingsMenuOpen) {
@@ -30,9 +32,13 @@ const SettingsView = () => {
   }
 
   const handleClickInMenu = () => {
-    if (isSettingsMenuOpen) {
-      dispatch(settingsMenuClose())
-    }
+    dispatch(settingsMenuClose())
+  }
+
+  if (!isSettingsMenuOpen) {
+    menuClasses.push(styles.displaySettingsMenu)
+  } else if (isSettingsMenuOpen) {
+    menuClasses.filter(c => c !== styles.displaySettingsMenu)
   }
 
   return (
@@ -42,7 +48,7 @@ const SettingsView = () => {
       >
         <div
           className={styles.iconContainer}
-          onClick={showSettingsMenu}
+          onClick={handleOpenCloseSettingsMenu}
         >
           <FontAwesomeIcon
             className={styles.hamburgerIcon}
@@ -52,7 +58,7 @@ const SettingsView = () => {
       </div>
       <div className={styles.component}>
         <div
-          className={isSettingsMenuOpen ? styles.menu : styles.displaySettingsMenu}
+          className={cx(menuClasses)}
           onClick={handleClickInMenu}
         >
           <SettingsMenu />

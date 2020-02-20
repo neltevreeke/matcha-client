@@ -19,6 +19,7 @@ import { joinRoom } from 'utils/sockets'
 import { loadRoomMessages } from 'actions/roomMessage'
 import { getRoomMessages } from 'selectors/roomMessages'
 import * as ActionTypes from 'constants/ActionTypes'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MatchesView = () => {
   const dispatch = useDispatch()
@@ -26,6 +27,7 @@ const MatchesView = () => {
   const matches = useSelector(getMatches)
   const selectedMatch = useSelector(getSelectedMatch)
   const messages = useSelector(getRoomMessages)
+  let isShown = true
 
   useEffect(() => {
     dispatch(loadMatches())
@@ -55,8 +57,35 @@ const MatchesView = () => {
     )
   }
 
+  const handleMatchesListIconOnClick = () => {
+    isShown = !isShown
+  }
+
   return (
     <Page>
+      <div className={styles.responsiveMenuControls}>
+        <div
+          className={styles.iconLeft}
+          onClick={handleMatchesListIconOnClick}
+        >
+          <FontAwesomeIcon
+            className={styles.timesIcon}
+            icon='bars'
+          />
+        </div>
+        <div className={styles.iconMiddle}>
+          <FontAwesomeIcon
+            className={styles.timesIcon}
+            icon='paper-plane'
+          />
+        </div>
+        <div className={styles.iconRight}>
+          <FontAwesomeIcon
+            className={styles.timesIcon}
+            icon='user'
+          />
+        </div>
+      </div>
       <div className={styles.component}>
         <MatchesList
           matches={matches}

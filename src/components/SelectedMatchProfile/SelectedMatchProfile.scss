@@ -2,6 +2,16 @@
 
 $padding: 2rem;
 
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .component {
+    padding-left: 0rem !important;
+    padding-right: 2rem !important;
+    border: none !important;
+    height: 100%;
+    margin: 0px !important;
+  }
+}
+
 .component {
   padding: 0rem 0rem 0rem 2rem;
   width: 380px;
@@ -13,6 +23,7 @@ $padding: 2rem;
   border-left: 2px solid $color-primary;
   min-height: unquote("calc(100vh - #{$header-height + ($padding * 2)})");
   background-color: white;
+  margin-left: 2rem;
 }
 
 .placeholder {
