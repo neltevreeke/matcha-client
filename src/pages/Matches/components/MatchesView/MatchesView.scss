@@ -28,6 +28,12 @@ $padding: 2rem;
   padding-left: 2rem;
 }
 
+.chatContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
 .matchesListContainer {
   display: flex;
 }

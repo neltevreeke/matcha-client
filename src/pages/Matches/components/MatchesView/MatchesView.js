@@ -141,7 +141,7 @@ const MatchesView = () => {
             onSelectedMatch={handleSetSelectedMatch}
           />
         </div>
-        <div className={isMatchProfileOpen ? styles.displayMatchesList : ''}>
+        <div className={isMatchProfileOpen ? styles.displayMatchesList : styles.chatContainer}>
           <Chat
             messages={messages}
             selectedMatch={selectedMatch}
