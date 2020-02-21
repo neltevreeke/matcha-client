@@ -7,6 +7,12 @@ const initialState = {
   },
   settingsMenu: {
     isOpen: false
+  },
+  matchesList: {
+    isOpen: false
+  },
+  matchesProfile: {
+    isOpen: false
   }
 }
 
@@ -40,6 +46,40 @@ export default createReducer(initialState, {
     return {
       ...state,
       settingsMenu: {
+        isOpen: false
+      }
+    }
+  },
+
+  [ActionTypes.MATCHES_LIST_OPEN]: (state) => {
+    return {
+      ...state,
+      matchesList: {
+        isOpen: true
+      }
+    }
+  },
+  [ActionTypes.MATCHES_LIST_CLOSE]: (state) => {
+    return {
+      ...state,
+      matchesList: {
+        isOpen: false
+      }
+    }
+  },
+
+  [ActionTypes.MATCH_PROFILE_OPEN]: (state) => {
+    return {
+      ...state,
+      matchesProfile: {
+        isOpen: true
+      }
+    }
+  },
+  [ActionTypes.MATCH_PROFILE_CLOSE]: (state) => {
+    return {
+      ...state,
+      matchesProfile: {
         isOpen: false
       }
     }

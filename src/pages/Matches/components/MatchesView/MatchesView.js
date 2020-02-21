@@ -18,8 +18,10 @@ import { loadMatches, setSelectedMatch } from 'actions/matches'
 import { joinRoom } from 'utils/sockets'
 import { loadRoomMessages } from 'actions/roomMessage'
 import { getRoomMessages } from 'selectors/roomMessages'
+import { getIsMatchesListOpen, getIsMatchProfileOpen } from 'selectors/menu'
 import * as ActionTypes from 'constants/ActionTypes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import cx from 'classnames'
 
 const MatchesView = () => {
   const dispatch = useDispatch()
@@ -27,7 +29,11 @@ const MatchesView = () => {
   const matches = useSelector(getMatches)
   const selectedMatch = useSelector(getSelectedMatch)
   const messages = useSelector(getRoomMessages)
-  let isShown = true
+  const isMatchesListOpen = useSelector(getIsMatchesListOpen)
+  const isMatchProfileOpen = useSelector(getIsMatchProfileOpen)
+
+  const matchesListClasses = [styles.matchesListContainer]
+  const matchesSelectedMatchClasses = [styles.selectedMatchContainer]
 
   useEffect(() => {
     dispatch(loadMatches())
@@ -57,8 +63,50 @@ const MatchesView = () => {
     )
   }
 
+  const handleInMatchesListClick = () => {
+    dispatch({
+      type: ActionTypes.MATCHES_LIST_CLOSE
+    })
+  }
+
+  const handleMatchProfileIconOnClick = () => {
+    if (!isMatchProfileOpen) {
+      dispatch({
+        type: ActionTypes.MATCH_PROFILE_OPEN
+      })
+
+      return
+    }
+
+    dispatch({
+      type: ActionTypes.MATCH_PROFILE_CLOSE
+    })
+  }
+
   const handleMatchesListIconOnClick = () => {
-    isShown = !isShown
+    if (isMatchesListOpen) {
+      dispatch({
+        type: ActionTypes.MATCHES_LIST_CLOSE
+      })
+
+      return
+    }
+
+    dispatch({
+      type: ActionTypes.MATCHES_LIST_OPEN
+    })
+  }
+
+  if (!isMatchesListOpen) {
+    matchesListClasses.push(styles.displayMatchesList)
+  } else if (isMatchesListOpen) {
+    matchesListClasses.filter(c => c !== styles.displayMatchesList)
+  }
+
+  if (!isMatchProfileOpen) {
+    matchesSelectedMatchClasses.push(styles.displayMatchesList)
+  } else if (isMatchProfileOpen) {
+    matchesSelectedMatchClasses.filter(c => c !== styles.displayMatchesList)
   }
 
   return (
@@ -73,13 +121,10 @@ const MatchesView = () => {
             icon='bars'
           />
         </div>
-        <div className={styles.iconMiddle}>
-          <FontAwesomeIcon
-            className={styles.timesIcon}
-            icon='paper-plane'
-          />
-        </div>
-        <div className={styles.iconRight}>
+        <div
+          className={styles.iconRight}
+          onClick={handleMatchProfileIconOnClick}
+        >
           <FontAwesomeIcon
             className={styles.timesIcon}
             icon='user'
@@ -87,18 +132,27 @@ const MatchesView = () => {
         </div>
       </div>
       <div className={styles.component}>
-        <MatchesList
-          matches={matches}
-          onSelectedMatch={handleSetSelectedMatch}
-        />
-        <Chat
-          messages={messages}
-          selectedMatch={selectedMatch}
-        />
-        <SelectedMatchProfile
-          className={styles.selectedProfile}
-          selectedMatch={selectedMatch?.likedUserId}
-        />
+        <div
+          className={cx(matchesListClasses)}
+          onClick={handleInMatchesListClick}
+        >
+          <MatchesList
+            matches={matches}
+            onSelectedMatch={handleSetSelectedMatch}
+          />
+        </div>
+        <div className={isMatchProfileOpen ? styles.displayMatchesList : ''}>
+          <Chat
+            messages={messages}
+            selectedMatch={selectedMatch}
+          />
+        </div>
+        <div className={cx(matchesSelectedMatchClasses)}>
+          <SelectedMatchProfile
+            className={styles.selectedProfile}
+            selectedMatch={selectedMatch?.likedUserId}
+          />
+        </div>
       </div>
     </Page>
   )

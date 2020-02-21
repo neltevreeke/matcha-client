@@ -14,9 +14,22 @@ $padding: 2rem;
     justify-content: space-between;
   }
 
-  .dontShowMatchesList {
-    display: none;
+  .displayMatchesList {
+    display: none !important;
   }
+
+  .component {
+    overflow-x: hidden;
+  }
+}
+
+.selectedMatchContainer {
+  display: flex;
+  padding-left: 2rem;
+}
+
+.matchesListContainer {
+  display: flex;
 }
 
 .responsiveMenuControls {
@@ -33,4 +46,6 @@ $padding: 2rem;
 .selectedProfile {
   flex-shrink: 0;
   position: static !important;
+  padding-right: 2rem !important;
+  margin-left: 0 !important;
 }
