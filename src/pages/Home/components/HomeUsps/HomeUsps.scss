@@ -1,11 +1,25 @@
 @import 'base.scss';
 
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .component {
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  .usp {
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .component {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  grid-column-gap: 100px;
+  display: flex;
   padding: 5rem 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .usp {
