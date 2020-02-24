@@ -25,6 +25,11 @@ const Header = () => {
   const unreadActivitiesCount = useSelector(getUnreadActivitiesCount)
   const dispatch = useDispatch()
   const isLoggedIn = !!user
+  let expandMenuForIphone = false
+
+  if (window.matchMedia('screen and (max-width: 667px) and (min-width: 375px)').matches) {
+    expandMenuForIphone = !expandMenuForIphone
+  }
 
   const [showModalLogin, hideModalLogin] = useModal(({
     in: isOpen,
@@ -79,7 +84,7 @@ const Header = () => {
         matcha
       </Link>
       <div className={styles.controls}>
-        {isLoggedIn ? (
+        {isLoggedIn && !expandMenuForIphone ? (
           <>
             <HeaderNotifiableLink
               unreadCount={unreadActivitiesCount}
@@ -92,6 +97,15 @@ const Header = () => {
             >
               matches
             </Link>
+            <Avatar
+              onClick={handleAvatarClick}
+              user={user}
+              size={Avatar.SIZE_S}
+              backgroundClassName={styles.avatar}
+            />
+          </>
+        ) : isLoggedIn && expandMenuForIphone ? (
+          <>
             <Avatar
               onClick={handleAvatarClick}
               user={user}

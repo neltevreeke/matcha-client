@@ -10,6 +10,11 @@ import { menuClose } from 'actions/menu'
 
 const UserDropdownMenu = () => {
   const dispatch = useDispatch()
+  let expandMenuForIphone = false
+
+  if (window.matchMedia('screen and (max-width: 667px) and (min-width: 375px)').matches) {
+    expandMenuForIphone = !expandMenuForIphone
+  }
 
   const handleBtnLogoutClick = () => {
     handleClickInMenu()
@@ -24,27 +29,65 @@ const UserDropdownMenu = () => {
     dispatch(menuClose())
   }
 
-  return (
-    <div
-      className={styles.component}
-      onMouseLeave={handleOnMouseLeave}
-    >
-      <NavLink
-        className={styles.dropdownMenuLink}
-        to={Routes.SETTINGS}
-        onClick={handleClickInMenu}
+  if (expandMenuForIphone) {
+    return (
+      <div
+        className={styles.component}
+        onMouseLeave={handleOnMouseLeave}
       >
-        settings
-      </NavLink>
-      <NavLink
-        className={styles.dropdownMenuLink}
-        onClick={handleBtnLogoutClick}
-        to={Routes.HOME}
+        <NavLink
+          className={styles.dropdownMenuLink}
+          to={Routes.MATCHES}
+          onClick={handleClickInMenu}
+        >
+          matches
+        </NavLink>
+        <NavLink
+          className={styles.dropdownMenuLink}
+          to={Routes.ACTIVITIES}
+          onClick={handleClickInMenu}
+        >
+          activities
+        </NavLink>
+        <NavLink
+          className={styles.dropdownMenuLink}
+          to={Routes.SETTINGS}
+          onClick={handleClickInMenu}
+        >
+          settings
+        </NavLink>
+        <NavLink
+          className={styles.dropdownMenuLink}
+          onClick={handleBtnLogoutClick}
+          to={Routes.HOME}
+        >
+          log out
+        </NavLink>
+      </div>
+    )
+  } else {
+    return (
+      <div
+        className={styles.component}
+        onMouseLeave={handleOnMouseLeave}
       >
-        log out
-      </NavLink>
-    </div>
-  )
+        <NavLink
+          className={styles.dropdownMenuLink}
+          to={Routes.SETTINGS}
+          onClick={handleClickInMenu}
+        >
+          settings
+        </NavLink>
+        <NavLink
+          className={styles.dropdownMenuLink}
+          onClick={handleBtnLogoutClick}
+          to={Routes.HOME}
+        >
+          log out
+        </NavLink>
+      </div>
+    )
+  }
 }
 
 export default UserDropdownMenu
