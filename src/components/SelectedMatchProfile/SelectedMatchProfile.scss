@@ -9,6 +9,14 @@ $padding: 2rem;
     border: none !important;
     height: 100%;
     margin: 0px !important;
+    overflow-y: visible !important;
+  }
+}
+
+@media screen and (max-device-width: $ipad-max-device-width) and (min-device-width: $ipad-min-device-width) {
+  .component {
+    border: none !important;
+    overflow-y: visible !important;
   }
 }
 

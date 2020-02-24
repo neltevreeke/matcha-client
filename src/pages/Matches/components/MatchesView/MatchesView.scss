@@ -23,6 +23,23 @@ $padding: 2rem;
   }
 }
 
+@media screen and (max-device-width: $ipad-max-device-width) and (min-device-width: $ipad-min-device-width) {
+  .responsiveMenuControls {
+    display: flex !important;
+    flex-direction: row;
+    border-bottom: 2px solid $gray-400;
+    height: 40px;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    justify-content: space-between;
+  }
+
+  .displayMatchesList {
+    display: none !important;
+  }
+}
+
 .selectedMatchContainer {
   display: flex;
   padding-left: 2rem;

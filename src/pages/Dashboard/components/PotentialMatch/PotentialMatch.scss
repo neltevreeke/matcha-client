@@ -7,6 +7,13 @@
   }
 }
 
+@media screen and (max-device-width: $ipad-max-device-width) and (min-device-width: $ipad-min-device-width) {
+  .component {
+    margin-right: 1.6rem !important;
+    margin-bottom: 1.6rem !important;
+  }
+}
+
 .component {
   height: $matches-card-size;
   width: $matches-card-size;
