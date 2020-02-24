@@ -87,6 +87,7 @@ const Header = () => {
         {isLoggedIn && !expandMenuForIphone ? (
           <>
             <HeaderNotifiableLink
+              dropDown={false}
               unreadCount={unreadActivitiesCount}
               to={Routes.ACTIVITIES}
               label='activities'

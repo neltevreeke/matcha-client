@@ -5,15 +5,18 @@ import { Link } from 'react-router-dom'
 const HeaderNotifiableLink = ({
   unreadCount = 0,
   label,
-  to
+  to,
+  dropDown,
+  ...props
 }) => {
   return (
     <Link
       to={to}
-      className={styles.component}
+      className={dropDown ? styles.dropdownMenuLink : styles.component}
+      onClick={props.onClick}
     >
       {unreadCount > 0 && (
-        <div className={styles.unreadBullet}>
+        <div className={dropDown ? styles.dropdownUnreadBullet : styles.unreadBullet}>
           {unreadCount}
         </div>
       )}

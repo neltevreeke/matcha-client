@@ -3,13 +3,16 @@ import styles from './UserDropdownMenu.scss'
 import * as Routes from 'constants/Routes'
 import { NavLink } from 'react-router-dom'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { logout } from 'actions/users'
 import { menuClose } from 'actions/menu'
+import { getUnreadActivitiesCount } from '../../selectors/activities'
+import HeaderNotifiableLink from '../HeaderNotifiableLink/HeaderNotifiableLink'
 
 const UserDropdownMenu = () => {
   const dispatch = useDispatch()
+  const unreadActivitiesCount = useSelector(getUnreadActivitiesCount)
   let expandMenuForIphone = false
 
   if (window.matchMedia('screen and (max-width: 667px) and (min-width: 375px)').matches) {
@@ -42,13 +45,13 @@ const UserDropdownMenu = () => {
         >
           matches
         </NavLink>
-        <NavLink
-          className={styles.dropdownMenuLink}
+        <HeaderNotifiableLink
+          unreadCount={unreadActivitiesCount}
+          dropDown={expandMenuForIphone}
           to={Routes.ACTIVITIES}
+          label='activities'
           onClick={handleClickInMenu}
-        >
-          activities
-        </NavLink>
+        />
         <NavLink
           className={styles.dropdownMenuLink}
           to={Routes.SETTINGS}
