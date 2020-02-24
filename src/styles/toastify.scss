@@ -2,5 +2,13 @@
 
 .toastify {
   background-color: $color-primary !important;
-  top: 91px !important;
+  //top: 91px !important;
 }
+
+:global {
+  .Toastify__toast-container--top-right {
+    top: 6.7em !important;
+  }
+}
+
+
