@@ -15,6 +15,7 @@ import {
 } from '../../../../selectors/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { setSelectedPotentialMatch } from 'actions/users'
+import { history } from '../../../../utils/configureStore'
 
 const DashboardView = () => {
   const selectedMatch = useSelector(getSelectedPotentialMatch)
@@ -22,6 +23,12 @@ const DashboardView = () => {
   const user = useSelector(getUser)
   const responsiveMenuCrossClasses = [styles.iconContainer]
   const potentialMatchesListClasses = [styles.potentialMatchesList]
+
+  history.listen((location, action) => {
+    if (action === 'PUSH') {
+      dispatch(setSelectedPotentialMatch(null))
+    }
+  })
 
   useEffect(() => {
     if (!selectedMatch) {
