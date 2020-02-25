@@ -2,6 +2,20 @@
 
 $padding: 2rem;
 
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .userMessage {
+    p {
+      max-width: 50% !important;
+    }
+  }
+
+  .matchMessage {
+    p {
+      max-width: 50% !important;
+    }
+  }
+}
+
 .component {
   overflow-y: scroll;
   height: unquote("calc(100vh - #{$header-height + ($padding * 3.9)})");

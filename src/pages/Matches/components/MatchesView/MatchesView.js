@@ -103,7 +103,7 @@ const MatchesView = () => {
     matchesListClasses.filter(c => c !== styles.displayMatchesList)
   }
 
-  if (!isMatchProfileOpen) {
+  if (!isMatchProfileOpen && selectedMatch) {
     matchesSelectedMatchClasses.push(styles.displayMatchesList)
   } else if (isMatchProfileOpen) {
     matchesSelectedMatchClasses.filter(c => c !== styles.displayMatchesList)
@@ -141,7 +141,7 @@ const MatchesView = () => {
             onSelectedMatch={handleSetSelectedMatch}
           />
         </div>
-        <div className={isMatchProfileOpen ? styles.displayMatchesList : styles.chatContainer}>
+        <div className={isMatchProfileOpen && typeof selectedMatch !== 'undefined' ? styles.displayMatchesList : styles.chatContainer}>
           <Chat
             messages={messages}
             selectedMatch={selectedMatch}
