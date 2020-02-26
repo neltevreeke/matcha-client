@@ -4,8 +4,6 @@ import cx from 'classnames'
 import Page from 'components/Page/Page'
 import PotentialMatches from '../PotentialMatches/PotentialMatches'
 import SelectedMatchProfile from '../../../../components/SelectedMatchProfile/SelectedMatchProfile'
-import * as EventType from 'constants/EventType'
-import { sendEvent } from '../../../../utils/sockets'
 import { postNewActivity } from '../../../../actions/activity'
 import * as ActivityType from '../../../../constants/ActivityType'
 import { useDispatch, useSelector } from 'react-redux'
@@ -34,11 +32,6 @@ const DashboardView = () => {
     if (!selectedMatch) {
       return
     }
-
-    sendEvent({
-      type: EventType.EVENT_TYPE_PROFILE_VIEW,
-      data: selectedMatch._id
-    })
 
     dispatch(postNewActivity({
       type: ActivityType.ACTIVITY_TYPE_PROFILE_VIEW,

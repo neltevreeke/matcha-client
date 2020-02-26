@@ -3,15 +3,15 @@ import { getUser } from './user'
 export const getActivitiesList = state => state.activities.activities
 export const getActivitiesIsLoading = state => state.activities.isLoading
 
-export const getUnreadActivitiesCount = state => {
+export const getUnreadActivitiesCount = (state) => {
   const user = getUser(state)
+  const activities = getActivitiesList(state)
 
   if (!user) {
     return null
   }
 
   const userId = user._id
-  const activities = getActivitiesList(state)
 
   return activities
     .reduce((output, currentActivity) => {
