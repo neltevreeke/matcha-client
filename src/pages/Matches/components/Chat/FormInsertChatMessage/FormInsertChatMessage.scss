@@ -1,5 +1,17 @@
 @import 'base.scss';
 
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .form {
+    height: 1rem !important;
+  }
+}
+
+@media screen and (max-device-width: $ipad-max-device-width) and (min-device-width: $ipad-min-device-width) {
+  .form {
+    height: 0rem !important;
+  }
+}
+
 .component {
   // Empty
 }
@@ -18,6 +30,7 @@
   flex-direction: row;
   align-items: center;
   margin-top: 11px;
+  height: 5rem;
 }
 
 .submitButton {

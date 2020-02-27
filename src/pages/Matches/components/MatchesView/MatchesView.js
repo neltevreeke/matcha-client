@@ -34,6 +34,7 @@ const MatchesView = () => {
 
   const matchesListClasses = [styles.matchesListContainer]
   const matchesSelectedMatchClasses = [styles.selectedMatchContainer]
+  const chatContainerClasses = [styles.chatContainer]
 
   useEffect(() => {
     dispatch(loadMatches())
@@ -103,6 +104,12 @@ const MatchesView = () => {
     matchesListClasses.filter(c => c !== styles.displayMatchesList)
   }
 
+  if (isMatchesListOpen || isMatchProfileOpen) {
+    chatContainerClasses.push(styles.displayMatchesList)
+  } else if (!isMatchesListOpen || !isMatchProfileOpen) {
+    chatContainerClasses.filter(c => c !== styles.displayMatchesList)
+  }
+
   if (!isMatchProfileOpen && selectedMatch) {
     matchesSelectedMatchClasses.push(styles.displayMatchesList)
   } else if (isMatchProfileOpen) {
@@ -141,7 +148,7 @@ const MatchesView = () => {
             onSelectedMatch={handleSetSelectedMatch}
           />
         </div>
-        <div className={isMatchProfileOpen && typeof selectedMatch !== 'undefined' ? styles.displayMatchesList : styles.chatContainer}>
+        <div className={cx(chatContainerClasses)}>
           <Chat
             messages={messages}
             selectedMatch={selectedMatch}

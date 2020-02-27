@@ -1,5 +1,17 @@
 @import 'base.scss';
 
+@media screen and (max-device-width: $iphone-max-device-width) and (min-device-width: $iphone-min-device-width) {
+  .component {
+    border: none !important;
+  }
+}
+
+@media screen and (max-device-width: $ipad-max-device-width) and (min-device-width: $ipad-min-device-width) {
+  .component {
+    border: none !important;
+  }
+}
+
 .component {
   border-right: 2px solid $color-primary;
   display: flex;

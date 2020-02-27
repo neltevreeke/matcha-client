@@ -20,6 +20,9 @@ $padding: 2rem;
 
   .component {
     overflow-x: hidden;
+    margin: 0 !important;
+    padding-top: .9rem;
+    height: unquote("calc(100vh - #{$header-height + ($padding * 2) + $mobile-header-height + $footer-height})") !important;
   }
 }
 
@@ -37,6 +40,13 @@ $padding: 2rem;
 
   .displayMatchesList {
     display: none !important;
+  }
+
+  .component {
+    overflow-x: hidden;
+    margin: 0 !important;
+    padding-top: .9rem;
+    height: unquote("calc(100vh - #{$header-height + ($padding * 2) + $mobile-header-height + $footer-height})") !important;
   }
 }
 

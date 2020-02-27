@@ -29,7 +29,7 @@ $padding: 2rem;
   right: 0;
   position: sticky;
   border-left: 2px solid $color-primary;
-  min-height: unquote("calc(100vh - #{$header-height + ($padding * 2)})");
+  min-height: unquote("calc(100vh - #{$header-height + ($padding)})");
   background-color: white;
   margin-left: 2rem;
 }
